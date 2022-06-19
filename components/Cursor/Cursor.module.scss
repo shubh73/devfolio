@@ -1,0 +1,14 @@
+.cursor {
+    border-radius: 100%;
+    background: #fff;
+    mix-blend-mode: difference;
+}
+
+.cursorFollower {
+    border-radius: 100%;
+    left: -0.8rem;
+    top: -0.8rem;
+    border: 1px solid rgba(#ffffff, .2);
+    background: rgba(#ffffff, .027);
+    transform: translate(5px, 5px);
+}

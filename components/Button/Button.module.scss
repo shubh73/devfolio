@@ -1,0 +1,81 @@
+.primary__button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: theme("fontFamily.mono");
+  font-size: 0.8rem;
+
+  padding: 0.6rem 1.7rem;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: 0.4rem; 
+  color: #fff;
+  background-size: 220%;
+  border: 2px solid theme("colors.indigo.dark");
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 50%,
+    theme("colors.purple") 50%
+  );
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:active {
+    background-position: 98%;
+    color: #fff;
+    box-shadow: 0 0 1rem theme("colors.indigo.dark");
+  }
+}
+
+// .primary__button[disabled] {
+//   pointer-events: none;
+//   background-position: 120%;
+//   box-shadow: 0 0 0rem theme("colors.indigo.dark");
+
+//   color: inherit;
+
+//   background-image: linear-gradient(
+//     120deg,
+//     transparent 33%,
+//     theme("colors.purple") 33%,
+//     theme("colors.purple")66%,
+//     transparent 66%
+//   );
+
+//   animation-name: load;
+//   animation-duration: 1s;
+//   animation-iteration-count: infinite;
+// }
+
+.secondary__button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: theme("fontFamily.mono");
+  font-size: 0.8rem;
+
+  padding: 0.6rem 1.7rem;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: 0.4rem; 
+  color: #fff;
+  background-size: 220%;
+  border: 2px solid #fff;
+  background-image: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 50%,
+    theme("colors.purple") 50%
+  );
+  transition: all 0.3s ease-in-out;
+
+  &:hover,
+  &:active {
+    background-position: 98%;
+    color: #fff;
+    box-shadow: 0 0 1rem theme("colors.gray.dark.5");
+  }
+}

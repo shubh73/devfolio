@@ -1,0 +1,15 @@
+.profile {
+  display: inline-flex;
+  padding: 1.7rem 0 1rem 0;
+  gap: 1.5rem;
+
+  & > a {
+    &:hover,
+    &:focus {
+      filter: drop-shadow(0 0 1rem theme("colors.indigo.dark"));
+      svg {
+        stroke: theme("colors.indigo.light");
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.projectTile {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+
+    img {
+        object-fit: cover;
+    }
+}
+
+.projectImage {
+    @apply absolute top-0 rounded-xl shadow-xl;
+
+    width: 17rem !important;
+    transform: rotate(-22.5deg);
+    height: unset !important;
+    min-width: unset !important;
+    max-height: unset !important;
+    object-fit: contain !important;
+    left: unset !important;
+    right: 2rem !important;
+    bottom: unset !important;
+}
+
+.techIcons {
+    transform: rotate(-22.5deg) translateZ(2rem);
+    will-change: transform;
+}

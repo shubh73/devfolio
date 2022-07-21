@@ -65,7 +65,7 @@ export const SKILLS = {
     "javascript",
     "typescript",
     "sass",
-    "c++",
+    "cpp",
     "java",
     "python",
     "firebase",

@@ -14,9 +14,19 @@
 
 ## Getting Started 
 
-In the project directory, you can run:
+In the project directory, run:
 
-### `yarn dev`
+```sh
+yarn install
+```
 
-Runs the app in the development mode.\
+to install node_modules then run
+
+```sh
+yarn dev
+```
+
+to run it.
+
+
 Open [`http://localhost:3000`](http://localhost:3000) to view it in the browser.

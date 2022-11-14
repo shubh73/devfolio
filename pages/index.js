@@ -30,7 +30,7 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 4100);
+    }, 2700);
   }, []);
 
   useEffect(() => {

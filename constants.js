@@ -1,7 +1,7 @@
 export const METADATA = {
   title: "Portfolio | Shubh Porwal",
   description:
-    "Shubh Porwal is a Full Stack Developer from Kuwait, interested in crafting beautiful and functional applications. Shubh is pursuing his undergraduate from Pandit Deendayal Energy University, Gujarat.",
+    "Shubh Porwal is a Frontend Developer from Kuwait, interested in crafting beautiful and functional applications. Shubh is pursuing his undergraduate from Pandit Deendayal Energy University, Gujarat.",
   siteUrl: "https://shubhporwal.com/",
   twitterHandle: "@shubh731",
 };
@@ -30,7 +30,7 @@ export const MENULINKS = [
 ];
 
 export const TYPED_STRINGS = [
-  "A pragmatic Full Stack Developer",
+  "A pragmatic Frontend Developer",
   "I build things for the web",
   "I create aesthetic and modern apps",
 ];
@@ -65,13 +65,16 @@ export const SKILLS = {
     "javascript",
     "typescript",
     "sass",
-    "cpp",
-    "java",
-    "python",
+    // "cpp",
+    // "java",
+    // "python",
+    "nodejs",
+    "webpack",
+    "vite",
     "firebase",
-    "moralis",
-    "stripe",
-    // "figma"
+    // "moralis",
+    // "stripe",
+    "figma",
   ],
   librariesAndFrameworks: [
     "react",
@@ -82,23 +85,11 @@ export const SKILLS = {
     "antdesign",
     "chakra-ui",
   ],
-  databases: [
-    "mysql",
-    "mongodb",
-  ],
-  other: ["nodejs", "git", "sanity-io"],
+  databases: ["mysql", "mongodb"],
+  other: ["git", "sanity-io"],
 };
 
 export const PROJECTS = [
-  {
-    name: "Airbnb",
-    image: "/projects/airbnb.webp",
-    blurImage: "/projects/blur/airbnb-blur.webp",
-    description: "Airbnb UI clone using NextJS + Tailwind CSS 🛏️",
-    gradient: ["#F14658", "#DC2537"],
-    url: "https://shubh73-airbnb.vercel.app/",
-    tech: ["react", "nextjs", "tailwindcss", "mapbox"],
-  },
   // {
   //   name: "Shotime",
   //   image: "",
@@ -109,6 +100,15 @@ export const PROJECTS = [
   //   url: "https://shubh73-shotime.vercel.app/",
   //   tech: ["react", "tailwindcss", "redux", "mongodb", "stripe"],
   // },
+  {
+    name: "Airbnb",
+    image: "/projects/airbnb.webp",
+    blurImage: "/projects/blur/airbnb-blur.webp",
+    description: "Airbnb UI clone using NextJS + Tailwind CSS 🛏️",
+    gradient: ["#F14658", "#DC2537"],
+    url: "https://shubh73-airbnb.vercel.app/",
+    tech: ["react", "nextjs", "tailwindcss", "mapbox"],
+  },
   {
     name: "Medium",
     image: "/projects/medium.webp",
@@ -123,7 +123,7 @@ export const PROJECTS = [
     image: "/projects/inshorts.webp",
     blurImage: "/projects/blur/airbnb-blur.webp",
     description:
-    "Conversational Voice Controlled React News Application using Alan AI 🎙",
+      "Conversational Voice Controlled React News Application using Alan AI 🎙",
     gradient: ["#000066", "#6699FF"],
     url: "https://shubh73-inshorts.netlify.app/",
     tech: ["react", "chakra-ui", "alan"],
@@ -141,6 +141,29 @@ export const PROJECTS = [
 
 export const WORK = [
   {
+    id: 1,
+    company: "Dukaan",
+    title: "Frontend Developer Intern",
+    location: "Bangalore, Karnataka",
+    range: "December -  2023",
+    responsibilities: [],
+    url: "https://mydukaan.io/",
+  },
+  {
+    id: 2,
+    company: "Aviate",
+    title: "Frontend Developer Intern",
+    location: "Goa",
+    range: "May - October 2022",
+    responsibilities: [
+      "Built their flagship product Q-Rate, a voice-based applicant screening platform.",
+      "Developed pixel-perfect responsive web applications achieving daily traffic of 1000-2000 users.",
+      "Successfully rolled out an error-logging and bug reporting system that cut user-reported bugs by 30%.",
+    ],
+    url: "https://www.aviate.jobs/",
+  },
+  {
+    id: 3,
     company: "Spacenos",
     title: "Web Developer Intern",
     location: "Bangalore, Karnataka",
@@ -152,30 +175,6 @@ export const WORK = [
     ],
     url: "https://spacenos.com/",
   },
-  // {
-  //   company: "Spacenos",
-  //   title: "SDE",
-  //   location: "Bangalore, Karnataka",
-  //   range: "September - December 2021",
-  //   responsibilities: [
-  //     "Led the Full Stack revamp on the Admin Portal.",
-  //     "Developed app integration with REST APIs, Google Maps, User Auth, Stripe and other libraries.",
-  //     "Implemented CRUD features for all the services and providers",
-  //   ],
-  //   url: "https://spacenos.com/",
-  // },
-  // {
-  //   company: "Spacenos",
-  //   title: "Web Developer Intern",
-  //   location: "Bangalore, Karnataka",
-  //   range: "September - December 2021",
-  //   responsibilities: [
-  //     "Led the Full Stack revamp on the Admin Portal.",
-  //     "Developed app integration with REST APIs, Google Maps, User Auth, Stripe and other libraries.",
-  //     "Implemented CRUD features for all the services and providers.",
-  //   ],
-  //   url: "https://spacenos.com/",
-  // },
 ];
 
 export const GTAG = "G-5HCTL2TJ5W";

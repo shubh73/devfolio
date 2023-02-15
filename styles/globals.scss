@@ -11,12 +11,12 @@
   padding: 0;
   margin: 0;
   -webkit-tap-highlight-color: rgba(112, 0, 255, 0.05);
+  cursor: none;
 }
 
 body {
   box-sizing: border-box;
   @apply bg-gray-dark-5 text-white overflow-x-hidden;
-  cursor: none;
 }
 
 html {
@@ -165,6 +165,7 @@ input[type="checkbox"] {
     border-radius: 100%;
     // background-color: #120e16;
     span {
+      // background: theme("colors.white");
       background: linear-gradient(
         to right,
         theme("colors.indigo.light"),
@@ -214,7 +215,7 @@ input[type="checkbox"] {
       width: 0;
       background: #fff;
       border-radius: 100%;
-      transition: all 0.4s ease-in-out;
+      transition: all 0.2s ease-in-out;
     }
     &:hover {
       &:before {
@@ -232,8 +233,8 @@ input[type="checkbox"] {
     backface-visibility: hidden;
     outline: 0.0625rem solid transparent;
     > div {
-      width: 250vw;
-      height: 250vw;
+      width: 240vw;
+      height: 240vw;
       transform: scale(0);
       will-change: transform;
       border-radius: 50%;
@@ -264,6 +265,7 @@ input[type="checkbox"] {
               #7000ff 100%
             );
             background-size: 200% 100%;
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
 
@@ -295,42 +297,10 @@ input[type="checkbox"] {
     theme("colors.indigo.light"),
     theme("colors.indigo.dark")
   );
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-// For two buttons -> Resume and Let's Talk -> outline and primary classes
-
-// .primary {
-//   color: rgb(17 24 39);
-//   background: linear-gradient(90deg, #2193b0 0%, #6dd5ed 50%, #2193b0 100%),
-//     linear-gradient(0deg, #ffffff, #ffffff);
-//   background-size: 200% 100%;
-
-//   &:hover {
-//     background-position: 100% 0;
-//   }
-// }
-
-// .outline {
-//   border-color: #fff;
-//   border-width: 2px;
-
-//   &:hover {
-//     background-color: #fff;
-//     color: rgb(17 24 39);
-//     opacity: 0.9;
-//   }
-// }
-
-// .white {
-//   background-color: #fff;
-//   color: rgb(17 24 39);
-
-//   &:hover {
-//     opacity: 0.9;
-//   }
-// }
 
 @keyframes sound-bars-animation {
   // 0% - 50% uses inherited properties
@@ -348,79 +318,78 @@ $bg: #f4faff;
 
 .wrapper {
   margin: 0 auto;
-  padding: 2rem 0 4rem 0;
+  padding: 4rem 0;
   display: inline-block;
   position: relative;
   perspective: 100em;
   transition: 0.4s ease;
-  // font-size: 20px;
   .page {
-    // background: #1a171e;
-    min-width: 300px;
-    max-width: 400px;
+    width: 300px;
     border-radius: 30px;
-    // box-shadow: 0 3px 12px rgba(70, 107, 255, 0.1);
-    // border: 1px solid rgba(#4567cf, 0.1);
-    // border: 2px solid white;
     transform-style: preserve-3d;
     transition: 0.5s ease;
-    padding: 30px 40px 20px;
+    padding: 30px 40px 0;
     position: relative;
     z-index: 0;
-    p {
-      font-size: 25px;
-      font-weight: 600;
-      padding-bottom: 40px;
-      color: linear-gradient(
-        120deg,
-        transparent 0%,
-        transparent 50%,
-        theme("colors.purple") 50%
-      );
-    }
-  }
-  .radio-wrapper {
-    input {
-      position: absolute;
-      opacity: 0;
-      height: 0;
-      width: 0;
-      + label {
-        display: flex;
+    background: linear-gradient(
+      to right,
+      theme("colors.gray.dark.1"),
+      theme("colors.gray.dark.3"),
+    );
+    .radio-wrapper {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-left: 10px;
+      .choice-container {
         position: relative;
-        padding: 5px 0 5px 30px; 
-        margin: 15px 0 0 0;
-        font-size: 20px;
-        font-weight: 500;
-        color: #fff;
-        &:hover {
-          &:before {
-            content: "";
-            position: absolute;
-            box-shadow: 0 0 0 3px rgba(#7000ff, 0.5);
+        display: flex;
+        align-items: center;
+        input {
+          position: absolute;
+          opacity: 0;
+          height: 18px;
+          width: 18px;
+          top: -38px;
+          left: -10px;
+          z-index: 1;
+          + label {
+            display: flex;
+            position: relative;
+            padding: 5px 0 5px 30px;
+            font-size: 20px;
+            font-weight: 600;
+            // &:hover {
+            //   &:before {
+            //     content: "";
+            //     position: absolute;
+            //     box-shadow: 0 0 0 5px rgba(#7000ff, 0.5);
+            //   }
+            // }
+            &:before {
+              content: "";
+              position: absolute;
+              width: 16px;
+              height: 16px;
+              outline: 3px solid #7000ff;
+              border-radius: 50%;
+              left: 0;
+              top: 20%;
+              transition: border 0.1s ease-in-out 1.6s, box-shadow 0.2s ease;
+            }
           }
-        }
-        &:before {
-          content: "";
-          position: absolute;
-          width: 16px;
-          height: 16px;
-          border: 2px solid #7000ff;
-          // border-radius: 50%;
-          left: 0;
-          top: 20%;
-          transition: border 0.1s ease-in-out 1.6s, box-shadow 0.2s ease;
-        }
-      }
-      &:checked {
-        + label:before {
-          content: "";
-          position: absolute;
-        }
-        + label:after {
-          content: "";
-          position: absolute;
-          opacity: 1;
+          &:checked {
+            + label:before {
+              content: "";
+              position: absolute;
+            }
+            + label:after {
+              content: "";
+              position: absolute;
+              opacity: 1;
+            }
+          }
         }
       }
     }
@@ -772,7 +741,7 @@ $bg: #f4faff;
     animation: 0.2s trigger 1.5s;
   }
   .page {
-    transform: rotateY(-75deg);
+    transform: rotateY(-75deg) !important;
   }
   .bullet {
     animation: 1.8s appear-shoot 1s;
@@ -791,7 +760,7 @@ $bg: #f4faff;
   }
   35% {
     opacity: 1;
-    transform: scale(1) translateX(158px);
+    transform: scale(1) translateX(155px);
   }
   70%,
   100% {
@@ -821,10 +790,20 @@ $bg: #f4faff;
   }
 }
 
+.primary__button__active {
+  background-position: 98%;
+  color: #fff;
+  box-shadow: 0 0 1rem theme("colors.indigo.dark");
+}
+
+.heart-btn {
+  cursor: none;
+}
+
 .milk-404 {
   max-height: 100vh;
 }
 
-#mouth-frown{
+#mouth-frown {
   visibility: hidden;
 }

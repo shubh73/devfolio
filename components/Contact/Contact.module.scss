@@ -49,8 +49,7 @@
   display: inline-flex;  //block
   cursor: none;
   position: relative;
-  border: 2px solid transparent;
-  padding: 0.6rem 1.7rem;
+  padding: 0.65rem 1.75rem;
   min-width: 100px;
   text-align: center;
   margin: 0;
@@ -62,7 +61,7 @@
   background-clip: padding-box;
   border-radius: 0.4rem;
   background-size: 220%;
-  border: 2px solid theme("colors.indigo.dark");
+  outline: 2px solid theme("colors.indigo.dark");
   color: var(--text);
   transition: all 0.3s ease-in-out;
   -webkit-appearance: none;

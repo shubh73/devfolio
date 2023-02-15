@@ -315,7 +315,7 @@ const Contact = () => {
               <div className="hidden">{error()}</div>
             ))}
         </form>
-        <div className="pt-9 mx-auto link">
+        <div className="mt-9 mx-auto link">
           <button
             className={styles.button}
             ref={buttonEl}

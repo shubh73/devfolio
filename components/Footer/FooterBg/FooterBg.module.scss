@@ -6,13 +6,13 @@
   .background {
     position: absolute;
     bottom: 0;
-    background: url("/footer/background.webp") no-repeat scroll center 0;
+    background: url("/footer/background.png") no-repeat scroll center 0;
     width: 100%;
     height: 266px;
   }
 
   .background__one {
-    background: url("/footer/volkswagon.webp") no-repeat center center;
+    background: url("/footer/volkswagen.gif") no-repeat center center;
     width: 330px;
     height: 105px;
     background-size: 100%;
@@ -24,7 +24,7 @@
   }
 
   .background__two {
-    background: url("/footer/cyclist.webp") no-repeat center center;
+    background: url("/footer/cyclist.gif") no-repeat center center;
     width: 88px;
     height: 100px;
     background-size: 100%;

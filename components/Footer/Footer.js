@@ -1,16 +1,27 @@
 /* eslint-disable @next/next/no-img-element */
-import dynamic from "next/dynamic";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Fade } from "react-reveal";
 import { gsap, Linear } from "gsap";
 import { MENULINKS } from "../../constants";
+import { Howl } from "howler";
 import Button from "../Button/Button";
 import FooterBg from "./FooterBg/FooterBg";
-
-const Profiles = dynamic(() => import("../Profiles/Profiles"));
+import Profiles from "../Profiles/Profiles";
 
 const Footer = () => {
   const targetSection = useRef(null);
+  const [playbackRate, setPlaybackRate] = useState(0.75);
+
+  const heartClickSound = new Howl({
+    src: ["/sounds/glug-a.mp3"],
+    rate: playbackRate,
+    volume: 0.5,
+  });
+
+  const handleClick = () => {
+    setPlaybackRate((rate) => rate + 0.1);
+    heartClickSound.play();
+  };
 
   useEffect(() => {
     const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
@@ -25,7 +36,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="w-full relative select-none bg-cover mb-40"
+      className="w-full relative select-none bg-cover"
       ref={targetSection}
     >
       <FooterBg />
@@ -47,12 +58,14 @@ const Footer = () => {
                 Let&apos;s Talk
               </Button>
             </div>
-            <p className="text-center text-sm sm:text-base font-medium tracking-wide mt-8">
+            <p className="text-center text-white text-sm sm:text-base font-medium tracking-wide mt-8">
               Developed with{" "}
-              <span role="img" aria-label="emoji" className="animate-pulse">
-                ❤️
-              </span>{" "}
-              by <span className="text-gray.dark.5">Shubh Porwal</span>
+              <button onClick={handleClick} className="link heart-btn">
+                <span role="img" aria-label="heart" className="animate-pulse">
+                  ❤️
+                </span>
+              </button>{" "}
+              by <span className="text-white">Shubh Porwal</span>
             </p>
           </div>
         </div>
@@ -61,15 +74,9 @@ const Footer = () => {
         src="/footer-curve.svg"
         className="w-full rotate-180"
         alt=""
-        loading="lazy"
+        loading="eager"
         height={180}
       />
-      <p className="absolute left-[15%] -bottom-[7.5rem] font-extralight text-sm xl:text-base w-[40%]">
-        *Credits to the owners for the codepen and vectors/icons used.
-        <br />
-        These were picked from various sources over the internet.
-      </p>
-
       <style jsx global>{`
         footer {
           background-image: linear-gradient(270deg, #9f55ff, #7000ff, #8b31ff);

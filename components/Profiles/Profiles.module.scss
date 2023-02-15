@@ -6,9 +6,10 @@
   & > a {
     &:hover,
     &:focus {
-      filter: drop-shadow(0 0 1rem theme("colors.indigo.dark"));
+      filter: drop-shadow(0 0 1rem theme("colors.indigo.light"));
+      filter: brightness(1.1);
       svg {
-        stroke: theme("colors.indigo.light");
+        stroke: theme("colors.indigo.light");  
       }
     }
   }

@@ -153,7 +153,6 @@ const Custom404 = () => {
           Back to Home
         </Button>
       </div>
-      <Cursor />
     </div>
   );
 };

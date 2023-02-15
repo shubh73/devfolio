@@ -4,23 +4,33 @@ import { MENULINKS, WORK } from "../../constants";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { Fade } from "react-reveal";
+import { Howl } from "howler";
 import styles from "./Work.module.scss";
 import Button from "../Button/Button";
+import VanillaTilt from "vanilla-tilt";
 
 const Work = ({ clientWidth }) => {
   const targetSection = useRef(null);
   const inputRef = useRef(null);
   const macRef = useRef(null);
+  const companyCard = useRef(null);
 
-  // Add more "false" elements when the job profiles increase. Rn it is only one -> [Spacenos]
-  const [checked, setChecked] = useState([false]);
+  const [checked, setChecked] = useState(new Array(WORK.length).fill(false));
   const [isActive, setIsActive] = useState(false);
   const [gunStyle, setGunStyle] = useState({});
 
-  // onClick -> option chosen from the nerf gun animation
   const [mockupStyle, setMockupStyle] = useState({});
   const [macTopStyle, setMacTopStyle] = useState({});
   const [activeIndex, setActiveIndex] = useState(0);
+  const [reveal, setReveal] = useState(0);
+
+  const options = {
+    max: 10,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.1,
+    gyroscope: false,
+  };
 
   useEffect(() => {
     const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
@@ -39,26 +49,27 @@ const Work = ({ clientWidth }) => {
     });
   }, [targetSection, isActive]);
 
+  useEffect(() => {
+    VanillaTilt.init(companyCard.current, options);
+  }, [companyCard]);
+
+  const checkedSound = new Howl({
+    src: ["/sounds/pop-down.mp3"],
+    volume: 0.7,
+  });
+
+  const getHeight = (position) =>
+    inputRef.current.offsetTop + (210 + 53 * position);
+
   const handleChange = (position) => {
-    const height = 0;
-    height = inputRef.current.offsetTop - 15;
-    checked[position] = true;
-    // switch (position) {
-    //   case 0:
-    //     height = inputRef.current.offsetTop - 115;
-    //     checked[position] = true;
-    //     break;
-    //   case 1:
-    //     height = inputRef.current.offsetTop - 55;
-    //     checked[position] = true;
-    //     break;
-    //   case 2:
-    //     height = inputRef.current.offsetTop;
-    //     checked[position] = true;
-    //     break;
-    //   default:
-    //     height = inputRef.current.offsetTop - 50;
-    // }
+    const height = getHeight(position);
+
+    setChecked(() =>
+      checked.map((item, index) => {
+        if (index === position) return true;
+        else return item;
+      })
+    );
 
     setGunStyle({
       transform: "translateY(" + height + "px)",
@@ -66,9 +77,15 @@ const Work = ({ clientWidth }) => {
     });
     setIsActive(true);
 
-    checked[position] = false;
+    setChecked(() =>
+      checked.map((item, index) => {
+        if (index === position) return false;
+        else return item;
+      })
+    );
 
     setTimeout(() => {
+      checkedSound.play();
       setMockupStyle({
         transform: "translate3d(0, 0, 0) rotateX(-90deg)",
         transition: "1s",
@@ -130,9 +147,9 @@ const Work = ({ clientWidth }) => {
 
         {clientWidth > 767 ? (
           <>
-            <div className={`wrapper ${isActive ? "active" : ""}`}>
-              <div className="page">
-                <p>
+            <div className={`wrapper seq ${isActive ? "active" : ""}`}>
+              <div className="page overflow-hidden" ref={companyCard}>
+                <p className="text-[25px] font-semibold pb-10">
                   Choose a compan
                   <span className="relative">
                     y
@@ -144,23 +161,21 @@ const Work = ({ clientWidth }) => {
                 </p>
                 <div className="radio-wrapper">
                   {WORK &&
-                    WORK.map((job, i) => {
-                      const { company } = job;
+                    WORK.map((job, index) => {
+                      const { company, id } = job;
                       return (
-                        <>
+                        <div className="choice-container" key={id}>
                           <input
-                            key={`choice-${i}`}
-                            type="radio"
-                            id={`choice-${i}`}
-                            name="choices"
-                            value={i}
+                            id={`choice-${id}`}
+                            type="checkbox"
+                            name={company}
                             ref={inputRef}
-                            checked={checked[i]}
-                            onChange={() => handleChange(i)}
+                            // checked={checked[index]}
+                            onChange={() => handleChange(index)}
                             className="link"
                           />
-                          <label htmlFor={`choice-${i}`}>{company}</label>
-                        </>
+                          <label htmlFor={`choice-${id}`}>{company}</label>
+                        </div>
                       );
                     })}
                 </div>
@@ -191,7 +206,7 @@ const Work = ({ clientWidth }) => {
               </div>
             </div>
 
-            <div className={styles.container} ref={macRef}>
+            <div className={`seq ${styles.container}`} ref={macRef}>
               <div
                 className={`${styles.mockup} ${styles.loaded} ${styles.opened}`}
                 style={mockupStyle}
@@ -240,31 +255,34 @@ const Work = ({ clientWidth }) => {
           </>
         ) : (
           <>
-            <Fade bottom distance={"4rem"}>
-              <div className="grid grid-cols-12 gap-4 place-items-center">
-                <div className="col-span-12 flex flex-col">
-                  <div className="py-5 ">
-                    {WORK.map((job, index) => {
-                      const { company } = job;
-                      return (
-                        <div key={company}>
-                          <Button
-                            key={company}
-                            classes={`link text-lg`}
-                            href={`#${company.toLowerCase()}`}
-                            type="primary"
-                            onClick={() => {
-                              setActiveIndex(index);
-                            }}
-                          >
-                            {company}
-                          </Button>
-                        </div>
-                      );
-                    })}
-                  </div>
+            <div className="flex flex-col items-center">
+              <div className="flex seq">
+                <div className="py-5">
+                  {WORK.map((job, index) => {
+                    const { company } = job;
+                    return (
+                      <div key={company}>
+                        <Button
+                          key={company}
+                          classes={`text-lg mb-4 ${
+                            index === activeIndex && "primary__button__active"
+                          }`}
+                          href={`#${company.toLowerCase()}`}
+                          type="primary"
+                          onClick={() => {
+                            setActiveIndex(index);
+                            setReveal((prev) => prev + 1);
+                          }}
+                        >
+                          {company}
+                        </Button>
+                      </div>
+                    );
+                  })}
                 </div>
-                <div className="pt-10 col-span-12 flex flex-col justify-center items-center min-h-full">
+              </div>
+              <div className="pt-10 col-span-12 flex flex-col justify-center items-center min-h-full seq">
+                <Fade spy={reveal} right distance="4rem">
                   <div className="bg-gray-dark-4 rounded-2xl px-10 py-10 w-72 h-full mx-16">
                     <p className="font-bold mb-2 text-2xl">
                       {WORK[activeIndex]?.company}
@@ -272,7 +290,7 @@ const Work = ({ clientWidth }) => {
                     <p className="mb-1 text-lg">{WORK[activeIndex]?.title}</p>
                     <p className="italic text-sm font-thin">
                       {/* {company?.startDate} -{" "}
-                    {company?.endDate ? company?.endDate : "Present"} */}
+                        {company?.endDate ? company?.endDate : "Present"} */}
                       {WORK[activeIndex]?.range}
                     </p>
                     <ul className="text-base mt-6 list-disc ml-2 z-30">
@@ -285,9 +303,9 @@ const Work = ({ clientWidth }) => {
                       })}
                     </ul>
                   </div>
-                </div>
+                </Fade>
               </div>
-            </Fade>
+            </div>
           </>
         )}
       </div>

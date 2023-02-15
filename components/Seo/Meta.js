@@ -9,7 +9,7 @@ const Meta = ({ children }) => {
         <meta name="description" content={METADATA.description} />
         <meta
           name="keywords"
-          content="Shubh Porwal, Full Stack Developer, Software Developer, Software Engineer, Portfolio, Devfolio, Web Development, PDEU, Web Developer"
+          content="Shubh Porwal, Frontend Developer, Full Stack Developer, Software Developer, Software Engineer, Portfolio, Devfolio, Web Development, PDEU, Web Developer"
         />
         <meta name="robots" content="index, follow" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />

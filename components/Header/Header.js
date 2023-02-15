@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Fade from "react-reveal/Fade";
 import SoundBar from "./SoundBar/SoundBar";
+// import SoundButton from "./SoundButton/SoundButton";
 
 const Header = ({ children }) => {
   return (
@@ -17,6 +18,7 @@ const Header = ({ children }) => {
           </a>
           <div className="outer-menu relative">
             <SoundBar />
+            {/* <SoundButton /> */}
             <input
               aria-labelledby="menu"
               className="checkbox-toggle link absolute top-0 right-0 w-6 h-6 opacity-0"

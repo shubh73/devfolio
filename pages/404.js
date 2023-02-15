@@ -14,7 +14,7 @@ const Custom404 = () => {
   useEffect(() => {
     // Milk Spill
     const milkSpill = gsap.to(milkSpillLargeRef.current, {
-      duration: 60,
+      duration: 40,
       scale: 1.25,
       transformOrigin: "right",
       ease: Power1.easeInOut,
@@ -39,7 +39,7 @@ const Custom404 = () => {
       gsap
         .timeline({
           repeat: -1,
-          repeatDelay: 5,
+          repeatDelay: 4,
           defaults: { ease: Circ.easeInOut, duration: 0.1 },
         })
         .add("blink")
@@ -153,6 +153,7 @@ const Custom404 = () => {
           Back to Home
         </Button>
       </div>
+      <Cursor />
     </div>
   );
 };

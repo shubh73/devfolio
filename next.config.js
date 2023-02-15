@@ -3,7 +3,7 @@ const withPWA = require("next-pwa");
 module.exports = withPWA({
   webpack: (config) => {
     config.module.rules.push({
-      test: /\.mp3$/,
+      test: /\.(mp3|wav)$/i,
       use: {
         loader: "url-loader",
       },
@@ -11,7 +11,6 @@ module.exports = withPWA({
     return config;
   },
   images: {
-    domains: ["res.cloudinary.com"],
   },
   pwa: {
     dest: "public",

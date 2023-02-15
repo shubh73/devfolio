@@ -9,7 +9,9 @@ const Collaboration = ({ clientHeight }) => {
   useEffect(() => {
     const smallScreen = document.body.clientWidth < 767;
 
-    const timeline = gsap.timeline({ defaults: { ease: Linear.easeNone } });
+    const timeline = gsap.timeline({
+      defaults: { ease: Linear.easeNone },
+    });
     timeline
       .from(quoteRef.current, { opacity: 0, duration: 2 })
       .to(quoteRef.current.querySelector(".text-strong"), {
@@ -55,7 +57,9 @@ const Collaboration = ({ clientHeight }) => {
       >
         <p className="opacity-40 text-6xl sm:text-7xl font-semibold whitespace-nowrap ui-left transform-gpu">
           {Array(5)
-            .fill(" Software Engineering Problem Solving ")
+            .fill(
+              " Software Engineering Problem Solving Software Architecture "
+            )
             .reduce((str, el) => str.concat(el), "")}{" "}
         </p>
 
@@ -69,7 +73,9 @@ const Collaboration = ({ clientHeight }) => {
 
         <p className="mt-6 md:mt-8 opacity-40 text-6xl sm:text-7xl font-semibold whitespace-nowrap ui-right transform-gpu">
           {Array(5)
-            .fill(" Full Stack Development Frontend Development ")
+            .fill(
+              " Agile Development Frontend Development Full Stack Development "
+            )
             .reduce((str, el) => str.concat(el), "")}{" "}
         </p>
       </div>

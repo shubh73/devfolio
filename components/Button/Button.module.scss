@@ -5,14 +5,14 @@
   text-decoration: none;
   font-family: theme("fontFamily.mono");
   font-size: 0.8rem;
+  font-weight: 800;
 
-  padding: 0.6rem 1.7rem;
-  border: 2px solid transparent;
+  padding: 0.65rem 1.75rem;
   background-clip: padding-box;
-  border-radius: 0.4rem; 
+  border-radius: 0.4rem;
   color: #fff;
   background-size: 220%;
-  border: 2px solid theme("colors.indigo.dark");
+  outline: 2px solid theme("colors.indigo.dark");
   background-image: linear-gradient(
     120deg,
     transparent 0%,
@@ -23,7 +23,7 @@
 
   &:hover,
   &:active {
-    background-position: 98%;
+    background-position: 100%;
     color: #fff;
     box-shadow: 0 0 1rem theme("colors.indigo.dark");
   }
@@ -56,14 +56,14 @@
   text-decoration: none;
   font-family: theme("fontFamily.mono");
   font-size: 0.8rem;
+  font-weight: 800;
 
-  padding: 0.6rem 1.7rem;
-  border: 2px solid transparent;
+  padding: 0.65rem 1.75rem;
   background-clip: padding-box;
-  border-radius: 0.4rem; 
+  border-radius: 0.4rem;
   color: #fff;
   background-size: 220%;
-  border: 2px solid #fff;
+  outline: 2px solid #fff;
   background-image: linear-gradient(
     120deg,
     transparent 0%,
@@ -74,7 +74,7 @@
 
   &:hover,
   &:active {
-    background-position: 98%;
+    background-position: 100%;
     color: #fff;
     box-shadow: 0 0 1rem theme("colors.gray.dark.5");
   }

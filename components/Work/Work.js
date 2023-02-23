@@ -8,8 +8,9 @@ import { Howl } from "howler";
 import styles from "./Work.module.scss";
 import Button from "../Button/Button";
 import VanillaTilt from "vanilla-tilt";
+import useWindowDimensions from "hooks/useWindowDimensions";
 
-const Work = ({ clientWidth }) => {
+const Work = () => {
   const targetSection = useRef(null);
   const inputRef = useRef(null);
   const macRef = useRef(null);
@@ -23,6 +24,8 @@ const Work = ({ clientWidth }) => {
   const [macTopStyle, setMacTopStyle] = useState({});
   const [activeIndex, setActiveIndex] = useState(0);
   const [reveal, setReveal] = useState(0);
+
+  const { clientWidth } = useWindowDimensions();
 
   const options = {
     max: 10,
@@ -170,7 +173,7 @@ const Work = ({ clientWidth }) => {
                             type="checkbox"
                             name={company}
                             ref={inputRef}
-                            // checked={checked[index]}
+                            checked={checked[index]}
                             onChange={() => handleChange(index)}
                             className="link"
                           />
@@ -294,13 +297,11 @@ const Work = ({ clientWidth }) => {
                       {WORK[activeIndex]?.range}
                     </p>
                     <ul className="text-base mt-6 list-disc ml-2 z-30">
-                      {WORK[activeIndex]?.responsibilities.map((r) => {
-                        return (
-                          <li key={r} className="mt-2">
-                            {r}
-                          </li>
-                        );
-                      })}
+                      {WORK[activeIndex]?.responsibilities.map((r) => (
+                        <li key={r} className="mt-2">
+                          {r}
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </Fade>

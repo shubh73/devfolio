@@ -1,10 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import useWindowDimensions from "hooks/useWindowDimensions";
 
-const About1 = ({ clientHeight }) => {
+const About1 = () => {
   const quoteRef = useRef(null);
   const targetSection = useRef(null);
+
+  const { clientHeight } = useWindowDimensions();
 
   useEffect(() => {
     const timeline = gsap.timeline({
@@ -53,8 +56,8 @@ const About1 = ({ clientHeight }) => {
           className="font-medium text-[2.70rem] md:text-6xl lg:text-[4rem] text-center"
         >
           <span className="about-1 leading-tight">
-            I&apos;m a passionate Engineer who&apos;s focused on building scalable
-            and performant apps.{" "}
+            I&apos;m a passionate Engineer who&apos;s focused on building
+            scalable and performant apps.{" "}
           </span>
           <span className="about-2 leading-tight">
             I take responsibility to craft a good user experience using modern

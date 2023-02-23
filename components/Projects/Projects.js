@@ -3,10 +3,13 @@ import { MENULINKS, PROJECTS } from "../../constants";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import ProjectTile from "./ProjectTile/ProjectTile";
+import useWindowDimensions from "hooks/useWindowDimensions";
 
-const Projects = ({ isDesktop, clientHeight }) => {
+const Projects = ({ isDesktop }) => {
   const targetSection = useRef(null);
   const sectionTitle = useRef(null);
+
+  const { clientHeight } = useWindowDimensions();
 
   useEffect(() => {
     let projectsScrollTrigger;

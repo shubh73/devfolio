@@ -1,3 +1,11 @@
+.screen {
+  @apply bg-gray-dark-5;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
+}
+
 .loader {
   position: absolute;
   top: 50%;
@@ -129,7 +137,7 @@
     background-image: linear-gradient(to right, #8b31ff, #7000ff);
     animation-name: load;
     animation-duration: 1.7s; //1.7s
-    animation-delay: 1.0s;
+    animation-delay: 1s;
     animation-iteration-count: infinite;
   }
 }

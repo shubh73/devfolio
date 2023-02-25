@@ -8,9 +8,8 @@ import { Howl } from "howler";
 import styles from "./Work.module.scss";
 import Button from "../Button/Button";
 import VanillaTilt from "vanilla-tilt";
-import useWindowDimensions from "hooks/useWindowDimensions";
 
-const Work = () => {
+const Work = ({ clientWidth }) => {
   const targetSection = useRef(null);
   const inputRef = useRef(null);
   const macRef = useRef(null);
@@ -24,8 +23,6 @@ const Work = () => {
   const [macTopStyle, setMacTopStyle] = useState({});
   const [activeIndex, setActiveIndex] = useState(0);
   const [reveal, setReveal] = useState(0);
-
-  const { clientWidth } = useWindowDimensions();
 
   const options = {
     max: 10,
@@ -54,7 +51,7 @@ const Work = () => {
 
   useEffect(() => {
     VanillaTilt.init(companyCard.current, options);
-  }, [companyCard]);
+  }, [companyCard.current]);
 
   const checkedSound = new Howl({
     src: ["/sounds/pop-down.mp3"],

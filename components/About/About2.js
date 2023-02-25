@@ -1,13 +1,10 @@
 import { useEffect, useRef } from "react";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import useWindowDimensions from "hooks/useWindowDimensions";
 
-const About2 = () => {
+const About2 = ({ clientHeight }) => {
   const quoteRef = useRef(null);
   const targetSection = useRef(null);
-
-  const { clientHeight } = useWindowDimensions();
 
   useEffect(() => {
     const timeline = gsap.timeline({

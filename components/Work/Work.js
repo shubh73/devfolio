@@ -236,7 +236,7 @@ const Work = () => {
                     muted
                     className="border-gray-dark-5 border-[4px] h-[400px] bg-gray-dark-5"
                   >
-                    <source src="/work/screen.mp4" type="video/mp4" />
+                    <source src="/work/spacenos.mp4" type="video/mp4" />
                   </video>
                 </div>
                 <div className={`${styles.part} ${styles.bottom}`}>

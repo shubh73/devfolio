@@ -23,7 +23,7 @@ Open [`http://localhost:3000`](http://localhost:3000) to view it in the browser.
 
 ## Design
 
-You can always draw inspiration from the design, and no, you don't have to give me credits for that. Devfolio is heavily inspired by Ayush Singh's [folio](https://github.com/ayush013/folio). Check it out and show him so love 🤌.
+You can always draw inspiration from the design, and no, you don't have to give me credits for that. Devfolio is inspired by Ayush Singh's [folio](https://www.ayushsingh.net/). Check it out and show him so love 🤌.
 
 ## Forking
 

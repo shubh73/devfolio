@@ -140,17 +140,21 @@ export const PROJECTS = [
 ];
 
 export const WORK = [
+  // {
+  //   id: 1,
+  //   company: "Dukaan",
+  //   title: "Frontend Developer Intern",
+  //   location: "Bangalore, Karnataka",
+  //   range: "December - Current",
+  //   responsibilities: [
+  //     "a",
+  //     "a",
+  //     "a"
+  //   ],
+  //   url: "https://mydukaan.io/",
+  // },
   {
     id: 1,
-    company: "Dukaan",
-    title: "Frontend Developer Intern",
-    location: "Bangalore, Karnataka",
-    range: "December -  2023",
-    responsibilities: [],
-    url: "https://mydukaan.io/",
-  },
-  {
-    id: 2,
     company: "Aviate",
     title: "Frontend Developer Intern",
     location: "Goa",
@@ -163,7 +167,7 @@ export const WORK = [
     url: "https://www.aviate.jobs/",
   },
   {
-    id: 3,
+    id: 2,
     company: "Spacenos",
     title: "Web Developer Intern",
     location: "Bangalore, Karnataka",

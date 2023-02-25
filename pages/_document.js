@@ -11,6 +11,12 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script
+            dangerouslySetInnerHTML={{
+              __html:
+                'window.loadContentPromise = new Promise((resolve)=>{window.addEventListener("DOMContentLoaded", resolve);});',
+            }}
+          />
         </body>
       </Html>
     );

@@ -17,21 +17,21 @@ import Collaboration from "@/components/Collaboration/Collabaration";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import Scripts from "@/components/Scripts/Scripts";
+import { usePreloader } from "hooks/usePreloader";
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
   gsap.config({ nullTargetWarn: false });
 
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [isDesktop, setIsDesktop] = useState(true);
-  const [clientHeight, setClientHeight] = useState(0);
-  const [clientWidth, setClientWidth] = useState(0);
+  const { isLoaded } = usePreloader();
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 2700);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 2700);
+  // }, []);
 
   useEffect(() => {
     const result =
@@ -40,9 +40,7 @@ export default function Home() {
     window.history.scrollRestoration = "manual";
 
     setIsDesktop(result);
-    setClientHeight(window.innerHeight);
-    setClientWidth(window.innerWidth);
-  }, [isDesktop, clientHeight]);
+  }, [isDesktop]);
 
   const consoleCustomLog = () => {
     console.log(
@@ -62,10 +60,11 @@ export default function Home() {
   return (
     <>
       <Meta>
-        {isLoading ? (
+        {!isLoaded && <Loader />}
+        {/* {isLoading ? (
           <Loader />
         ) : (
-          <>
+          <> */}
             <Header>
               <Menu />
             </Header>
@@ -80,20 +79,20 @@ export default function Home() {
               </div>
               <div className="fixed top-0 left-0 h-screen w-screen -z-1"></div>
               <Hero />
-              <About1 clientHeight={clientHeight} />
+              <About1 />
               <Skills />
-              <About2 clientHeight={clientHeight} />
-              <Projects isDesktop={isDesktop} clientHeight={clientHeight} />
-              <Work clientWidth={clientWidth} />
-              <Collaboration clientHeight={clientHeight} />
+              <About2 />
+              <Projects isDesktop={isDesktop} />
+              <Work />
+              <Collaboration />
               <div className="pt-10 sm:pt-16 bg-gray-dark-4"></div>
               <Contact />
             </main>
             <Footer />
             <Scripts />
-          </>
-        )}
-        {consoleCustomLog()}
+          {/* </> */}
+        {/* )} */}
+        {/* {consoleCustomLog()} */}
       </Meta>
     </>
   );

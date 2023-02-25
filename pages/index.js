@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
+import FontFaceObserver from "fontfaceobserver";
 import Meta from "@/components/Seo/Meta";
 import Loader from "@/components/Loader/Loader";
 import Header from "@/components/Header/Header";
@@ -17,16 +18,25 @@ import Collaboration from "@/components/Collaboration/Collabaration";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import Scripts from "@/components/Scripts/Scripts";
-import { usePreloader } from "hooks/usePreloader";
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);
   gsap.config({ nullTargetWarn: false });
 
+  const [isLoading, setIsLoading] = useState(true);
   const [isDesktop, setIsDesktop] = useState(true);
   const [clientHeight, setClientHeight] = useState(0);
   const [clientWidth, setClientWidth] = useState(0);
-  const { isLoaded } = usePreloader();
+
+  useEffect(() => {
+    const font1 = new FontFaceObserver("Calibre");
+    const font2 = new FontFaceObserver("JetBrains Mono");
+    setTimeout(() => {
+      Promise.all([font1.load(null, 2000), font2.load(null, 2000)]).finally(
+        () => setIsLoading(false)
+      );
+    }, 2700);
+  }, []);
 
   useEffect(() => {
     const { innerWidth, innerHeight, orientation, history } = window;
@@ -59,7 +69,7 @@ export default function Home() {
   return (
     <>
       <Meta>
-        {!isLoaded && <Loader />}
+        {isLoading && <Loader />}
         <Header>
           <Menu />
         </Header>

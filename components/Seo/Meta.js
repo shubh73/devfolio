@@ -9,7 +9,7 @@ const Meta = ({ children }) => {
         <meta name="description" content={METADATA.description} />
         <meta
           name="keywords"
-          content="Shubh Porwal, Frontend Developer, Full Stack Developer, Software Developer, Software Engineer, Portfolio, Devfolio, Web Development, PDEU, Web Developer"
+          content="Shubh Porwal, Frontend Developer, Software Developer, Software Engineer, Web Development, Web Developer, React Native Developer, Portfolio, Devfolio, Folio "
         />
         <meta name="robots" content="index, follow" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,7 +17,7 @@ const Meta = ({ children }) => {
         <meta name="author" content="Shubh Porwal" />
         <meta
           name="copyright"
-          content="All rights reserved, 2021. Shubh Porwal"
+          content="All rights reserved, 2023. Shubh Porwal"
         />
         <meta httpEquiv="content-language" content="en" />
 

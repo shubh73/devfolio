@@ -1,5 +1,16 @@
 const withPWA = require("next-pwa");
 
+const isProd = process.env.NODE_ENV === "production";
+
+const nextConfig = {
+  pwa: {
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+    disable: !isProd,
+  },
+};
+
 module.exports = withPWA({
   webpack: (config) => {
     config.module.rules.push({
@@ -8,14 +19,8 @@ module.exports = withPWA({
         loader: "url-loader",
       },
     });
+
     return config;
   },
-  images: {
-  },
-  pwa: {
-    dest: "public",
-    register: true,
-    skipWaiting: true,
-    disable: process.env.NODE_ENV === "development",
-  },
+  ...nextConfig,
 });

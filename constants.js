@@ -1,8 +1,8 @@
 export const METADATA = {
   title: "Portfolio | Shubh Porwal",
   description:
-    "Shubh Porwal is a Frontend Developer from Kuwait, interested in crafting beautiful and functional applications. Shubh is pursuing his undergraduate from Pandit Deendayal Energy University, Gujarat.",
-  siteUrl: "https://shubhporwal.com/",
+    "Shubh Porwal is a Frontend Developer from Kuwait, interested in crafting beautiful and functional applications.",
+  siteUrl: "https://www.shubhporwal.me/",
   twitterHandle: "@shubh731",
 };
 
@@ -75,6 +75,7 @@ export const SKILLS = {
     // "moralis",
     // "stripe",
     "figma",
+    'tanstack-query'
   ],
   librariesAndFrameworks: [
     "react",
@@ -140,21 +141,21 @@ export const PROJECTS = [
 ];
 
 export const WORK = [
-  // {
-  //   id: 1,
-  //   company: "Dukaan",
-  //   title: "Frontend Developer Intern",
-  //   location: "Bangalore, Karnataka",
-  //   range: "December - Current",
-  //   responsibilities: [
-  //     "a",
-  //     "a",
-  //     "a"
-  //   ],
-  //   url: "https://mydukaan.io/",
-  // },
   {
     id: 1,
+    company: "Dukaan",
+    title: "Frontend Developer",
+    location: "Bangalore, Karnataka",
+    range: "December - Current",
+    responsibilities: [
+      "Led creation of a captivating cross-platform e-commerce solution, enabling seamless engagement on iOS and Android.",
+      "Enhanced UX with gamification, personalized push notifications, error monitoring, and CodePush for seamless updates, ensuring an ever-improving shopping journey.",
+      "The app boasts a DAU base of 13k and an extensive MAU count of 170k.",
+    ],
+    url: "https://mydukaan.io/",
+  },
+  {
+    id: 2,
     company: "Aviate",
     title: "Frontend Developer Intern",
     location: "Goa",
@@ -167,7 +168,7 @@ export const WORK = [
     url: "https://www.aviate.jobs/",
   },
   {
-    id: 2,
+    id: 3,
     company: "Spacenos",
     title: "Web Developer Intern",
     location: "Bangalore, Karnataka",

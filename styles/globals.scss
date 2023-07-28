@@ -334,7 +334,7 @@ $bg: #f4faff;
     background: linear-gradient(
       to right,
       theme("colors.gray.dark.1"),
-      theme("colors.gray.dark.3"),
+      theme("colors.gray.dark.3")
     );
     .radio-wrapper {
       margin-top: 10px;
@@ -360,13 +360,12 @@ $bg: #f4faff;
             padding: 5px 0 5px 30px;
             font-size: 20px;
             font-weight: 600;
-            // &:hover {
-            //   &:before {
-            //     content: "";
-            //     position: absolute;
-            //     box-shadow: 0 0 0 5px rgba(#7000ff, 0.5);
-            //   }
-            // }
+            &:hover {
+              &:before {
+                content: "";
+                box-shadow: 0 0 0 5px rgba(#7000ff, 0.5);
+              }
+            }
             &:before {
               content: "";
               position: absolute;

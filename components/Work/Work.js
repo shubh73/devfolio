@@ -14,6 +14,7 @@ const Work = ({ clientWidth }) => {
   const inputRef = useRef(null);
   const macRef = useRef(null);
   const companyCard = useRef(null);
+  const heightRef = useRef(null);
 
   const [checked, setChecked] = useState(new Array(WORK.length).fill(false));
   const [isActive, setIsActive] = useState(false);
@@ -53,13 +54,33 @@ const Work = ({ clientWidth }) => {
     VanillaTilt.init(companyCard.current, options);
   }, [companyCard.current]);
 
+  useEffect(() => {
+    if (inputRef.current) {
+      const handlePosition = () => {
+        const { top } = inputRef.current.getBoundingClientRect();
+        const scrollTop = document.documentElement.scrollTop;
+        const clientTop = document.documentElement.clientTop;
+        const output = Math.floor((top + scrollTop - clientTop) / 100) + 60;
+        heightRef.current = output;
+      };
+
+      handlePosition();
+      window.addEventListener("resize", handlePosition);
+      window.addEventListener("scroll", handlePosition);
+    }
+
+    return () => {
+      window.removeEventListener("resize", handlePosition);
+      window.removeEventListener("scroll", handlePosition);
+    };
+  }, [inputRef.current]);
+
   const checkedSound = new Howl({
     src: ["/sounds/pop-down.mp3"],
     volume: 0.7,
   });
 
-  const getHeight = (position) =>
-    inputRef.current.offsetTop + (210 + 53 * position);
+  const getHeight = (position) => heightRef.current + 53 * position;
 
   const handleChange = (position) => {
     const height = getHeight(position);

@@ -26,7 +26,10 @@ const Meta = ({ children }) => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={METADATA.title} />
         <meta property="og:description" content={METADATA.description} />
-        <meta property="og:image" content="https://res.cloudinary.com/dywdhyojt/image/upload/v1651299924/preview.png" />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/dywdhyojt/image/upload/v1690572126/preview.png"
+        />
         <meta property="og:url" content={METADATA.siteUrl} />
         <meta property="og:site_name" content={METADATA.title} />
 
@@ -37,7 +40,10 @@ const Meta = ({ children }) => {
         <meta property="twitter:site" content={METADATA.twitterHandle} />
         <meta name="twitter:creator" content={METADATA.twitterHandle} />
         <meta property="twitter:url" content={METADATA.siteUrl} />
-        <meta property="twitter:image" content="https://res.cloudinary.com/dywdhyojt/image/upload/v1651299924/preview.png" />
+        <meta
+          property="twitter:image"
+          content="https://res.cloudinary.com/dywdhyojt/image/upload/v1690572126/preview.png"
+        />
 
         <link
           rel="apple-touch-icon"

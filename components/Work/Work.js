@@ -1,13 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, useRef } from "react";
-import { MENULINKS, WORK } from "../../constants";
 import { gsap, Linear } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import VanillaTilt from "vanilla-tilt";
 import { Fade } from "react-reveal";
 import { Howl } from "howler";
-import styles from "./Work.module.scss";
 import Button from "../Button/Button";
-import VanillaTilt from "vanilla-tilt";
+import styles from "./Work.module.scss";
+import { MENULINKS, WORK } from "../../constants";
 
 const Work = ({ clientWidth }) => {
   const targetSection = useRef(null);

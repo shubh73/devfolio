@@ -2,15 +2,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Fade } from "react-reveal";
 import { gsap, Linear } from "gsap";
-import { MENULINKS } from "../../constants";
 import { Howl } from "howler";
 import Button from "../Button/Button";
 import FooterBg from "./FooterBg/FooterBg";
 import Profiles from "../Profiles/Profiles";
+import { MENULINKS } from "../../constants";
 
 const Footer = () => {
-  const targetSection = useRef(null);
   const [playbackRate, setPlaybackRate] = useState(0.75);
+  const targetSection = useRef(null);
 
   const heartClickSound = new Howl({
     src: ["/sounds/glug-a.mp3"],

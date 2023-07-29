@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import FontFaceObserver from "fontfaceobserver";
 import Meta from "@/components/Seo/Meta";
 import Loader from "@/components/Loader/Loader";
 import Header from "@/components/Header/Header";
@@ -30,13 +29,9 @@ export default function Home() {
   const [clientWidth, setClientWidth] = useState(0);
 
   useEffect(() => {
-    const font1 = new FontFaceObserver("Calibre");
-    const font2 = new FontFaceObserver("JetBrains Mono");
     setTimeout(() => {
-      Promise.all([font1.load(null, 2000), font2.load(null, 2000)]).finally(
-        () => setIsLoading(false)
-      );
-    }, 2700);
+      setIsLoading(false);
+    }, 2600);
 
     displayFancyLogs();
   }, []);
@@ -57,32 +52,37 @@ export default function Home() {
   return (
     <>
       <Meta>
-        {/* {isLoading && <Loader />} */}
-        <Header>
-          <Menu />
-        </Header>
-        <ProgressIndicator />
-        <Cursor isDesktop={isDesktop} />
-        <main className="flex flex-col">
-          <div
-            role="img"
-            className="text-gray-light-1 opacity-10 sm:text-9xl xs:text-8xl inline-block -z-10 absolute rotate-90 right-0 md:top-52 xs:top-96"
-          >
-            DEV
-          </div>
-          <div className="fixed top-0 left-0 h-screen w-screen -z-1"></div>
-          <Hero />
-          <About1 clientHeight={clientHeight} />
-          <Skills />
-          <About2 clientHeight={clientHeight} />
-          <Projects isDesktop={isDesktop} clientHeight={clientHeight} />
-          <Work clientWidth={clientWidth} />
-          <Collaboration clientHeight={clientHeight} />
-          <div className="pt-10 sm:pt-16 bg-gray-dark-4"></div>
-          <Contact />
-        </main>
-        <Footer />
-        <Scripts />
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <Header>
+              <Menu />
+            </Header>
+            <ProgressIndicator />
+            <Cursor isDesktop={isDesktop} />
+            <main className="flex flex-col">
+              <div
+                role="img"
+                className="text-gray-light-1 opacity-10 sm:text-9xl xs:text-8xl inline-block -z-10 absolute rotate-90 right-0 md:top-52 xs:top-96"
+              >
+                DEV
+              </div>
+              <div className="fixed top-0 left-0 h-screen w-screen -z-1"></div>
+              <Hero />
+              <About1 clientHeight={clientHeight} />
+              <Skills />
+              <About2 clientHeight={clientHeight} />
+              <Projects isDesktop={isDesktop} clientHeight={clientHeight} />
+              <Work clientWidth={clientWidth} />
+              <Collaboration clientHeight={clientHeight} />
+              <div className="pt-10 sm:pt-16 bg-gray-dark-4"></div>
+              <Contact />
+            </main>
+            <Footer />
+            <Scripts />
+          </>
+        )}
       </Meta>
     </>
   );

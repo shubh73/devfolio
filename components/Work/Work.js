@@ -10,20 +10,19 @@ import styles from "./Work.module.scss";
 import { MENULINKS, WORK } from "../../constants";
 
 const Work = ({ clientWidth }) => {
+  const [checked, setChecked] = useState(new Array(WORK.length).fill(false));
+  const [isActive, setIsActive] = useState(false);
+  const [gunStyle, setGunStyle] = useState({});
+  const [mockupStyle, setMockupStyle] = useState({});
+  const [macTopStyle, setMacTopStyle] = useState({});
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [reveal, setReveal] = useState(0);
   const targetSection = useRef(null);
   const inputRef = useRef(null);
   const macRef = useRef(null);
   const companyCard = useRef(null);
   const heightRef = useRef(null);
-
-  const [checked, setChecked] = useState(new Array(WORK.length).fill(false));
-  const [isActive, setIsActive] = useState(false);
-  const [gunStyle, setGunStyle] = useState({});
-
-  const [mockupStyle, setMockupStyle] = useState({});
-  const [macTopStyle, setMacTopStyle] = useState({});
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [reveal, setReveal] = useState(0);
+  const videoRef = useRef(null);
 
   const options = {
     max: 10,
@@ -32,48 +31,6 @@ const Work = ({ clientWidth }) => {
     "max-glare": 0.1,
     gyroscope: false,
   };
-
-  useEffect(() => {
-    const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-    revealTl.from(
-      targetSection.current.querySelectorAll(".seq"),
-      { opacity: 0, duration: 0.5, stagger: 0.5 },
-      "<"
-    );
-
-    ScrollTrigger.create({
-      trigger: targetSection.current.querySelector(".work-wrapper"),
-      start: "100px bottom",
-      end: `center center`,
-      animation: revealTl,
-      scrub: 0,
-    });
-  }, [targetSection, isActive]);
-
-  useEffect(() => {
-    VanillaTilt.init(companyCard.current, options);
-  }, [companyCard.current]);
-
-  useEffect(() => {
-    if (inputRef.current) {
-      const handlePosition = () => {
-        const { top } = inputRef.current.getBoundingClientRect();
-        const scrollTop = document.documentElement.scrollTop;
-        const clientTop = document.documentElement.clientTop;
-        const output = Math.floor((top + scrollTop - clientTop) / 100) + 60;
-        heightRef.current = output;
-      };
-
-      handlePosition();
-      window.addEventListener("resize", handlePosition);
-      window.addEventListener("scroll", handlePosition);
-    }
-
-    return () => {
-      window.removeEventListener("resize", handlePosition);
-      window.removeEventListener("scroll", handlePosition);
-    };
-  }, [inputRef.current]);
 
   const checkedSound = new Howl({
     src: ["/sounds/pop-down.mp3"],
@@ -134,8 +91,51 @@ const Work = ({ clientWidth }) => {
         transform: "translate3d(0, 0, 0) rotateX(0deg)",
         transition: "500ms",
       });
+      videoRef.current?.load();
     }, 3000);
   };
+
+  useEffect(() => {
+    const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
+    revealTl.from(
+      targetSection.current.querySelectorAll(".seq"),
+      { opacity: 0, duration: 0.5, stagger: 0.5 },
+      "<"
+    );
+
+    ScrollTrigger.create({
+      trigger: targetSection.current.querySelector(".work-wrapper"),
+      start: "100px bottom",
+      end: `center center`,
+      animation: revealTl,
+      scrub: 0,
+    });
+  }, [targetSection, isActive]);
+
+  useEffect(() => {
+    VanillaTilt.init(companyCard.current, options);
+  }, [companyCard.current]);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      const handlePosition = () => {
+        const { top } = inputRef.current.getBoundingClientRect();
+        const scrollTop = document.documentElement.scrollTop;
+        const clientTop = document.documentElement.clientTop;
+        const output = Math.floor((top + scrollTop - clientTop) / 100) + 60;
+        heightRef.current = output;
+      };
+
+      handlePosition();
+      window.addEventListener("resize", handlePosition);
+      window.addEventListener("scroll", handlePosition);
+    }
+
+    return () => {
+      window.removeEventListener("resize", handlePosition);
+      window.removeEventListener("scroll", handlePosition);
+    };
+  }, [inputRef.current]);
 
   return (
     <section
@@ -185,14 +185,18 @@ const Work = ({ clientWidth }) => {
                     WORK.map((job, index) => {
                       const { company, id } = job;
                       return (
-                        <div className="choice-container" key={id}>
+                        <div className="choice-container" key={company}>
                           <input
                             id={`choice-${id}`}
                             type="checkbox"
                             name={company}
                             ref={inputRef}
                             checked={checked[index]}
-                            onChange={() => handleChange(index)}
+                            onChange={() => {
+                              console.log(index);
+                              setActiveIndex(index);
+                              handleChange(index);
+                            }}
                             className="link"
                           />
                           <label htmlFor={`choice-${id}`}>{company}</label>
@@ -248,13 +252,13 @@ const Work = ({ clientWidth }) => {
                     className={styles.cover}
                     loading="lazy"
                   />
-
                   <video
+                    ref={videoRef}
                     autoPlay
                     muted
                     className="border-gray-dark-5 border-[4px] h-[400px] bg-gray-dark-5"
                   >
-                    <source src="/work/spacenos.mp4" type="video/mp4" />
+                    <source src={WORK[activeIndex]?.video} type="video/mp4" />
                   </video>
                 </div>
                 <div className={`${styles.part} ${styles.bottom}`}>

@@ -75,7 +75,7 @@ export const SKILLS = {
     // "moralis",
     // "stripe",
     "figma",
-    'tanstack-query'
+    "tanstack-query",
   ],
   librariesAndFrameworks: [
     "react",
@@ -141,32 +141,34 @@ export const PROJECTS = [
 ];
 
 export const WORK = [
-  // {
-  //   id: 1,
-  //   company: "Dukaan",
-  //   title: "Frontend Developer",
-  //   location: "Bangalore, Karnataka",
-  //   range: "December - Current",
-  //   responsibilities: [
-  //     "Led creation of a captivating cross-platform e-commerce solution, enabling seamless engagement on iOS and Android.",
-  //     "Enhanced UX with gamification, personalized push notifications, error monitoring, and CodePush for seamless updates, ensuring an ever-improving shopping journey.",
-  //     "The app boasts a DAU base of 13k and an extensive MAU count of 170k.",
-  //   ],
-  //   url: "https://mydukaan.io/",
-  // },
-  // {
-  //   id: 2,
-  //   company: "Aviate",
-  //   title: "Frontend Developer Intern",
-  //   location: "Goa",
-  //   range: "May - October 2022",
-  //   responsibilities: [
-  //     "Built their flagship product Q-Rate, a voice-based applicant screening platform.",
-  //     "Developed pixel-perfect responsive web applications achieving daily traffic of 1000-2000 users.",
-  //     "Successfully rolled out an error-logging and bug reporting system that cut user-reported bugs by 30%.",
-  //   ],
-  //   url: "https://www.aviate.jobs/",
-  // },
+  {
+    id: 1,
+    company: "Dukaan",
+    title: "Frontend Developer",
+    location: "Bangalore, Karnataka",
+    range: "December - Current",
+    responsibilities: [
+      "Led creation of a captivating cross-platform e-commerce solution.",
+      "Enhanced UX with gamification and personalized push notifications ensuring an ever-improving shopping journey.",
+      "The app boasts a DAU base of 13k and an extensive MAU count of 170k.",
+    ],
+    url: "https://mydukaan.io/",
+    video: "/work/dukaan.mp4",
+  },
+  {
+    id: 2,
+    company: "Aviate",
+    title: "Frontend Developer Intern",
+    location: "Goa",
+    range: "May - October 2022",
+    responsibilities: [
+      "Built their flagship product Q-Rate, a voice-based applicant screening platform.",
+      "Developed pixel-perfect responsive web applications achieving daily traffic of 1000-2000 users.",
+      "Successfully rolled out an error-logging and bug reporting system that cut user-reported bugs by 30%.",
+    ],
+    url: "https://www.aviate.jobs/",
+    video: "/work/aviate.mp4",
+  },
   {
     id: 3,
     company: "Spacenos",
@@ -179,6 +181,7 @@ export const WORK = [
       "Implemented CRUD features for all the services and providers.",
     ],
     url: "https://spacenos.com/",
+    video: "/work/spacenos.mp4",
   },
 ];
 

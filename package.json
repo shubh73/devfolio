@@ -10,7 +10,6 @@
     "@emailjs/browser": "^3.4.0",
     "@vercel/analytics": "^0.1.11",
     "bad-words": "^3.0.4",
-    "fontfaceobserver": "^2.3.0",
     "gsap": "^3.8.0",
     "howler": "^2.2.3",
     "lottie-web": "^5.8.1",

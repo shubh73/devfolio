@@ -7,18 +7,11 @@ const Meta = ({ children }) => {
       <Head>
         <title>{METADATA.title}</title>
         <meta name="description" content={METADATA.description} />
-        <meta
-          name="keywords"
-          content="Shubh Porwal, Frontend Developer, Software Developer, Software Engineer, Web Development, Web Developer, React Native Developer, Portfolio, Devfolio, Folio "
-        />
-        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content={METADATA.keywords} />
+        <meta name="robots" content="index,follow" />
         <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="language" content="English" />
-        <meta name="author" content="Shubh Porwal" />
-        <meta
-          name="copyright"
-          content="All rights reserved, 2023. Shubh Porwal"
-        />
+        <meta name="language" content={METADATA.language} />
+        <meta name="author" content={METADATA.author} />
         <meta httpEquiv="content-language" content="en" />
 
         {/* Open Graph / Facebook */}
@@ -26,10 +19,7 @@ const Meta = ({ children }) => {
         <meta property="og:type" content="website" />
         <meta property="og:title" content={METADATA.title} />
         <meta property="og:description" content={METADATA.description} />
-        <meta
-          property="og:image"
-          content="https://res.cloudinary.com/dywdhyojt/image/upload/v1690572126/preview.png"
-        />
+        <meta property="og:image" content={METADATA.image} />
         <meta property="og:url" content={METADATA.siteUrl} />
         <meta property="og:site_name" content={METADATA.title} />
 
@@ -40,10 +30,7 @@ const Meta = ({ children }) => {
         <meta property="twitter:site" content={METADATA.twitterHandle} />
         <meta name="twitter:creator" content={METADATA.twitterHandle} />
         <meta property="twitter:url" content={METADATA.siteUrl} />
-        <meta
-          property="twitter:image"
-          content="https://res.cloudinary.com/dywdhyojt/image/upload/v1690572126/preview.png"
-        />
+        <meta property="twitter:image" content={METADATA.image} />
 
         <link
           rel="apple-touch-icon"

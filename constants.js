@@ -1,9 +1,24 @@
 export const METADATA = {
+  author: "Shubh Porwal",
   title: "Portfolio | Shubh Porwal",
   description:
     "Shubh Porwal is a Frontend Developer from Kuwait, interested in crafting beautiful and functional applications.",
   siteUrl: "https://www.shubhporwal.me/",
   twitterHandle: "@shubh731",
+  keywords: [
+    "Shubh Porwal",
+    "Frontend Developer",
+    "Web Developer",
+    "React Native Developer",
+    "Software Developer",
+    "Software Engineer",
+    "Portfolio",
+    "Devfolio",
+    "Folio",
+  ].join(", "),
+  image:
+    "https://res.cloudinary.com/dywdhyojt/image/upload/v1690572126/preview.png",
+  language: "English",
 };
 
 export const MENULINKS = [

@@ -2,25 +2,25 @@ import styles from "./Iphone.module.scss";
 
 const Iphone = () => {
   return (
-    <div class={styles.iphoneFront}>
-      <div class={styles.frame}></div>
-      <div class={styles.antenas}>
-        <div class={styles.tt}></div>
-        <div class={styles.tr}></div>
-        <div class={styles.tl}></div>
-        <div class={styles.bb}></div>
-        <div class={styles.br}></div>
-        <div class={styles.bl}></div>
+    <div className={styles.iphoneFront}>
+      <div className={styles.frame}></div>
+      <div className={styles.antenas}>
+        <div className={styles.tt}></div>
+        <div className={styles.tr}></div>
+        <div className={styles.tl}></div>
+        <div className={styles.bb}></div>
+        <div className={styles.br}></div>
+        <div className={styles.bl}></div>
       </div>
-      <div class={styles.keys}>
-        <div class={styles.silent}></div>
-        <div class={styles.volt}></div>
-        <div class={styles.volb}></div>
-        <div class={styles.lock}></div>
+      <div className={styles.keys}>
+        <div className={styles.silent}></div>
+        <div className={styles.volt}></div>
+        <div className={styles.volb}></div>
+        <div className={styles.lock}></div>
       </div>
-      <div class={styles.screen}>
-        <div class={styles.island}>
-          <div class={styles.camera}></div>
+      <div className={styles.screen}>
+        <div className={styles.island}>
+          <div className={styles.camera}></div>
         </div>
       </div>
     </div>

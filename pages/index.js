@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import Meta from "@/components/Seo/Meta";
+import Meta from "@/components/Meta/Meta";
 import Loader from "@/components/Loader/Loader";
 import Header from "@/components/Header/Header";
 import Menu from "@/components/Header/Menu/Menu";
@@ -17,7 +17,8 @@ import Collaboration from "@/components/Collaboration/Collabaration";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import Scripts from "@/components/Scripts/Scripts";
-import { displayFancyLogs } from "utils";
+import { displayFancyLogs } from "utils/log";
+import CommandMenu from "@/components/CommandMenu/CommandMenu";
 
 export default function Home() {
   gsap.registerPlugin(ScrollTrigger);

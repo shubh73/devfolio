@@ -62,10 +62,9 @@ const Skills = () => {
                 <Image
                   key={skill}
                   src={`/skills/${skill}.svg`}
+                  alt={skill}
                   width={50}
                   height={50}
-                  alt={skill}
-                  objectFit="contain"
                 />
               ))}
             </div>

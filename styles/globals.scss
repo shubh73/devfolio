@@ -11,16 +11,6 @@
   cursor: none;
 }
 
-body {
-  box-sizing: border-box;
-  // background: radial-gradient(
-  //   ellipse 80% 50% at 50% -20%,
-  //   rgba(120, 119, 198, 0.3),
-  //   theme("colors.transparent")
-  // );
-  @apply bg-gray-dark-5 text-white overflow-x-hidden;
-}
-
 html {
   scroll-behavior: smooth;
   -ms-overflow-style: scrollbar;
@@ -45,6 +35,11 @@ html {
   @media (min-width: 2000px) {
     font-size: 22px;
   }
+}
+
+body {
+  box-sizing: border-box;
+  @apply bg-gray-dark-5 text-white overflow-x-hidden;
 }
 
 ::-webkit-scrollbar {
@@ -165,9 +160,7 @@ input[type="checkbox"] {
     height: 19px;
     width: 18px;
     border-radius: 100%;
-    // background-color: #120e16;
     span {
-      // background: theme("colors.white");
       background: linear-gradient(
         to right,
         theme("colors.indigo.light"),
@@ -795,14 +788,6 @@ $bg: #f4faff;
   background-position: 98%;
   color: #fff;
   box-shadow: 0 0 1rem theme("colors.indigo.dark");
-}
-
-.heart-btn {
-  cursor: none;
-}
-
-.milk-404 {
-  max-height: 100vh;
 }
 
 #mouth-frown {

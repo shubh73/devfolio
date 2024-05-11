@@ -6,6 +6,7 @@ import { Howl } from "howler";
 import Button from "../Button/Button";
 import FooterBg from "./FooterBg/FooterBg";
 import Profiles from "../Profiles/Profiles";
+import { theme } from "tailwind.config";
 import { MENULINKS } from "../../constants";
 
 const Footer = () => {
@@ -36,8 +37,11 @@ const Footer = () => {
 
   return (
     <footer
-      className="w-full relative select-none bg-cover"
       ref={targetSection}
+      className="w-full relative select-none bg-cover"
+      style={{
+        backgroundImage: `linear-gradient(to right, ${theme.colors.indigo.light}, ${theme.colors.indigo.dark})`,
+      }}
     >
       <FooterBg />
       <Fade bottom distance={"4rem"}>
@@ -60,7 +64,7 @@ const Footer = () => {
             </div>
             <p className="text-center text-white text-sm sm:text-base font-medium tracking-wide mt-8">
               Developed with{" "}
-              <button onClick={handleClick} className="link heart-btn">
+              <button onClick={handleClick} className="link cursor-none">
                 <span role="img" aria-label="heart" className="animate-pulse">
                   ❤️
                 </span>
@@ -77,11 +81,6 @@ const Footer = () => {
         loading="eager"
         height={180}
       />
-      <style jsx global>{`
-        footer {
-          background-image: linear-gradient(270deg, #9f55ff, #7000ff, #8b31ff);
-        }
-      `}</style>
     </footer>
   );
 };

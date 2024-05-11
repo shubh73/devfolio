@@ -48,11 +48,11 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
           className="absolute w-full h-full top-0 left-0 object-cover opacity-30"
         />
         <Image
-          placeholder="blur"
-          blurDataURL={blurImage}
           src={image}
           alt={name}
-          layout="fill"
+          fill
+          placeholder="blur"
+          blurDataURL={blurImage}
           className={`${styles.projectImage} z-0`}
         />
         <div

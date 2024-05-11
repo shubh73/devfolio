@@ -56,6 +56,7 @@ export default function Home() {
           <Loader />
         ) : (
           <>
+            {/* <CommandMenu /> */}
             <Header>
               <Menu />
             </Header>

@@ -1,0 +1,166 @@
+.iphoneFront {
+  width: 294px;
+  height: 600px;
+  background-color: #000;
+  border-radius: 50px;
+  position: relative;
+
+  .frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #bbb5b3;
+    border-radius: 50px;
+    box-shadow: 0 0 0 1px #4a4947;
+  }
+
+  .antenas {
+    > div {
+      background-color: #75726f;
+      position: absolute;
+    }
+    .tt {
+      width: 8px;
+      height: 3.5px;
+      top: 0;
+      right: 60px;
+    }
+    .tr {
+      width: 3.5px;
+      height: 8px;
+      top: 60px;
+      right: -1px;
+    }
+    .tl {
+      width: 3.5px;
+      height: 8px;
+      top: 60px;
+      left: -1px;
+    }
+    .bb {
+      width: 8px;
+      height: 3.5px;
+      bottom: -1.5px;
+      left: 60px;
+    }
+    .bl {
+      width: 3.5px;
+      height: 8px;
+      bottom: 60px;
+      left: -1px;
+    }
+    .br {
+      width: 3.5px;
+      height: 8px;
+      bottom: 60px;
+      right: -1px;
+    }
+  }
+
+  .keys {
+    .silent {
+      width: 3.5px;
+      height: 28px;
+      border-top: 2px solid #eae0d9;
+      border-bottom: 2px solid #eae0d9;
+      position: absolute;
+      top: 105px;
+      left: -4.5px;
+      background: linear-gradient(90deg, #888, #555);
+    }
+
+    .volt {
+      width: 3.5px;
+      height: 50px;
+      border-top: 2px solid #eae0d9;
+      border-bottom: 2px solid #eae0d9;
+      position: absolute;
+      top: 150px;
+      left: -4.5px;
+      background: linear-gradient(90deg, #888, #555);
+    }
+
+    .volb {
+      width: 3.5px;
+      height: 50px;
+      border-top: 2px solid #eae0d9;
+      border-bottom: 2px solid #eae0d9;
+      position: absolute;
+      top: 210px;
+      left: -4.5px;
+      background: linear-gradient(90deg, #888, #555);
+    }
+
+    .lock {
+      width: 3.5px;
+      height: 70px;
+      border-top: 2px solid #eae0d9;
+      border-bottom: 2px solid #eae0d9;
+      position: absolute;
+      top: 192px;
+      right: -4.5px;
+      background: linear-gradient(-90deg, #888, #555);
+    }
+  }
+
+  .screen {
+    width: 270px;
+    height: 576px;
+    background-image: url("https://www.ifeed.pt/content/images/2022/09/iPhone-14-Pro-Space-Black-wallpaper.png");
+    background-size: cover;
+    border-radius: 40px;
+    margin-top: 12px;
+    margin-left: 12px;
+    position: relative;
+
+    .island {
+      position: absolute;
+      top: 8px;
+      right: 0;
+      left: 0;
+      margin-right: auto;
+      margin-left: auto;
+      width: 90px;
+      height: 25px;
+      background-color: #000;
+      border-radius: 40px;
+
+      .camera {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+        width: 15px;
+        height: 15px;
+        background-color: #111;
+        border-radius: 50%;
+
+        &::before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 3px;
+          left: 3px;
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background-color: #161a3c;
+        }
+
+        &::after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 5px;
+          left: 5px;
+          width: 5px;
+          height: 5px;
+          background: linear-gradient(0, #03344f 0%, #040e27 50%, #3e5191 100%);
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}

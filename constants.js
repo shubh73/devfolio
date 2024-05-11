@@ -2,15 +2,13 @@ export const METADATA = {
   author: "Shubh Porwal",
   title: "Portfolio | Shubh Porwal",
   description:
-    "Shubh Porwal is a Frontend Developer from Kuwait, interested in crafting beautiful and functional applications.",
+    "Shubh Porwal is a passionate Frontend Engineer, dedicated to crafting aesthetic and modern apps that captivate and engage users.",
   siteUrl: "https://www.shubhporwal.me/",
   twitterHandle: "@shubh731",
   keywords: [
     "Shubh Porwal",
-    "Frontend Developer",
-    "Web Developer",
+    "Frontend Engineer",
     "React Native Developer",
-    "Software Developer",
     "Software Engineer",
     "Portfolio",
     "Devfolio",
@@ -80,15 +78,10 @@ export const SKILLS = {
     "javascript",
     "typescript",
     "sass",
-    // "cpp",
-    // "java",
-    // "python",
     "nodejs",
     "webpack",
     "vite",
     "firebase",
-    // "moralis",
-    // "stripe",
     "figma",
     "tanstack-query",
   ],
@@ -106,16 +99,6 @@ export const SKILLS = {
 };
 
 export const PROJECTS = [
-  // {
-  //   name: "Shotime",
-  //   image: "",
-  //   blurImage: "",
-  //   description:
-  //     "Developed with complete E-commerce functionality and User Authentication 🛍️",
-  //   gradient: ["#FFCF1B", "#FF881B"],
-  //   url: "https://shubh73-shotime.vercel.app/",
-  //   tech: ["react", "tailwindcss", "redux", "mongodb", "stripe"],
-  // },
   {
     name: "Airbnb",
     image: "/projects/airbnb.webp",
@@ -165,7 +148,7 @@ export const WORK = [
     responsibilities: [
       "Led creation of a captivating cross-platform e-commerce solution.",
       "Enhanced UX with gamification and personalized push notifications ensuring an ever-improving shopping journey.",
-      "The app boasts a DAU base of 13k and an extensive MAU count of 170k.",
+      "The app boasts a DAU base of 32k and an extensive MAU count of 180k.",
     ],
     url: "https://mydukaan.io/",
     video: "/work/dukaan.mp4",

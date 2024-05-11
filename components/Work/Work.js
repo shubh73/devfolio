@@ -8,6 +8,16 @@ import { Howl } from "howler";
 import Button from "../Button/Button";
 import styles from "./Work.module.scss";
 import { MENULINKS, WORK } from "../../constants";
+import MacBook from "./MacBook/MacBook";
+import Iphone from "./Iphone/Iphone";
+
+const tiltOptions = {
+  max: 10,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.1,
+  gyroscope: false,
+};
 
 const Work = ({ clientWidth }) => {
   const [checked, setChecked] = useState(new Array(WORK.length).fill(false));
@@ -23,14 +33,6 @@ const Work = ({ clientWidth }) => {
   const companyCard = useRef(null);
   const heightRef = useRef(null);
   const videoRef = useRef(null);
-
-  const options = {
-    max: 10,
-    speed: 400,
-    glare: true,
-    "max-glare": 0.1,
-    gyroscope: false,
-  };
 
   const checkedSound = new Howl({
     src: ["/sounds/pop-down.mp3"],
@@ -113,29 +115,28 @@ const Work = ({ clientWidth }) => {
   }, [targetSection, isActive]);
 
   useEffect(() => {
-    VanillaTilt.init(companyCard.current, options);
-  }, [companyCard.current]);
+    VanillaTilt.init(companyCard.current, tiltOptions);
+  }, []);
 
   useEffect(() => {
-    if (inputRef.current) {
-      const handlePosition = () => {
+    const handlePosition = () => {
+      if (inputRef.current) {
         const { top } = inputRef.current.getBoundingClientRect();
         const scrollTop = document.documentElement.scrollTop;
         const clientTop = document.documentElement.clientTop;
         const output = Math.floor((top + scrollTop - clientTop) / 100) + 60;
         heightRef.current = output;
-      };
-
-      handlePosition();
-      window.addEventListener("resize", handlePosition);
-      window.addEventListener("scroll", handlePosition);
-    }
+      }
+    };
+    // handlePosition();
+    window.addEventListener("resize", handlePosition);
+    window.addEventListener("scroll", handlePosition);
 
     return () => {
       window.removeEventListener("resize", handlePosition);
       window.removeEventListener("scroll", handlePosition);
     };
-  }, [inputRef.current]);
+  }, []);
 
   return (
     <section
@@ -193,7 +194,6 @@ const Work = ({ clientWidth }) => {
                             ref={inputRef}
                             checked={checked[index]}
                             onChange={() => {
-                              console.log(index);
                               setActiveIndex(index);
                               handleChange(index);
                             }}
@@ -231,7 +231,10 @@ const Work = ({ clientWidth }) => {
               </div>
             </div>
 
-            <div className={`seq ${styles.container}`} ref={macRef}>
+            <MacBook />
+            <Iphone />
+
+            {/* <div className={`seq ${styles.container}`} ref={macRef}>
               <div
                 className={`${styles.mockup} ${styles.loaded} ${styles.opened}`}
                 style={mockupStyle}
@@ -276,7 +279,7 @@ const Work = ({ clientWidth }) => {
                   />
                 </div>
               </div>
-            </div>
+            </div> */}
           </>
         ) : (
           <>

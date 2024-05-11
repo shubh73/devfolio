@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "../public/fonts/Calibre/Calibre";
-@import "../public//fonts//JetBrainsMono/JetBrainsMono";
-
 *,
 *::after,
 *::before {
@@ -16,6 +13,11 @@
 
 body {
   box-sizing: border-box;
+  // background: radial-gradient(
+  //   ellipse 80% 50% at 50% -20%,
+  //   rgba(120, 119, 198, 0.3),
+  //   theme("colors.transparent")
+  // );
   @apply bg-gray-dark-5 text-white overflow-x-hidden;
 }
 

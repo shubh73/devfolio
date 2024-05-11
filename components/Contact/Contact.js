@@ -10,34 +10,28 @@ import styles from "./Contact.module.scss";
 const filter = new Filter();
 filter.removeWords("hell", "god", "shit");
 
+const toastOptions = {
+  style: {
+    borderRadius: "10px",
+    background: "#333",
+    color: "#fff",
+    fontFamily: "sans-serif",
+  },
+};
+
 const empty = () =>
   toast.error("Please fill the required fields", {
     id: "error",
-    style: {
-      borderRadius: "10px",
-      background: "#333",
-      color: "#fff",
-    },
   });
 
 const error = () =>
   toast.error("Error sending your message", {
     id: "error",
-    style: {
-      borderRadius: "10px",
-      background: "#333",
-      color: "#fff",
-    },
   });
 
 const success = () =>
   toast.success("Message sent successfully", {
     id: "success",
-    style: {
-      borderRadius: "10px",
-      background: "#333",
-      color: "#fff",
-    },
   });
 
 const Contact = () => {
@@ -238,7 +232,7 @@ const Contact = () => {
       id={MENULINKS[4].ref}
     >
       <div>
-        <Toaster />
+        <Toaster toastOptions={toastOptions} />
       </div>
       <div className="section-container flex flex-col justify-center">
         <div className="flex flex-col work-wrapper">

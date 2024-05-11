@@ -57,14 +57,15 @@ const Skills = () => {
             <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 seq">
               LANGUAGES AND TOOLS
             </h3>
-            <div className="flex flex-wrap gap-6 transform-gpu seq">
+            <div className="flex items-center flex-wrap gap-6 seq">
               {SKILLS.languagesAndTools.map((skill) => (
                 <Image
                   key={skill}
                   src={`/skills/${skill}.svg`}
-                  alt={skill}
                   width={50}
                   height={50}
+                  alt={skill}
+                  objectFit="contain"
                 />
               ))}
             </div>

@@ -8,8 +8,6 @@ import { Howl } from "howler";
 import Button from "../Button/Button";
 import styles from "./Work.module.scss";
 import { MENULINKS, WORK } from "../../constants";
-import MacBook from "./MacBook/MacBook";
-import Iphone from "./Iphone/Iphone";
 
 const tiltOptions = {
   max: 10,
@@ -231,10 +229,7 @@ const Work = ({ clientWidth }) => {
               </div>
             </div>
 
-            <MacBook />
-            <Iphone />
-
-            {/* <div className={`seq ${styles.container}`} ref={macRef}>
+            <div className={`seq ${styles.container}`} ref={macRef}>
               <div
                 className={`${styles.mockup} ${styles.loaded} ${styles.opened}`}
                 style={mockupStyle}
@@ -279,7 +274,7 @@ const Work = ({ clientWidth }) => {
                   />
                 </div>
               </div>
-            </div> */}
+            </div>
           </>
         ) : (
           <>
@@ -318,7 +313,7 @@ const Work = ({ clientWidth }) => {
                     <p className="mb-1 text-lg">{WORK[activeIndex]?.title}</p>
                     <p className="italic text-sm font-thin">
                       {/* {company?.startDate} -{" "}
-                        {company?.endDate ? company?.endDate : "Present"} */}
+                      {company?.endDate ? company?.endDate : "Present"} */}
                       {WORK[activeIndex]?.range}
                     </p>
                     <ul className="text-base mt-6 list-disc ml-2 z-30">

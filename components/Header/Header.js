@@ -1,6 +1,5 @@
 import Image from "next/image";
 import SoundBar from "./SoundBar/SoundBar";
-// import SoundButton from "./SoundButton/SoundButton";
 
 const Header = ({ children }) => {
   return (
@@ -14,17 +13,16 @@ const Header = ({ children }) => {
             height={25}
           />
         </a>
-        <div className="outer-menu relative">
+        <div className="outer-menu relative flex items-center gap-8 z-[1]">
           <SoundBar />
-          {/* <SoundButton /> */}
           <input
             aria-labelledby="menu"
             className="checkbox-toggle link absolute top-0 right-0 w-6 h-6 opacity-0"
             type="checkbox"
             aria-label="menu"
           />
-          <div className="hamburger absolute top-2 right-0 w-6 h-6 flex items-center justify-center">
-            <div className="relative flex-none w-full bg-white duration-300 flex items-center justify-center"></div>
+          <div className="hamburger w-6 h-6 flex items-center justify-center">
+            <div className="relative flex-none w-full bg-white duration-300 flex items-center justify-center" />
           </div>
           {children}
         </div>

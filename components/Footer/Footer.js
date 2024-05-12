@@ -26,6 +26,7 @@ const Footer = () => {
 
   useEffect(() => {
     const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
+
     revealTl
       .to(targetSection.current, { opacity: 1, duration: 2 })
       .from(

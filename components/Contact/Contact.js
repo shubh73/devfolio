@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import Filter from "bad-words";
-import { MENULINKS } from "../../constants";
 import toast, { Toaster } from "react-hot-toast";
 import Fade from "react-reveal/Fade";
+import gsap, { Linear } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import mail from "./mailer";
-import gsap from "gsap";
 import styles from "./Contact.module.scss";
+import { MENULINKS } from "../../constants";
 
 const filter = new Filter();
 filter.removeWords("hell", "god", "shit");
@@ -40,6 +41,7 @@ const Contact = () => {
   const [mailerResponse, setMailerResponse] = useState("not initiated");
   const [isSending, setIsSending] = useState(false);
   const buttonEl = useRef(null);
+  const targetSection = useRef(null);
 
   const handleChange = ({ target }) => {
     const { id, value } = target;
@@ -226,16 +228,34 @@ const Contact = () => {
     });
   }, [buttonEl]);
 
+  useEffect(() => {
+    const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
+    revealTl.from(
+      targetSection.current.querySelectorAll(".seq"),
+      { opacity: 0, duration: 0.5, stagger: 0.5 },
+      "<"
+    );
+
+    ScrollTrigger.create({
+      trigger: targetSection.current.querySelector(".contact-wrapper"),
+      start: "100px bottom",
+      end: `center center`,
+      animation: revealTl,
+      scrub: 0,
+    });
+  }, [targetSection]);
+
   return (
     <section
-      className="mt-30 w-full relative select-none bg-gray-dark-4 pt-20 sm:pt-10 md:pt-5 lg:pt-1 pb-20"
+      className="mt-30 w-full relative select-none bg-black pt-20 sm:pt-10 md:pt-5 lg:pt-1 pb-20"
       id={MENULINKS[4].ref}
+      ref={targetSection}
     >
       <div>
         <Toaster toastOptions={toastOptions} />
       </div>
       <div className="section-container flex flex-col justify-center">
-        <div className="flex flex-col work-wrapper">
+        <div className="flex flex-col contact-wrapper">
           <div className="flex flex-col">
             <p className="uppercase tracking-widest text-gray-light-1 seq">
               CONTACT
@@ -249,13 +269,13 @@ const Contact = () => {
           </h2>
         </div>
 
-        <form className="pt-10 sm:mx-auto sm:w-[30rem] md:w-[35rem]">
+        <form className="pt-10 sm:mx-auto sm:w-[30rem] md:w-[35rem] seq">
           <Fade bottom distance={"4rem"}>
             <div className="relative">
               <input
                 type="text"
                 id="name"
-                className="block w-full h-12 sm:h-14 px-4 text-xl sm:text-2xl font-mono outline-none border-2 border-purple bg-transparent rounded-[0.6rem] transition-all duration-200 focus:bg-gray-dark-5  active:bg-gray-dark-5"
+                className="block w-full h-12 sm:h-14 px-4 text-xl sm:text-2xl font-mono outline-none border-2 border-purple bg-transparent rounded-[0.6rem] transition-all duration-200"
                 value={formData.name}
                 onChange={handleChange}
                 required
@@ -272,7 +292,7 @@ const Contact = () => {
               <input
                 type="text"
                 id="email"
-                className="block w-full h-12 sm:h-14 px-4 text-xl sm:text-2xl font-mono outline-none border-2 border-purple bg-transparent rounded-[0.6rem] transition-all duration-200 focus:bg-gray-dark-5  active:bg-gray-dark-5"
+                className="block w-full h-12 sm:h-14 px-4 text-xl sm:text-2xl font-mono outline-none border-2 border-purple bg-transparent rounded-[0.6rem] transition-all duration-200"
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -288,7 +308,7 @@ const Contact = () => {
             <div className="relative mt-14">
               <textarea
                 id="message"
-                className="block w-full h-auto min-h-[10rem] max-h-[20rem] sm:h-14 py-2 px-4 text-xl sm:text-2xl font-mono outline-none border-2 border-purple bg-transparent rounded-[0.6rem] transition-all duration-200 focus:bg-gray-dark-5  active:bg-gray-dark-5"
+                className="block w-full h-auto min-h-[10rem] max-h-[20rem] sm:h-14 py-2 px-4 text-xl sm:text-2xl font-mono outline-none border-2 border-purple bg-transparent rounded-[0.6rem] transition-all duration-200"
                 value={formData.message}
                 onChange={handleChange}
                 required
@@ -322,7 +342,7 @@ const Contact = () => {
             }
             onClick={handleSubmit}
           >
-            <span className={styles.default}>Send -&gt;</span>
+            <span>Send -&gt;</span>
             <span className={styles.success}>
               <svg viewBox="0 0 16 16">
                 <polyline points="3.75 9 7 12 13 5"></polyline>
@@ -356,7 +376,7 @@ const Contact = () => {
         input:focus,
         textarea:active,
         textarea:focus {
-          box-shadow: 0 0 0.3rem #120e16;
+          box-shadow: 0 0 0.3rem #000000;
         }
 
         input:focus + label,

@@ -3,7 +3,7 @@ import SoundBar from "./SoundBar/SoundBar";
 
 const Header = ({ children }) => {
   return (
-    <nav className="w-full fixed top-0 py-8 z-50 select-none bg-gradient-to-b from-gray-dark-5 shadow-gray-dark-5 transition-all duration-300">
+    <nav className="w-full fixed top-0 py-8 z-50 select-none bg-gradient-to-b from-black shadow-black transition-all duration-300">
       <div className="flex justify-between section-container">
         <a href="#home" className="link">
           <Image

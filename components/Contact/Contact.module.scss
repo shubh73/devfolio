@@ -1,5 +1,5 @@
 .button {
-  --primary: #1A171E;
+  --primary: #000000;
   --primary-dark: #9f55ff;
   --shadow: #{rgba(#9f55ff, 0.3)};
   --text: #fff;
@@ -171,6 +171,7 @@
     stroke-dashoffset: calc(var(--trails-stroke) * 1px);
     transform: rotate(68deg) translateZ(0);
   }
+
   span {
     display: block;
     position: relative;

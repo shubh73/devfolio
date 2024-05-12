@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -9,7 +9,8 @@
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
     "bad-words": "^3.0.4",
-    "cmdk": "^1.0.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.1.9",
     "gsap": "^3.12.5",
     "howler": "^2.2.4",
     "lottie-web": "^5.12.2",
@@ -20,6 +21,7 @@
     "react-hot-toast": "^2.4.1",
     "react-reveal": "^1.2.2",
     "sass": "^1.77.1",
+    "tailwind-merge": "^2.3.0",
     "typed.js": "^2.1.0",
     "url-loader": "^4.1.1",
     "vanilla-tilt": "^1.8.1"

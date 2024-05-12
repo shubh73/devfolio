@@ -1,9 +1,4 @@
 {
-  "theme_color": "#7000FF",
-  "background_color": "#000000",
-  "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
   "name": "Portfolio | Shubh Porwal",
   "short_name": "Shubh Porwal",
   "description": "Shubh Porwal's Portfolio Website.",
@@ -29,5 +24,10 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "theme_color": "#7000FF",
+  "background_color": "#000000",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
 }

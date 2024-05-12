@@ -4,7 +4,7 @@ import Meta from "@/components/Meta/Meta";
 import "../styles/globals.scss";
 import { GTAG } from "constants";
 
-function MyApp({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
   return (
     <>
       <Meta />
@@ -16,6 +16,6 @@ function MyApp({ Component, pageProps }) {
       </main>
     </>
   );
-}
+};
 
-export default MyApp;
+export default App;

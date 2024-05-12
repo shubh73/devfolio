@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import Meta from "@/components/Meta/Meta";
 import Loader from "@/components/Loader/Loader";
 import Header from "@/components/Header/Header";
 import Menu from "@/components/Header/Menu/Menu";
@@ -16,7 +15,6 @@ import Work from "@/components/Work/Work";
 import Collaboration from "@/components/Collaboration/Collabaration";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
-import Scripts from "@/components/Scripts/Scripts";
 import { displayFancyLogs } from "utils/log";
 
 export default function Home() {
@@ -51,38 +49,35 @@ export default function Home() {
 
   return (
     <>
-      <Meta>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <>
-            <Header>
-              <Menu />
-            </Header>
-            <ProgressIndicator />
-            <Cursor isDesktop={isDesktop} />
-            <main className="flex flex-col">
-              <div
-                role="img"
-                className="text-gray-light-1 opacity-10 sm:text-9xl xs:text-8xl inline-block -z-10 absolute rotate-90 right-0 md:top-52 xs:top-96"
-              >
-                DEV
-              </div>
-              <div className="fixed top-0 left-0 h-screen w-screen -z-1" />
-              <Hero />
-              <About1 clientHeight={clientHeight} />
-              <Skills />
-              <About2 clientHeight={clientHeight} />
-              <Projects isDesktop={isDesktop} clientHeight={clientHeight} />
-              <Work clientWidth={clientWidth} />
-              <Collaboration clientHeight={clientHeight} />
-              <Contact />
-            </main>
-            <Footer />
-            <Scripts />
-          </>
-        )}
-      </Meta>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <Header>
+            <Menu />
+          </Header>
+          <ProgressIndicator />
+          <Cursor isDesktop={isDesktop} />
+          <main className="flex flex-col">
+            <div
+              role="img"
+              className="text-gray-light-1 opacity-10 sm:text-9xl xs:text-8xl inline-block -z-10 absolute rotate-90 right-0 md:top-52 xs:top-96"
+            >
+              DEV
+            </div>
+            <div className="fixed top-0 left-0 h-screen w-screen -z-1" />
+            <Hero />
+            <About1 clientHeight={clientHeight} />
+            <Skills />
+            <About2 clientHeight={clientHeight} />
+            <Projects isDesktop={isDesktop} clientHeight={clientHeight} />
+            <Work clientWidth={clientWidth} />
+            <Collaboration clientHeight={clientHeight} />
+            <Contact />
+          </main>
+          <Footer />
+        </>
+      )}
     </>
   );
 }

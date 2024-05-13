@@ -62,6 +62,10 @@ body {
   opacity: 1;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 ::-moz-selection {
   background-color: theme("colors.purple");
   color: #fff;

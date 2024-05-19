@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 
 const StickyScroll = ({ contentItems }) => {
@@ -30,7 +30,6 @@ const StickyScroll = ({ contentItems }) => {
     setActiveCard(closestBreakpointIndex);
   });
 
-  //   const backgroundColors = ["#120e16", "#000000", "#1e1b20"];
   const backgroundColors = ["#000000"];
   const linearGradients = [
     "linear-gradient(to bottom right, #ef008f, #6ec3f4)",
@@ -44,7 +43,7 @@ const StickyScroll = ({ contentItems }) => {
       animate={{
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}
-      className="h-[28rem] flex justify-center space-x-10 p-4 rounded-2xl outline outline-1 outline-gray-dark-1 overflow-y-auto no-scrollbar"
+      className="h-[22rem] flex justify-center space-x-10 p-4 rounded-2xl outline outline-1 outline-gray-dark-1 overflow-y-auto no-scrollbar"
     >
       <div className="div relative flex items-start px-4">
         <div className="max-w-2xl">
@@ -68,7 +67,7 @@ const StickyScroll = ({ contentItems }) => {
                 animate={{
                   opacity: activeCard === index ? 1 : 0.3,
                 }}
-                className="text-kg text-slate-300 max-w-sm mt-4"
+                className="text-lg text-slate-300 max-w-sm mt-4"
               >
                 {item.description}
               </motion.p>

@@ -41,7 +41,7 @@ const Tab = ({
 
 const TabsContent = ({ tabs, isHovering }) => {
   return (
-    <div className="relative w-full h-full mt-36 md:mt-32 seq">
+    <div className="relative w-full h-full mt-36 md:mt-32">
       {tabs.map((tab, index) => {
         const { value, content } = tab;
 
@@ -82,8 +82,8 @@ const Tabs = ({ tabItems }) => {
   };
 
   return (
-    <>
-      <div className="pt-4 flex flex-row items-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full seq">
+    <div className="seq">
+      <div className="pt-12 pb-4 flex flex-row justify-center items-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full">
         {tabItems.map((tab, index) => (
           <Tab
             key={tab.value}
@@ -95,8 +95,13 @@ const Tabs = ({ tabItems }) => {
           />
         ))}
       </div>
-      <TabsContent key={activeTab.value} tabs={tabs} isHovering={isHovering} />
-    </>
+      <TabsContent
+        key={activeTab.value}
+        tabs={tabs}
+        activeTab={activeTab}
+        isHovering={isHovering}
+      />
+    </div>
   );
 };
 

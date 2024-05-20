@@ -60,6 +60,10 @@ const TabsContent = ({ tabs, isHovering }) => {
   );
 };
 
+const popDownSound = new Howl({
+  src: ["/sounds/pop-down.mp3"],
+});
+
 const Tabs = ({ tabItems }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [tabs, setTabs] = useState(tabItems);
@@ -71,6 +75,7 @@ const Tabs = ({ tabItems }) => {
     updatedTabs.unshift(selectedTab[0]);
     setTabs(updatedTabs);
     setActiveTab(updatedTabs[0]);
+    popDownSound.play();
   };
 
   return (

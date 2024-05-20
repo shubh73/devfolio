@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Loader from "@/components/Loader/Loader";
 import Header from "@/components/Header/Header";
 import Menu from "@/components/Header/Menu/Menu";
 import ProgressIndicator from "@/components/ProgressIndicator/ProgressIndicator";
 import Cursor from "@/components/Cursor/Cursor";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Hero from "@/components/Hero/Hero";
 import About1 from "@/components/About/About1";
 import Skills from "@/components/Skills/Skills";
@@ -17,10 +17,10 @@ import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import { displayFancyLogs } from "utils/log";
 
-export default function Home() {
-  gsap.registerPlugin(ScrollTrigger);
-  gsap.config({ nullTargetWarn: false });
+gsap.registerPlugin(ScrollTrigger);
+gsap.config({ nullTargetWarn: false });
 
+export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isDesktop, setIsDesktop] = useState(true);
   const [clientHeight, setClientHeight] = useState(0);

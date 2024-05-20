@@ -40,10 +40,6 @@ export const MENULINKS = [
     name: "Contact",
     ref: "contact",
   },
-  {
-    name: "Game",
-    ref: "game",
-  },
 ];
 
 export const TYPED_STRINGS = [

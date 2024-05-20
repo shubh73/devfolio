@@ -1,27 +1,37 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import gsap, { Power1, Circ } from "gsap";
-import { useRouter } from "next/router";
 import Button from "@/components/Button/Button";
 import Cursor from "@/components/Cursor/Cursor";
 
 const Custom404 = () => {
   const router = useRouter();
+  const [isDesktop, setIsDesktop] = useState(true);
   const milkSpillLargeRef = useRef(null);
   const faceRef = useRef(null);
   const leftEyeRef = useRef(null);
   const rightEyeRef = useRef(null);
 
   useEffect(() => {
+    const { orientation } = window;
+
+    const result =
+      typeof orientation === "undefined" &&
+      navigator.userAgent.indexOf("IEMobile") === -1;
+    history.scrollRestoration = "manual";
+
+    setIsDesktop(result);
+
     // Milk Spill
-    const milkSpill = gsap.to(milkSpillLargeRef.current, {
-      duration: 40,
+    gsap.to(milkSpillLargeRef.current, {
+      duration: 30,
       scale: 1.25,
       transformOrigin: "right",
       ease: Power1.easeInOut,
     });
 
     // Face Hover
-    const face = gsap.to(faceRef.current, {
+    gsap.to(faceRef.current, {
       yoyo: true,
       repeat: -1,
       duration: 10,
@@ -46,15 +56,14 @@ const Custom404 = () => {
         .to([leftEyeRef.current, rightEyeRef.current], { scaleY: 1 });
     };
 
-    window.onload = () => {
-      blink();
-    };
+    blink();
   }, []);
 
   return (
-    <div className="flex justify-start items-center h-screen w-screen">
-      <div className="container lg:ml-40 cursor-auto">
-        <svg className="milk-404" viewBox="0 0 600 600">
+    <>
+      <Cursor isDesktop={isDesktop} />
+      <div className="flex justify-center items-center flex-wrap h-screen">
+        <svg className="max-h-screen" viewBox="0 0 600 600">
           <g id="milk-spill" fill="#fff">
             <path
               id="milk-spill--large"
@@ -147,13 +156,13 @@ const Custom404 = () => {
             </g>
           </g>
         </svg>
+        <div className="link">
+          <Button type="primary" onClick={() => router.push("/")}>
+            Back to Home
+          </Button>
+        </div>
       </div>
-      <div className="absolute bottom-[20%] xl:bottom-[40%] right-[10%] 2xl:right-[20%]">
-        <Button type="primary" onClick={() => router.push("/")}>
-          Back to Home
-        </Button>
-      </div>
-    </div>
+    </>
   );
 };
 

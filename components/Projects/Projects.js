@@ -105,7 +105,7 @@ const Projects = ({ isDesktop, clientHeight }) => {
         <div
           className={`${
             clientHeight > 650 ? "mt-12" : "mt-8"
-          } flex project-wrapper w-fit seq`}
+          } flex project-wrapper no-scrollbar w-fit seq`}
         >
           {PROJECTS.map((project, index) => (
             <ProjectTile
@@ -118,11 +118,6 @@ const Projects = ({ isDesktop, clientHeight }) => {
           ))}
         </div>
       </div>
-      <style jsx global>{`
-        .project-wrapper::-webkit-scrollbar {
-          display: none;
-        }
-      `}</style>
     </section>
   );
 };

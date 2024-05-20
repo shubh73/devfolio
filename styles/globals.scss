@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "../public/fonts/Calibre/Calibre";
-@import "../public//fonts//JetBrainsMono/JetBrainsMono";
-
 *,
 *::after,
 *::before {
@@ -12,11 +9,6 @@
   margin: 0;
   -webkit-tap-highlight-color: rgba(112, 0, 255, 0.05);
   cursor: none;
-}
-
-body {
-  box-sizing: border-box;
-  @apply bg-gray-dark-5 text-white overflow-x-hidden;
 }
 
 html {
@@ -45,6 +37,11 @@ html {
   }
 }
 
+body {
+  box-sizing: border-box;
+  @apply bg-black text-white overflow-x-hidden;
+}
+
 ::-webkit-scrollbar {
   width: 0.4rem;
 }
@@ -63,6 +60,10 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: theme("colors.indigo.dark");
   opacity: 1;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 ::-moz-selection {
@@ -85,8 +86,6 @@ input[type="checkbox"] {
 }
 
 .outer-menu {
-  z-index: 1;
-
   .checkbox-toggle {
     z-index: 2;
 
@@ -132,6 +131,7 @@ input[type="checkbox"] {
       }
     }
   }
+
   .hamburger {
     z-index: 1;
     backface-visibility: hidden;
@@ -158,14 +158,14 @@ input[type="checkbox"] {
       }
     }
   }
+
   .soundBars {
     display: absolute;
-    height: 19px;
-    width: 18px;
+    height: 24px;
+    width: 24px;
     border-radius: 100%;
-    // background-color: #120e16;
+
     span {
-      // background: theme("colors.white");
       background: linear-gradient(
         to right,
         theme("colors.indigo.light"),
@@ -190,6 +190,7 @@ input[type="checkbox"] {
         transform: scaleY(0.4);
       }
     }
+
     &.play > span {
       animation: sound-bars-animation 2s infinite alternate-reverse;
 
@@ -207,6 +208,7 @@ input[type="checkbox"] {
         animation-delay: 0.8s;
       }
     }
+
     &:before {
       content: "";
       position: absolute;
@@ -217,10 +219,11 @@ input[type="checkbox"] {
       border-radius: 100%;
       transition: all 0.2s ease-in-out;
     }
+
     &:hover {
       &:before {
-        width: calc(100% + 20px);
-        height: calc(100% + 20px);
+        width: calc(15% + 24px);
+        height: calc(50% + 24px);
         opacity: 1;
       }
 
@@ -229,6 +232,7 @@ input[type="checkbox"] {
       }
     }
   }
+
   .menu {
     backface-visibility: hidden;
     outline: 0.0625rem solid transparent;
@@ -793,14 +797,6 @@ $bg: #f4faff;
   background-position: 98%;
   color: #fff;
   box-shadow: 0 0 1rem theme("colors.indigo.dark");
-}
-
-.heart-btn {
-  cursor: none;
-}
-
-.milk-404 {
-  max-height: 100vh;
 }
 
 #mouth-frown {

@@ -4,6 +4,7 @@ import { MENULINKS } from "../../../constants";
 const Menu = () => {
   useEffect(() => {
     const anchorNodes = document.querySelectorAll('a[href^="#"]');
+
     anchorNodes.forEach((el) => {
       el.addEventListener("click", () => {
         const checkbox = document.querySelector(".checkbox-toggle");
@@ -18,7 +19,7 @@ const Menu = () => {
         <div className="text-center opacity-0 overflow-y-auto overflow-x-hidden flex flex-none justify-center items-center max-h-screen">
           <ul className="list-none py-4 px-0 m-0 block max-h-screen">
             {MENULINKS.map((el) => (
-              <li className="p-0 m-6 text-2xl block" key={el.name}>
+              <li key={el.name} className="p-0 m-6 text-2xl block">
                 <a
                   className="link relative inline font-mono font-bold text-5xl duration-300 hover:no-underline"
                   href={`#${el.ref}`}

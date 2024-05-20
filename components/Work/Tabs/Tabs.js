@@ -2,13 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "utils/cn";
 
-const Tab = ({
-  index,
-  tab: { title, value },
-  activeTab: { value: activeTabValue },
-  handleOnClick,
-  setIsHovering,
-}) => {
+const Tab = ({ index, tab, activeTab, handleOnClick, setIsHovering }) => {
   return (
     <button
       onClick={() => handleOnClick(index)}
@@ -19,10 +13,10 @@ const Tab = ({
         transformStyle: "preserve-3d",
       }}
     >
-      {value === activeTabValue && (
+      {activeTab.value === tab.value && (
         <motion.div
           layoutId="clickedbutton"
-          transition={{ type: "spring", bounce: 0.2, duration: 0.7 }}
+          transition={{ type: "spring", bounce: 0.3, duration: 0.7 }}
           className="absolute inset-0 bg-gray-dark-2 rounded-full"
         />
       )}
@@ -30,10 +24,10 @@ const Tab = ({
       <span
         className={cn(
           "relative text-white top-[3px] link",
-          value !== activeTabValue && "hover:text-gray-light-3"
+          tab.value !== activeTab.value && "hover:text-gray-light-3"
         )}
       >
-        {title}
+        {tab.title}
       </span>
     </button>
   );
@@ -41,14 +35,12 @@ const Tab = ({
 
 const TabsContent = ({ tabs, isHovering }) => {
   return (
-    <div className="relative w-full h-full mt-36 md:mt-32">
+    <div className="relative w-full h-full">
       {tabs.map((tab, index) => {
-        const { value, content } = tab;
-
         return (
           <motion.div
-            key={value}
-            layoutId={value}
+            key={tab.value}
+            layoutId={tab.value}
             style={{
               scale: 1 - index * 0.1,
               top: isHovering ? index * -50 : 0,
@@ -56,11 +48,11 @@ const TabsContent = ({ tabs, isHovering }) => {
               opacity: index < 3 ? 1 - index * 0.1 : 0,
             }}
             animate={{
-              y: value === tabs[0].value ? [0, 40, 0] : 0,
+              y: tab.value === tabs[0].value ? [0, 40, 0] : 0,
             }}
-            className="w-full h-full absolute top-0 left-0"
+            className="w-full h-full absolute top-0 left-0 mt-36 md:mt-32"
           >
-            {content}
+            {tab.content}
           </motion.div>
         );
       })}
@@ -83,10 +75,10 @@ const Tabs = ({ tabItems }) => {
 
   return (
     <div className="seq">
-      <div className="pt-12 pb-4 flex flex-row justify-center items-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full">
+      <div className="pt-12 flex flex-row justify-center items-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full">
         {tabItems.map((tab, index) => (
           <Tab
-            key={tab.value}
+            key={tab.title}
             index={index}
             tab={tab}
             activeTab={activeTab}

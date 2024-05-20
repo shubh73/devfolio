@@ -3,10 +3,10 @@ import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 
 const StickyScroll = ({ contentItems }) => {
   const [activeCard, setActiveCard] = useState(0);
-  const ref = useRef(null);
+  const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
-    container: ref,
+    container: containerRef,
     offset: ["start start", "end start"],
   });
 
@@ -39,7 +39,7 @@ const StickyScroll = ({ contentItems }) => {
 
   return (
     <motion.div
-      ref={ref}
+      ref={containerRef}
       animate={{
         backgroundColor: backgroundColors[activeCard % backgroundColors.length],
       }}

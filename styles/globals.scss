@@ -66,6 +66,10 @@ body {
   display: none;
 }
 
+.no-scrollbar {
+  scrollbar-width: none; // Firefox
+}
+
 ::-moz-selection {
   background-color: theme("colors.purple");
   color: #fff;

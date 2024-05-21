@@ -17,6 +17,7 @@ export const METADATA = {
   image:
     "https://res.cloudinary.com/dywdhyojt/image/upload/v1690572126/preview.png",
   language: "English",
+  themeColor: "#000000",
 };
 
 export const MENULINKS = [

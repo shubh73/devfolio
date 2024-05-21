@@ -10,6 +10,7 @@ const Meta = () => (
     <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="language" content={METADATA.language} />
     <meta name="author" content={METADATA.author} />
+    <meta name="theme-color" content={METADATA.themeColor} />
     <meta httpEquiv="content-language" content="en" />
 
     {/* Open Graph / Facebook */}

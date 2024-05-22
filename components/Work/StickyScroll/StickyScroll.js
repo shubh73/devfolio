@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useMotionValueEvent, useScroll, motion } from "framer-motion";
+import DotPattern from "../DotPattern/DotPattern";
+import { cn } from "utils/cn";
 
 const StickyScroll = ({ contentItems }) => {
   const [activeCard, setActiveCard] = useState(0);
@@ -38,53 +40,67 @@ const StickyScroll = ({ contentItems }) => {
   ];
 
   return (
-    <motion.div
-      ref={containerRef}
-      animate={{
-        backgroundColor: backgroundColors[activeCard % backgroundColors.length],
-      }}
-      className="h-[22rem] flex justify-center space-x-10 p-4 rounded-2xl outline outline-1 outline-gray-dark-1 overflow-y-auto no-scrollbar"
-    >
-      <div className="div relative flex items-start px-4">
-        <div className="max-w-2xl">
-          {contentItems.map((item, index) => (
-            <div key={item.title + index} className="my-8">
-              <motion.h2
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-2xl font-bold text-slate-100"
-              >
-                {item.title}
-              </motion.h2>
-              <motion.p
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{
-                  opacity: activeCard === index ? 1 : 0.3,
-                }}
-                className="text-lg text-slate-300 max-w-sm mt-4"
-              >
-                {item.description}
-              </motion.p>
-            </div>
-          ))}
-          <div className="h-40" />
-        </div>
-      </div>
+    <div className="relative">
+      <DotPattern
+        width={20}
+        height={20}
+        cx={1}
+        cy={1}
+        cr={1}
+        className={cn(
+          "[mask-image:linear-gradient(to_bottom_left,white,transparent,transparent)] rounded-2xl py-3 px-2 md:px-0"
+        )}
+      />
       <motion.div
+        ref={containerRef}
         animate={{
-          backgroundImage: linearGradients[activeCard % linearGradients.length],
+          backgroundColor:
+            backgroundColors[activeCard % backgroundColors.length],
         }}
-        className="hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden"
+        className="h-[22rem] flex justify-center space-x-10 p-4 rounded-2xl outline outline-1 outline-gray-dark-1 overflow-y-auto no-scrollbar"
       >
-        {contentItems[activeCard].content ?? null}
+        <div className="flex items-start px-4">
+          <div className="max-w-2xl">
+            {contentItems.map((item, index) => (
+              <div key={item.title + index} className="my-8">
+                <motion.h2
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: activeCard === index ? 1 : 0.3,
+                  }}
+                  className="text-2xl font-bold text-slate-100"
+                >
+                  {item.title}
+                </motion.h2>
+                <motion.p
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{
+                    opacity: activeCard === index ? 1 : 0.3,
+                  }}
+                  className="text-lg text-slate-300 max-w-sm mt-4"
+                >
+                  {item.description}
+                </motion.p>
+              </div>
+            ))}
+            <div className="h-40" />
+          </div>
+        </div>
+        <motion.div
+          animate={{
+            backgroundImage:
+              linearGradients[activeCard % linearGradients.length],
+          }}
+          className="hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden"
+        >
+          {contentItems[activeCard].content ?? null}
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 };
 

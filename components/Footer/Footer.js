@@ -66,9 +66,7 @@ const Footer = () => {
             <p className="text-center text-white text-sm sm:text-base font-medium tracking-wide mt-8">
               Developed with{" "}
               <button onClick={handleClick} className="link cursor-none">
-                <span role="img" aria-label="heart" className="animate-pulse">
-                  ❤️
-                </span>
+                <span className="block animate-bounce">❤️</span>
               </button>{" "}
               by <span className="text-white">Shubh Porwal</span>
             </p>

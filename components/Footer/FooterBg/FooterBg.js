@@ -6,8 +6,8 @@ const FooterBg = () => {
     <div className={styles.top}>
       <Meteors />
       <div className={styles.background}>
-        <div className={styles.background__one}></div>
-        <div className={styles.background__two}></div>
+        <div className={styles.background__one} />
+        <div className={styles.background__two} />
       </div>
     </div>
   );

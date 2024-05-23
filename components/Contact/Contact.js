@@ -354,8 +354,8 @@ const Contact = () => {
               <path d="M6,4 C8,13.3333333 9,22.6666667 9,32 C9,41.3333333 8,50.6666667 6,60"></path>
             </svg>
             <div className={styles.plane}>
-              <div className={styles.left}></div>
-              <div className={styles.right}></div>
+              <div className={styles.left} />
+              <div className={styles.right} />
             </div>
           </button>
         </div>

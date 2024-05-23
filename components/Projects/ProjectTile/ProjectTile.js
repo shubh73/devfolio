@@ -60,13 +60,13 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
           style={{
             background: `linear-gradient(180deg, ${gradient[0]} 0%, rgba(0,0,0,0) 100%)`,
           }}
-        ></div>
+        />
         <div
           className="absolute bottom-0 left-0 w-full h-32"
           style={{
             background: `linear-gradient(0deg, ${gradient[0]} 10%, rgba(0,0,0,0) 100%)`,
           }}
-        ></div>
+        />
         <h1
           className="font-medium text-3xl sm:text-4xl z-10 pl-2 transform-gpu"
           style={{ transform: "translateZ(3rem)" }}

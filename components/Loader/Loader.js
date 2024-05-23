@@ -6,23 +6,23 @@ const Loader = () => {
       <div className={styles.container}>
         <div className={styles.loader}>
           <span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span />
+            <span />
+            <span />
+            <span />
           </span>
           <div className={styles.base}>
-            <span></span>
-            <div className={styles.face}></div>
+            <span />
+            <div className={styles.face} />
           </div>
         </div>
-        <div className={styles.progress}></div>
+        <div className={styles.progress} />
       </div>
       <div>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <span />
+        <span />
+        <span />
+        <span />
       </div>
     </div>
   );

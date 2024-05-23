@@ -5,7 +5,7 @@ import { cn } from "utils/cn";
 const Tab = ({ index, tab, activeTab, handleOnClick, setIsHovering }) => {
   return (
     <button
-      onClick={() => handleOnClick(index)}
+      onMouseDown={() => handleOnClick(index)}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       className="relative px-4 py-1 rounded-full cursor-none"
@@ -60,8 +60,8 @@ const TabsContent = ({ tabs, isHovering }) => {
   );
 };
 
-const popDownSound = new Howl({
-  src: ["/sounds/pop-down.mp3"],
+const mouseClickSound = new Howl({
+  src: ["/sounds/mouse-click.mp3"],
 });
 
 const Tabs = ({ tabItems }) => {
@@ -75,7 +75,7 @@ const Tabs = ({ tabItems }) => {
     updatedTabs.unshift(selectedTab[0]);
     setTabs(updatedTabs);
     setActiveTab(updatedTabs[0]);
-    popDownSound.play();
+    mouseClickSound.play();
   };
 
   return (

@@ -79,8 +79,8 @@ const Tabs = ({ tabItems }) => {
   };
 
   return (
-    <div className="seq">
-      <div className="pt-12 flex flex-row justify-center items-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full">
+    <div className="">
+      <div className="staggered-reveal pt-12 flex flex-row justify-center items-center [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full">
         {tabItems.map((tab, index) => (
           <Tab
             key={tab.title}

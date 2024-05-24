@@ -1,35 +1,42 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { MENULINKS, SKILLS } from "../../constants";
-import { gsap, Linear } from "gsap";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { MENULINKS, SKILLS } from "../../constants";
+import { useGSAP } from "@gsap/react";
 
 const Skills = () => {
-  const targetSection = useRef(null);
+  const sectionRevealRef = useRef(null);
 
-  useEffect(() => {
-    const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-    revealTl.from(
-      targetSection.current.querySelectorAll(".seq"),
-      { opacity: 0, duration: 0.5, stagger: 0.5 },
-      "<"
-    );
+  useGSAP(
+    () => {
+      const tl = gsap
+        .timeline({ defaults: { ease: "none" } })
+        .from(
+          ".staggered-reveal",
+          { opacity: 0, duration: 0.5, stagger: 0.5 },
+          "<"
+        );
 
-    ScrollTrigger.create({
-      trigger: targetSection.current.querySelector(".skills-wrapper"),
-      start: "100px bottom",
-      end: `center center`,
-      animation: revealTl,
-      scrub: 0,
-    });
-  }, [targetSection]);
+      ScrollTrigger.create({
+        trigger: ".skills-wrapper",
+        start: "100px bottom",
+        end: "center center",
+        scrub: 1,
+        animation: tl,
+      });
+    },
+    {
+      scope: sectionRevealRef,
+    }
+  );
 
   return (
     <section
-      className="w-full relative select-none mt-44"
+      ref={sectionRevealRef}
       id={MENULINKS[1].ref}
-      ref={targetSection}
+      className="w-full relative select-none mt-44"
     >
       <div className="section-container py-16 flex flex-col justify-center">
         <img
@@ -42,22 +49,22 @@ const Skills = () => {
         />
         <div className="flex flex-col skills-wrapper">
           <div className="flex flex-col">
-            <p className="uppercase tracking-widest text-gray-light-1 seq">
+            <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
               SKILLS
             </p>
-            <h1 className="text-6xl mt-2 font-medium text-gradient w-fit seq">
+            <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
               My Skills
             </h1>
-            <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 seq">
+            <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
               I like to take responsibility to craft aesthetic user experience
               using modern frontend architecture.{" "}
             </h2>
           </div>
-          <div className="mt-10">
-            <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 seq">
+          <div className="mt-10 staggered-reveal">
+            <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
               LANGUAGES AND TOOLS
             </h3>
-            <div className="flex items-center flex-wrap gap-6 seq">
+            <div className="flex items-center flex-wrap gap-6">
               {SKILLS.languagesAndTools.map((skill) => (
                 <Image
                   key={skill}
@@ -69,11 +76,11 @@ const Skills = () => {
               ))}
             </div>
           </div>
-          <div className="mt-10">
-            <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 seq">
+          <div className="mt-10 staggered-reveal">
+            <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
               LIBRARIES AND FRAMEWORKS
             </h3>
-            <div className="flex flex-wrap gap-6 transform-gpu seq">
+            <div className="flex flex-wrap gap-6 transform-gpu">
               {SKILLS.librariesAndFrameworks.map((skill) => (
                 <Image
                   key={skill}
@@ -85,12 +92,12 @@ const Skills = () => {
               ))}
             </div>
           </div>
-          <div className="flex flex-wrap mt-10">
+          <div className="flex flex-wrap mt-10 staggered-reveal">
             <div className="mr-16 xs:mr-20 mb-6">
-              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 seq">
+              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 ">
                 DATABASES
               </h3>
-              <div className="flex flex-wrap gap-6 transform-gpu seq">
+              <div className="flex flex-wrap gap-6">
                 {SKILLS.databases.map((skill) => (
                   <Image
                     key={skill}
@@ -103,10 +110,10 @@ const Skills = () => {
               </div>
             </div>
             <div>
-              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 seq">
+              <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4">
                 Other
               </h3>
-              <div className="flex flex-wrap gap-6 transform-gpu seq">
+              <div className="flex flex-wrap gap-6">
                 {SKILLS.other.map((skill) => (
                   <Image
                     key={skill}

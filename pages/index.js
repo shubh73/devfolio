@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { gsap } from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import Loader from "@/components/Loader/Loader";
 import Header from "@/components/Header/Header";
 import Menu from "@/components/Header/Menu/Menu";
@@ -17,7 +18,7 @@ import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import { displayFancyLogs } from "utils/log";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 gsap.config({ nullTargetWarn: false });
 
 export default function Home() {

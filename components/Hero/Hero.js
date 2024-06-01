@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Typed from "typed.js";
-import { gsap, Linear } from "gsap";
-// import lottie from "lottie-web";
+import gsap from "gsap";
 import Button from "../Button/Button";
 import Profiles from "../Profiles/Profiles";
 import styles from "./Hero.module.scss";
@@ -17,36 +16,32 @@ const options = {
 };
 
 const Hero = () => {
-  const [lottie, setLottie] = useState();
+  const [lottie, setLottie] = useState(null);
 
-  const typedEl = useRef(null);
-  const targetSection = useRef(null);
+  const sectionRef = useRef(null);
+  const typedElementRef = useRef(null);
   const lottieRef = useRef(null);
 
-  useEffect(() => {
-    const typed = new Typed(typedEl.current, options);
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap
+        .timeline({ defaults: { ease: "none" } })
+        .to(sectionRef.current, { opacity: 1, duration: 2 })
+        .from(
+          sectionRef.current.querySelectorAll(".staggered-reveal"),
+          { opacity: 0, duration: 0.5, stagger: 0.5 },
+          "<"
+        );
+    });
 
-    const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-    revealTl
-      .to(targetSection.current, { opacity: 1, duration: 2 })
-      .from(
-        targetSection.current.querySelectorAll(".seq"),
-        { opacity: 0, duration: 0.5, stagger: 0.5 },
-        "<"
-      );
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    const typed = new Typed(typedElementRef.current, options);
 
     return () => typed.destroy();
-  }, [typedEl, targetSection]);
-
-  // useEffect(() => {
-  //   lottie.loadAnimation({
-  //     container: lottieRef.current,
-  //     renderer: "svg",
-  //     loop: true,
-  //     autoplay: true,
-  //     animationData: require("../../public/lottie/lottie.json"),
-  //   });
-  // }, []);
+  }, [typedElementRef]);
 
   useEffect(() => {
     import("lottie-web").then((Lottie) => setLottie(Lottie.default));
@@ -68,9 +63,9 @@ const Hero = () => {
 
   return (
     <section
-      ref={targetSection}
-      className="w-full flex md:items-center py-8 2xl:container mx-auto xl:px-20 md:px-12 px-4 min-h-screen relative mb-24"
+      ref={sectionRef}
       id={MENULINKS[0].ref}
+      className="w-full flex md:items-center py-8 2xl:container mx-auto xl:px-20 md:px-12 px-4 min-h-screen relative mb-24"
       style={{ opacity: 0 }}
     >
       <style global jsx>
@@ -82,24 +77,26 @@ const Hero = () => {
       </style>
       <div className="flex flex-col pt-40 md:pt-0 select-none">
         <h5
-          className={`${styles.intro} font-mono font-medium text-indigo-light seq`}
+          className={`${styles.intro} font-mono font-medium text-indigo-light staggered-reveal`}
         >
           Hi, my name is
         </h5>
         <h1 className={`${styles.heroName} text-white text-6xl font-semibold`}>
-          <span className={`relative ${styles.emphasize} seq`}>Shubh</span>
-          <span className="seq"> Porwal</span>
+          <span className={`relative ${styles.emphasize} staggered-reveal`}>
+            Shubh
+          </span>
+          <span className="staggered-reveal"> Porwal</span>
         </h1>
         <p>
           <span
-            ref={typedEl}
-            className="seq text-3xl text-gray-light-3 font-mono leading-relaxed"
+            ref={typedElementRef}
+            className="staggered-reveal text-3xl text-gray-light-3 font-mono leading-relaxed"
           />
         </p>
-        <div className="seq">
+        <div className="staggered-reveal">
           <Profiles />
         </div>
-        <div className="seq pt-4">
+        <div className="staggered-reveal pt-4">
           <Button href={`#${MENULINKS[4].ref}`} classes="link" type="primary">
             Let&apos;s Talk
           </Button>

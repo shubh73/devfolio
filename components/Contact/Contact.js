@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Filter from "bad-words";
 import toast, { Toaster } from "react-hot-toast";
 import Fade from "react-reveal/Fade";
-import gsap, { Linear } from "gsap";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import mail from "./mailer";
 import styles from "./Contact.module.scss";
@@ -40,8 +40,8 @@ const Contact = () => {
   const [formData, setFormData] = useState(initialState);
   const [mailerResponse, setMailerResponse] = useState("not initiated");
   const [isSending, setIsSending] = useState(false);
-  const buttonEl = useRef(null);
-  const targetSection = useRef(null);
+  const buttonElementRef = useRef(null);
+  const sectionRef = useRef(null);
 
   const handleChange = ({ target }) => {
     const { id, value } = target;
@@ -99,11 +99,11 @@ const Contact = () => {
   }, [mailerResponse]);
 
   useEffect(() => {
-    buttonEl.current.addEventListener("click", (e) => {
-      if (!buttonEl.current.classList.contains("active")) {
-        buttonEl.current.classList.add("active");
+    buttonElementRef.current.addEventListener("click", (e) => {
+      if (!buttonElementRef.current.classList.contains("active")) {
+        buttonElementRef.current.classList.add("active");
 
-        gsap.to(buttonEl.current, {
+        gsap.to(buttonElementRef.current, {
           keyframes: [
             {
               "--left-wing-first-x": 50,
@@ -112,7 +112,7 @@ const Contact = () => {
               "--right-wing-second-y": 100,
               duration: 0.2,
               onComplete() {
-                gsap.set(buttonEl.current, {
+                gsap.set(buttonElementRef.current, {
                   "--left-wing-first-y": 0,
                   "--left-wing-second-x": 40,
                   "--left-wing-second-y": 100,
@@ -164,9 +164,9 @@ const Contact = () => {
               duration: 0.375,
               onComplete() {
                 setTimeout(() => {
-                  buttonEl.current.removeAttribute("style");
+                  buttonElementRef.current.removeAttribute("style");
                   gsap.fromTo(
-                    buttonEl.current,
+                    buttonElementRef.current,
                     {
                       opacity: 0,
                       y: -8,
@@ -177,7 +177,7 @@ const Contact = () => {
                       clearProps: true,
                       duration: 0.3,
                       onComplete() {
-                        buttonEl.current.classList.remove("active");
+                        buttonElementRef.current.classList.remove("active");
                       },
                     }
                   );
@@ -187,7 +187,7 @@ const Contact = () => {
           ],
         });
 
-        gsap.to(buttonEl.current, {
+        gsap.to(buttonElementRef.current, {
           keyframes: [
             {
               "--text-opacity": 0,
@@ -226,30 +226,33 @@ const Contact = () => {
         });
       }
     });
-  }, [buttonEl]);
+  }, [buttonElementRef]);
 
   useEffect(() => {
-    const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-    revealTl.from(
-      targetSection.current.querySelectorAll(".seq"),
+    const tl = gsap.timeline({ defaults: { ease: "none" } });
+
+    tl.from(
+      sectionRef.current.querySelectorAll(".staggered-reveal"),
       { opacity: 0, duration: 0.5, stagger: 0.5 },
       "<"
     );
 
     ScrollTrigger.create({
-      trigger: targetSection.current.querySelector(".contact-wrapper"),
+      trigger: sectionRef.current.querySelector(".contact-wrapper"),
       start: "100px bottom",
-      end: `center center`,
-      animation: revealTl,
+      end: "center center",
       scrub: 0,
+      animation: tl,
     });
-  }, [targetSection]);
+
+    return () => tl.kill();
+  }, [sectionRef]);
 
   return (
     <section
-      className="mt-30 w-full relative select-none bg-black pt-20 sm:pt-10 md:pt-5 lg:pt-1 pb-20"
+      ref={sectionRef}
       id={MENULINKS[4].ref}
-      ref={targetSection}
+      className="mt-30 w-full relative select-none bg-black pt-20 sm:pt-10 md:pt-5 lg:pt-1 pb-20"
     >
       <div>
         <Toaster toastOptions={toastOptions} />
@@ -257,19 +260,19 @@ const Contact = () => {
       <div className="section-container flex flex-col justify-center">
         <div className="flex flex-col contact-wrapper">
           <div className="flex flex-col">
-            <p className="uppercase tracking-widest text-gray-light-1 seq">
+            <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
               CONTACT
             </p>
-            <h1 className="text-6xl mt-2 font-medium text-gradient w-fit seq">
+            <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
               Contact
             </h1>
           </div>
-          <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 seq">
+          <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
             Get In Touch.{" "}
           </h2>
         </div>
 
-        <form className="pt-10 sm:mx-auto sm:w-[30rem] md:w-[35rem] seq">
+        <form className="pt-10 sm:mx-auto sm:w-[30rem] md:w-[35rem] staggered-reveal">
           <Fade bottom distance={"4rem"}>
             <div className="relative">
               <input
@@ -331,8 +334,8 @@ const Contact = () => {
         </form>
         <div className="mt-9 mx-auto link">
           <button
+            ref={buttonElementRef}
             className={styles.button}
-            ref={buttonEl}
             disabled={
               formData.name === "" ||
               formData.email === "" ||

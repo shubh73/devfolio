@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { gsap, Linear } from "gsap";
+import gsap from "gsap";
 
 const Cursor = ({ isDesktop }) => {
   const cursor = useRef(null);
@@ -15,13 +15,13 @@ const Cursor = ({ isDesktop }) => {
           x: e.clientX,
           y: e.clientY,
           duration: 0.1,
-          ease: Linear.easeNone,
+          ease: "none",
         });
         gsap.to(follower.current, {
           x: e.clientX,
           y: e.clientY,
           duration: 0.3,
-          ease: Linear.easeNone,
+          ease: "none",
         });
       };
 
@@ -53,6 +53,15 @@ const Cursor = ({ isDesktop }) => {
         el.addEventListener("mouseenter", hover);
         el.addEventListener("mouseleave", unHover);
       });
+
+      return () => {
+        document.removeEventListener("mousemove", moveCircle);
+
+        document.querySelectorAll(".link").forEach((el) => {
+          el.removeEventListener("mouseenter", hover);
+          el.removeEventListener("mouseleave", unHover);
+        });
+      };
     }
   }, [cursor, follower, isDesktop]);
 

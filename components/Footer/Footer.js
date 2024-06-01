@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Fade } from "react-reveal";
-import { gsap, Linear } from "gsap";
 import { Howl } from "howler";
 import Button from "../Button/Button";
 import FooterBg from "./FooterBg/FooterBg";
@@ -11,7 +10,6 @@ import { MENULINKS } from "../../constants";
 
 const Footer = () => {
   const [playbackRate, setPlaybackRate] = useState(0.75);
-  const targetSection = useRef(null);
 
   const heartClickSound = new Howl({
     src: ["/sounds/glug-a.mp3"],
@@ -24,21 +22,8 @@ const Footer = () => {
     heartClickSound.play();
   };
 
-  useEffect(() => {
-    const revealTl = gsap.timeline({ defaults: { ease: Linear.easeNone } });
-
-    revealTl
-      .to(targetSection.current, { opacity: 1, duration: 2 })
-      .from(
-        targetSection.current.querySelectorAll(".seq"),
-        { opacity: 0, duration: 0.5, stagger: 0.5 },
-        "<"
-      );
-  }, [targetSection]);
-
   return (
     <footer
-      ref={targetSection}
       className="w-full relative select-none bg-cover"
       style={{
         backgroundImage: `linear-gradient(to right, ${theme.colors.indigo.light}, ${theme.colors.indigo.dark})`,

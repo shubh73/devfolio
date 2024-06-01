@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { gsap } from "gsap";
+import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Loader from "@/components/Loader/Loader";
 import Header from "@/components/Header/Header";
@@ -12,7 +12,7 @@ import Skills from "@/components/Skills/Skills";
 import About2 from "@/components/About/About2";
 import Projects from "@/components/Projects/Projects";
 import Work from "@/components/Work/Work";
-import Collaboration from "@/components/Collaboration/Collabaration";
+import Collaboration from "@/components/Collaboration/Collaboration";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import { displayFancyLogs } from "utils/log";

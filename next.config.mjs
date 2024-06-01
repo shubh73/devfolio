@@ -1,14 +1,3 @@
-import withSerwistInit from "@serwist/next";
-
-const revision = crypto.randomUUID();
-
-const withSerwist = withSerwistInit({
-  cacheOnNavigation: true,
-  swSrc: "pages/sw.js",
-  swDest: "public/sw.js",
-  additionalPrecacheEntries: [{ url: "/~offline", revision }],
-});
-
 const nextConfig = {
   webpack: (config) => {
     config.module.rules.push({
@@ -22,4 +11,4 @@ const nextConfig = {
   },
 };
 
-export default withSerwist(nextConfig);
+export default nextConfig;

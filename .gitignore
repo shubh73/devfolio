@@ -33,10 +33,3 @@ yarn-error.log*
 # vercel
 .vercel
 /.env.local
-
-# serwist
-**/public/serwist**
-**/public/sw**
-**/public/worker**
-**/public/fallback**
-**/public/precache**

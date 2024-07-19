@@ -33,13 +33,13 @@ const Footer = () => {
       <Fade bottom distance={"4rem"}>
         <div className="w-full h-full pt-32">
           <div className="section-container flex flex-col h-full justify-end z-10 items-center py-12">
-            <h1 className="font-medium text-3xl md:text-4xl text-center seq">
+            <h1 className="font-medium text-3xl md:text-4xl text-center">
               Feel free to connect on social media.
             </h1>
-            <div className="text-center seq">
+            <div className="text-center">
               <Profiles />
             </div>
-            <div className="seq pt-4 text-center">
+            <div className="pt-4 text-center">
               <Button
                 href={`#${MENULINKS[4].ref}`}
                 classes="link"

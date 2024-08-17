@@ -1,6 +1,6 @@
 import { calibre, jetbrains_mono } from "public/fonts";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import Meta from "@/components/Meta/Meta";
+import Meta from "@/components/meta";
 import "../styles/globals.scss";
 import { GTAG } from "constants";
 

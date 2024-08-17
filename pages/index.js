@@ -1,26 +1,25 @@
 import { useState, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import Loader from "@/components/Loader/Loader";
-import Header from "@/components/Header/Header";
-import Menu from "@/components/Header/Menu/Menu";
-import ProgressIndicator from "@/components/ProgressIndicator/ProgressIndicator";
-import Cursor from "@/components/Cursor/Cursor";
-import Hero from "@/components/Hero/Hero";
-import About1 from "@/components/About/About1";
-import Skills from "@/components/Skills/Skills";
-import About2 from "@/components/About/About2";
-import Projects from "@/components/Projects/Projects";
-import Work from "@/components/Work/Work";
-import Collaboration from "@/components/Collaboration/Collaboration";
-import Contact from "@/components/Contact/Contact";
-import Footer from "@/components/Footer/Footer";
+import { Cursor } from "@/components/ui/cursor";
+import { Projects } from "@/components/sections/projects";
 import { displayFancyLogs } from "utils/log";
+import { Collaboration } from "@/components/sections/collaboration";
+import { Skills } from "@/components/sections/skills";
+import { Work } from "@/components/sections/work";
+import { About1 } from "@/components/sections/about1";
+import { About2 } from "@/components/sections/about2";
+import { ProgressIndicator } from "@/components/ui/progress-indicator";
+import { Header } from "@/components/ui/header";
+import { Contact } from "@/components/sections/contact";
+import { Footer } from "@/components/sections/footer";
+import { Home } from "@/components/sections/home";
+import { Loader } from "@/components/ui/loader";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.config({ nullTargetWarn: false });
 
-export default function Home() {
+export default function Index() {
   const [isLoading, setIsLoading] = useState(true);
   const [isDesktop, setIsDesktop] = useState(true);
   const [clientHeight, setClientHeight] = useState(0);
@@ -53,9 +52,7 @@ export default function Home() {
         <Loader />
       ) : (
         <>
-          <Header>
-            <Menu />
-          </Header>
+          <Header />
           <ProgressIndicator />
           <Cursor isDesktop={isDesktop} />
           <main className="flex flex-col">
@@ -66,7 +63,7 @@ export default function Home() {
               DEV
             </div>
             <div className="fixed top-0 left-0 h-screen w-screen -z-1" />
-            <Hero />
+            <Home />
             <About1 clientHeight={clientHeight} />
             <Skills />
             <About2 clientHeight={clientHeight} />

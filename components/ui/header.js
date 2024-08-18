@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import { Howl } from "howler";
@@ -98,7 +100,7 @@ export const Header = () => {
         <a href="#home" className="link">
           <Image
             src="/logo.svg"
-            alt={`Logo - ${METADATA.author}`}
+            alt={`Logo - ${METADATA.author.name}`}
             width={25}
             height={25}
           />

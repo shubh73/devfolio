@@ -6,7 +6,7 @@ import { theme } from "tailwind.config";
 import { MENULINKS, METADATA } from "../../../constants";
 import { Profiles } from "@/components/ui/profiles";
 import { FooterBackground } from "./footer-background";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 export const Footer = () => {
   const [playbackRate, setPlaybackRate] = useState(0.75);
@@ -42,8 +42,8 @@ export const Footer = () => {
             <div className="pt-4 text-center">
               <Button
                 href={`#${MENULINKS[4].ref}`}
-                classes="link"
                 type="secondary"
+                className="link"
               >
                 Let&apos;s Talk
               </Button>
@@ -53,7 +53,7 @@ export const Footer = () => {
               <button onClick={handleClick} className="link cursor-none">
                 <span className="block animate-bounce">❤️</span>
               </button>{" "}
-              by <span className="text-white">{METADATA.author}</span>
+              by <span className="text-white">{METADATA.author.name}</span>
             </p>
           </div>
         </div>

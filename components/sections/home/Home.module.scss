@@ -17,7 +17,7 @@
       border-radius: 1rem;
       background-image: linear-gradient(
         to right,
-        theme("colors.indigo.light"),
+        hsl(var(--indigo-light)),
         hsl(var(--indigo-dark))
       );
       box-shadow: 0 0 1rem hsl(var(--indigo-dark));

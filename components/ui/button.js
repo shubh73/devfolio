@@ -1,28 +1,27 @@
+"use client";
+
+import { cn } from "utils/cn";
 import styles from "./Button.module.scss";
 import PropTypes from "prop-types";
 
-const Button = ({ href, onClick, children, classes, type, ...otherProps }) => {
-  let additionalClasses = "";
-  if (classes) {
-    additionalClasses = classes;
-  }
-
+export const Button = ({
+  href,
+  onClick,
+  children,
+  className,
+  type = "primary",
+  disabled,
+  ...otherProps
+}) => {
   return (
     <a
       href={href}
       onClick={onClick}
-      className={`
-        ${
-          type === "primary"
-            ? !otherProps.disable
-              ? styles.primary__button
-              : styles.primary__disabledButton
-            : !otherProps.disable
-            ? styles.secondary__button
-            : styles.secondary__disabledButton
-        }
-          ${additionalClasses}
-      `}
+      className={cn(
+        styles[`${type}__button`],
+        disabled && styles[`${type}__disabledButton`],
+        className
+      )}
       {...otherProps}
     >
       {children}
@@ -33,9 +32,8 @@ const Button = ({ href, onClick, children, classes, type, ...otherProps }) => {
 Button.propTypes = {
   href: PropTypes.string,
   onClick: PropTypes.func,
-  children: PropTypes.string.isRequired,
-  classes: PropTypes.string,
-  type: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  type: PropTypes.oneOf(["primary", "secondary"]),
+  disabled: PropTypes.bool,
 };
-
-export default Button;

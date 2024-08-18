@@ -58,6 +58,7 @@ html {
   }
 }
 
+// TODO: remove when migrated to app router
 body {
   box-sizing: border-box;
   @apply bg-black text-white overflow-x-hidden;
@@ -92,12 +93,12 @@ body {
 }
 
 ::-moz-selection {
-  background-color: theme("colors.purple");
+  background-color: hsl(var(--purple));
   color: #fff;
 }
 
 ::selection {
-  background-color: theme("colors.purple");
+  background-color: hsl(var(--purple));
   color: #fff;
 }
 
@@ -193,8 +194,9 @@ input[type="checkbox"] {
     span {
       background: linear-gradient(
         to right,
-        theme("colors.indigo.light"),
-        hsl(var(--indigo-dark))      );
+        hsl(var(--indigo-light)),
+        hsl(var(--indigo-dark))
+      );
       margin: auto 1px 0;
       height: 100%;
       width: 2px;
@@ -322,8 +324,9 @@ input[type="checkbox"] {
 .text-gradient {
   background: linear-gradient(
     to right,
-    theme("colors.indigo.light"),
-    hsl(var(--indigo-dark))  );
+    hsl(var(--indigo-light)),
+    hsl(var(--indigo-dark))
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -360,8 +363,8 @@ $bg: #f4faff;
     z-index: 0;
     background: linear-gradient(
       to right,
-      theme("colors.gray.dark.1"),
-      theme("colors.gray.dark.3")
+      hsl(var(--gray-dark-1)),
+      hsl(var(--gray-dark-3))
     );
     .radio-wrapper {
       margin-top: 10px;
@@ -814,12 +817,6 @@ $bg: #f4faff;
       #f97822 68%
     );
   }
-}
-
-.primary__button__active {
-  background-position: 98%;
-  color: #fff;
-  box-shadow: 0 0 1rem hsl(var(--indigo-dark));
 }
 
 #mouth-frown {

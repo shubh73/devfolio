@@ -46,7 +46,7 @@
   --right-body-second-y: 100;
   --right-body-third-x: 100;
   --right-body-third-y: 100;
-  display: inline-flex;  //block
+  display: inline-flex; //block
   cursor: none;
   position: relative;
   padding: 0.65rem 1.75rem;
@@ -61,7 +61,7 @@
   background-clip: padding-box;
   border-radius: 0.4rem;
   background-size: 220%;
-  outline: 2px solid theme("colors.indigo.dark");
+  outline: 2px solid hsl(var(--indigo-dark));
   color: var(--text);
   transition: all 0.3s ease-in-out;
   -webkit-appearance: none;
@@ -71,7 +71,7 @@
   &:active {
     background-position: 98%;
     color: #fff;
-    box-shadow: 0 0 1rem theme("colors.indigo.dark");
+    box-shadow: 0 0 1rem hsl(var(--indigo-dark));
   }
 
   .plane,

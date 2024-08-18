@@ -9,7 +9,7 @@ const Meta = () => (
     <meta name="robots" content="index,follow" />
     <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="language" content={METADATA.language} />
-    <meta name="author" content={METADATA.author} />
+    <meta name="author" content={METADATA.author.name} />
     <meta name="theme-color" content={METADATA.themeColor} />
     <meta httpEquiv="content-language" content="en" />
 
@@ -19,16 +19,16 @@ const Meta = () => (
     <meta property="og:title" content={METADATA.title} />
     <meta property="og:description" content={METADATA.description} />
     <meta property="og:image" content={METADATA.image} />
-    <meta property="og:url" content={METADATA.siteUrl} />
+    <meta property="og:url" content={METADATA.author.url} />
     <meta property="og:site_name" content={METADATA.title} />
 
     {/* Twitter */}
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={METADATA.title} />
     <meta property="twitter:description" content={METADATA.description} />
-    <meta property="twitter:site" content={METADATA.twitterHandle} />
-    <meta name="twitter:creator" content={METADATA.twitterHandle} />
-    <meta property="twitter:url" content={METADATA.siteUrl} />
+    <meta property="twitter:site" content={METADATA.twitter} />
+    <meta name="twitter:creator" content={METADATA.twitter} />
+    <meta property="twitter:url" content={METADATA.author.url} />
     <meta property="twitter:image" content={METADATA.image} />
 
     <link

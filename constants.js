@@ -1,10 +1,9 @@
 export const METADATA = {
-  author: "Shubh Porwal",
   title: "Portfolio | Shubh Porwal",
   description:
     "Shubh Porwal is a passionate Frontend Engineer, dedicated to crafting aesthetic and modern apps that captivate and engage users.",
-  siteUrl: "https://www.shubhporwal.me/",
-  twitterHandle: "@shubh731",
+  author: "Shubh Porwal",
+  url: "https://shubhporwal.me",
   keywords: [
     "Shubh Porwal",
     "Frontend Engineer",
@@ -16,8 +15,7 @@ export const METADATA = {
   ].join(", "),
   image:
     "https://res.cloudinary.com/dywdhyojt/image/upload/v1721378510/social-preview.png",
-  language: "English",
-  themeColor: "#000000",
+  twitter: "@shubh731",
 };
 
 export const MENULINKS = [

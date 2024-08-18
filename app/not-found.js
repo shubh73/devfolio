@@ -1,10 +1,12 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import gsap, { Power1, Circ } from "gsap";
 import { Cursor } from "@/components/ui/cursor";
 import { Button } from "@/components/ui/button";
 
-const Custom404 = () => {
+export default function NotFound() {
   const router = useRouter();
   const [isDesktop, setIsDesktop] = useState(true);
   const milkSpillLargeRef = useRef(null);
@@ -157,13 +159,9 @@ const Custom404 = () => {
           </g>
         </svg>
         <div className="link">
-          <Button type="primary" onClick={() => router.push("/")}>
-            Back to Home
-          </Button>
+          <Button onClick={() => router.push("/")}>Back to Home</Button>
         </div>
       </div>
     </>
   );
-};
-
-export default Custom404;
+}

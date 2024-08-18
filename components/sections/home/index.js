@@ -4,7 +4,7 @@ import gsap from "gsap";
 import styles from "./Home.module.scss";
 import { MENULINKS, TYPED_STRINGS } from "../../../constants";
 import { Profiles } from "@/components/ui/profiles";
-import Button from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 const typedOptions = {
   strings: TYPED_STRINGS,
@@ -97,7 +97,7 @@ export const Home = () => {
           <Profiles />
         </div>
         <div className="staggered-reveal pt-4">
-          <Button href={`#${MENULINKS[4].ref}`} classes="link" type="primary">
+          <Button href={`#${MENULINKS[4].ref}`} className="link">
             Let&apos;s Talk
           </Button>
         </div>

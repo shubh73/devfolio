@@ -18,7 +18,7 @@ const Profile = ({ name, url }) => (
 );
 
 export const Profiles = () => (
-  <div className="inline-flex py-6 gap-6">
+  <div className="inline-flex pt-6 pb-4 gap-6">
     {SOCIAL_LINKS.map((socialLink) => (
       <Profile key={socialLink.name} {...socialLink} />
     ))}

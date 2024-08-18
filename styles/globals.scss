@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --white: 0 0% 100%;
+    --black: 0 0% 0%;
+    --purple: 266 100% 60%;
+    --red: 0 100% 41%;
+    --green: 150 100% 34%;
+    --indigo-light: 266 100% 67%;
+    --indigo-dark: 266 100% 50%;
+    --gray-light-1: 0 0% 94%;
+    --gray-light-2: 0 0% 86%;
+    --gray-light-3: 0 0% 67%;
+    --gray-light-4: 0 0% 54%;
+    --gray-dark-1: 270 2% 20%;
+    --gray-dark-2: 280 4% 14%;
+    --gray-dark-3: 276 8% 12%;
+    --gray-dark-4: 266 13% 10%;
+    --gray-dark-5: 270 22% 7%;
+  }
+}
+
 *,
 *::after,
 *::before {
@@ -58,7 +79,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme("colors.indigo.dark");
+  background: hsl(var(--indigo-dark));
   opacity: 1;
 }
 
@@ -173,8 +194,7 @@ input[type="checkbox"] {
       background: linear-gradient(
         to right,
         theme("colors.indigo.light"),
-        theme("colors.indigo.dark")
-      );
+        hsl(var(--indigo-dark))      );
       margin: auto 1px 0;
       height: 100%;
       width: 2px;
@@ -303,8 +323,7 @@ input[type="checkbox"] {
   background: linear-gradient(
     to right,
     theme("colors.indigo.light"),
-    theme("colors.indigo.dark")
-  );
+    hsl(var(--indigo-dark))  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -800,7 +819,7 @@ $bg: #f4faff;
 .primary__button__active {
   background-position: 98%;
   color: #fff;
-  box-shadow: 0 0 1rem theme("colors.indigo.dark");
+  box-shadow: 0 0 1rem hsl(var(--indigo-dark));
 }
 
 #mouth-frown {

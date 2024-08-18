@@ -7,19 +7,19 @@ import {
   TwitterIcon,
 } from "lucide-react";
 
-export const Icon = ({ name }) => {
+export const Icon = ({ name, className }) => {
   switch (name) {
     case "mail":
-      return <MailIcon />;
+      return <MailIcon className={className} />;
     case "github":
-      return <GithubIcon />;
+      return <GithubIcon className={className} />;
     case "linkedin":
-      return <LinkedinIcon />;
+      return <LinkedinIcon className={className} />;
     case "instagram":
-      return <InstagramIcon />;
+      return <InstagramIcon className={className} />;
     case "twitter":
-      return <TwitterIcon />;
+      return <TwitterIcon className={className} />;
     default:
-      return <ExternalLinkIcon />;
+      return <ExternalLinkIcon className={className} />;
   }
 };

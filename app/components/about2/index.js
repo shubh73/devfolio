@@ -3,10 +3,13 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useViewport } from "hooks/use-viewport";
 
-export const About2 = ({ clientHeight }) => {
+export const About2 = () => {
   const sectionRef = useRef(null);
   const quoteRef = useRef(null);
+
+  const { clientHeight } = useViewport();
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {

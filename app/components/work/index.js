@@ -6,9 +6,12 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { StickyScroll } from "./sticky-scroll";
 import { Tabs } from "./tabs";
 import { MENULINKS, WORK_CONTENTS } from "../../../constants";
+import { useViewport } from "hooks/use-viewport";
 
-export const Work = ({ isDesktop }) => {
+export const Work = () => {
   const sectionRef = useRef(null);
+
+  const { isDesktop } = useViewport();
 
   const tabItems = useMemo(
     () => [

@@ -7,7 +7,7 @@ import Fade from "react-reveal/Fade";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import mail from "./mailer";
-import styles from "./Contact.module.scss";
+import styles from "./contact.module.scss";
 import { MENULINKS } from "../../../constants";
 
 const filter = new Filter();

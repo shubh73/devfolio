@@ -3,10 +3,13 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useViewport } from "hooks/use-viewport";
 
-export const Collaboration = ({ clientHeight }) => {
+export const Collaboration = () => {
   const sectionRef = useRef(null);
   const quoteRef = useRef(null);
+
+  const { clientHeight } = useViewport();
 
   useEffect(() => {
     const smallScreen = document.body.clientWidth < 767;

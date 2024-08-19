@@ -58,31 +58,25 @@ html {
   }
 }
 
-// TODO: remove when migrated to app router
-body {
-  box-sizing: border-box;
-  @apply bg-black text-white overflow-x-hidden;
-}
+// ::-webkit-scrollbar {
+//   width: 0.4rem;
+// }
 
-::-webkit-scrollbar {
-  width: 0.4rem;
-}
+// ::-webkit-scrollbar-track {
+//   background: transparent;
+// }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+// ::-webkit-scrollbar-thumb {
+//   background: rgba(112, 0, 255, 0.75);
+//   opacity: 0.5;
+//   border-radius: 1rem;
+//   transition: all 0.2s;
+// }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(112, 0, 255, 0.75);
-  opacity: 0.5;
-  border-radius: 1rem;
-  transition: all 0.2s;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--indigo-dark));
-  opacity: 1;
-}
+// ::-webkit-scrollbar-thumb:hover {
+//   background: hsl(var(--indigo-dark));
+//   opacity: 1;
+// }
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
@@ -103,7 +97,7 @@ body {
 }
 
 .section-container {
-  @apply 2xl:container xl:px-20 md:px-12 px-4 mx-auto;
+  @apply mx-auto flex w-full items-center px-4 2xl:container md:px-12 xl:px-20;
 }
 
 a,
@@ -309,18 +303,6 @@ input[type="checkbox"] {
   }
 }
 
-.progress {
-  height: 0.1875rem;
-
-  .progress-bar {
-    height: 0.2rem;
-    transform-origin: left;
-    will-change: transform;
-    transform: scaleX(0);
-    @apply w-full bg-white;
-  }
-}
-
 .text-gradient {
   background: linear-gradient(
     to right,
@@ -333,7 +315,6 @@ input[type="checkbox"] {
 }
 
 @keyframes sound-bars-animation {
-  // 0% - 50% uses inherited properties
   50% {
     opacity: 0.2;
     transform: scaleY(0.2);
@@ -405,7 +386,9 @@ $bg: #f4faff;
               border-radius: 50%;
               left: 0;
               top: 20%;
-              transition: border 0.1s ease-in-out 1.6s, box-shadow 0.2s ease;
+              transition:
+                border 0.1s ease-in-out 1.6s,
+                box-shadow 0.2s ease;
             }
           }
           &:checked {
@@ -472,7 +455,9 @@ $bg: #f4faff;
         bottom: 10px;
         left: 18px;
         border-radius: 20px;
-        box-shadow: 0 -18px 0 0px #ffdeaa, 0px -36px 0 0px #ffdeaa;
+        box-shadow:
+          0 -18px 0 0px #ffdeaa,
+          0px -36px 0 0px #ffdeaa;
       }
     }
     &__accent-1 {
@@ -817,8 +802,4 @@ $bg: #f4faff;
       #f97822 68%
     );
   }
-}
-
-#mouth-frown {
-  visibility: hidden;
 }

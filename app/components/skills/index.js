@@ -10,24 +10,59 @@ import { MENULINKS, SKILLS } from "../../../constants";
 export const Skills = () => {
   const sectionRef = useRef(null);
 
+  // useLayoutEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     const tl = gsap
+  //       .timeline({ defaults: { ease: "none" } })
+  //       .from(
+  //         sectionRef.current.querySelectorAll(".staggered-reveal"),
+  //         { opacity: 0, duration: 0.5, stagger: 0.5 },
+  //         "<",
+  //       );
+
+  //     ScrollTrigger.create({
+  //       trigger: sectionRef.current.querySelector(".skills-wrapper"),
+  //       start: "top 80%",
+  //       end: "top 20%",
+  //       // start: "100px bottom",
+  //       // start: "-=1000",
+  //       // end: "center center",
+  //       scrub: 0.5,
+  //       animation: tl,
+  //       markers: true,
+  //     });
+  //   });
+
+  //   return () => ctx.revert();
+  // }, []);
+
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap
-        .timeline({ defaults: { ease: "none" } })
-        .from(
-          sectionRef.current.querySelectorAll(".staggered-reveal"),
-          { opacity: 0, duration: 0.5, stagger: 0.5 },
-          "<",
-        );
-
-      ScrollTrigger.create({
-        trigger: sectionRef.current.querySelector(".skills-wrapper"),
-        start: "100px bottom",
-        end: "center center",
-        scrub: 0,
-        animation: tl,
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          scrub: 0.5,
+          toggleActions: "play none none reverse",
+        },
       });
-    });
+
+      // tl.from(sectionRef.current.querySelectorAll(".staggered-reveal"), {
+      //   opacity: 0,
+      //   y: 50,
+      //   duration: 0.5,
+      //   stagger: 0.2,
+      // });
+
+      tl.from(sectionRef.current.querySelectorAll(".staggered-reveal"), {
+        opacity: 0.2, // Changed from 0 to 0.2 for a more subtle fade-in
+        y: 20, // Reduced from 50 to 20 for less dramatic movement
+        duration: 0.8, // Increased from 0.5 to 0.8 for smoother animation
+        stagger: 0.1, // Reduced from 0.2 to 0.1 for quicker staggering
+        ease: "power2.out",
+      });
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
@@ -36,9 +71,10 @@ export const Skills = () => {
     <section
       ref={sectionRef}
       id={MENULINKS[1].ref}
-      className="relative mt-44 w-full select-none"
+      // className="relative mt-44 w-full select-none"
+      className="section"
     >
-      <div className="section-container flex flex-col justify-center py-16">
+      <div className="flex flex-col justify-center py-16">
         <img
           src="/right-pattern.svg"
           alt=""

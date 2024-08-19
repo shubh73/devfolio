@@ -1,12 +1,14 @@
+"use client";
+
 /* eslint-disable @next/next/no-img-element */
 import { useState } from "react";
 import { Fade } from "react-reveal";
 import { Howl } from "howler";
-import { theme } from "tailwind.config";
-import { MENULINKS, METADATA } from "../../../constants";
-import { Profiles } from "@/components/ui/profiles";
-import { FooterBackground } from "./footer-background";
 import { Button } from "@/components/ui/button";
+import { Profiles } from "@/components/ui/profiles";
+import { Meteors } from "./meteors";
+import { MENULINKS, METADATA } from "../../../constants";
+import styles from "./footer.module.scss";
 
 export const Footer = () => {
   const [playbackRate, setPlaybackRate] = useState(0.75);
@@ -24,16 +26,23 @@ export const Footer = () => {
 
   return (
     <footer
-      className="w-full relative select-none bg-cover"
+      className="relative w-full select-none bg-cover"
       style={{
-        backgroundImage: `linear-gradient(to right, ${theme.colors.indigo.light}, ${theme.colors.indigo.dark})`,
+        backgroundImage:
+          "linear-gradient(to right, hsl(var(--indigo-light)), hsl(var(--indigo-dark)))",
       }}
     >
-      <FooterBackground />
+      <div className={styles.top}>
+        <Meteors />
+        <div className={styles.background}>
+          <div className={styles.background__one} />
+          <div className={styles.background__two} />
+        </div>
+      </div>
       <Fade bottom distance={"4rem"}>
-        <div className="w-full h-full pt-32">
-          <div className="section-container flex flex-col h-full justify-end z-10 items-center py-12">
-            <h1 className="font-medium text-3xl md:text-4xl text-center">
+        <div className="h-full w-full pt-32">
+          <div className="section-container z-10 flex h-full flex-col items-center justify-end py-12">
+            <h1 className="text-center text-3xl font-medium md:text-4xl">
               Feel free to connect on social media.
             </h1>
             <div className="text-center">
@@ -48,7 +57,7 @@ export const Footer = () => {
                 Let&apos;s Talk
               </Button>
             </div>
-            <p className="text-center text-white text-sm sm:text-base font-medium tracking-wide mt-8">
+            <p className="mt-8 text-center text-sm font-medium tracking-wide text-white sm:text-base">
               Developed with{" "}
               <button onClick={handleClick} className="link cursor-none">
                 <span className="block animate-bounce">❤️</span>

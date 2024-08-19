@@ -1,27 +1,23 @@
-import { useEffect, useRef, useState } from "react";
+"use client";
+
+import { useLayoutEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import gsap, { Power1, Circ } from "gsap";
-import { Cursor } from "@/components/ui/cursor";
-import { Button } from "@/components/ui/button";
+import { useViewport } from "hooks/use-viewport";
+import { Button } from "./button";
+import { Cursor } from "./cursor";
 
-const Custom404 = () => {
-  const router = useRouter();
-  const [isDesktop, setIsDesktop] = useState(true);
+export const MilkSpill = () => {
   const milkSpillLargeRef = useRef(null);
   const faceRef = useRef(null);
   const leftEyeRef = useRef(null);
   const rightEyeRef = useRef(null);
 
-  useEffect(() => {
-    const { orientation } = window;
+  const router = useRouter();
 
-    const result =
-      typeof orientation === "undefined" &&
-      navigator.userAgent.indexOf("IEMobile") === -1;
-    history.scrollRestoration = "manual";
+  const { isDesktop } = useViewport();
 
-    setIsDesktop(result);
-
+  useLayoutEffect(() => {
     // Milk Spill
     gsap.to(milkSpillLargeRef.current, {
       duration: 30,
@@ -62,7 +58,8 @@ const Custom404 = () => {
   return (
     <>
       <Cursor isDesktop={isDesktop} />
-      <div className="flex justify-center items-center flex-wrap h-screen">
+
+      <div className="flex h-screen flex-wrap items-center justify-center">
         <svg className="max-h-screen" viewBox="0 0 600 600">
           <g id="milk-spill" fill="#fff">
             <path
@@ -126,9 +123,10 @@ const Custom404 = () => {
               d="M312.9 191.5c0 .8-.6 1.5-1.4 1.6s-1.4-.5-1.4-1.3.6-1.5 1.4-1.6c.8-.1 1.4.5 1.4 1.3m5.6-.6c0 .8-.6 1.5-1.4 1.6-.8.1-1.4-.5-1.4-1.3s.6-1.5 1.4-1.6c.8-.1 1.4.4 1.4 1.3m5.7-.7c0 .8-.6 1.5-1.4 1.6-.8.1-1.4-.5-1.4-1.3s.6-1.5 1.4-1.6c.8-.1 1.4.5 1.4 1.3"
             />
           </g>
+
           <g id="milk-face" ref={faceRef}>
             <path
-              id="mouth"
+              id="mouth-frown"
               fill="none"
               stroke="#4f3e7c"
               strokeLinecap="round"
@@ -156,14 +154,10 @@ const Custom404 = () => {
             </g>
           </g>
         </svg>
-        <div className="link">
-          <Button type="primary" onClick={() => router.push("/")}>
-            Back to Home
-          </Button>
-        </div>
+        <Button className="link" onClick={() => router.push("/")}>
+          Back to Home
+        </Button>
       </div>
     </>
   );
 };
-
-export default Custom404;

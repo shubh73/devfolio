@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "utils/cn";
-import styles from "./Button.module.scss";
+import styles from "./button.module.scss";
 import PropTypes from "prop-types";
 
 export const Button = ({
@@ -20,7 +20,7 @@ export const Button = ({
       className={cn(
         styles[`${type}__button`],
         disabled && styles[`${type}__disabledButton`],
-        className
+        className,
       )}
       {...otherProps}
     >

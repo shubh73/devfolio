@@ -5,10 +5,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { MENULINKS, PROJECTS } from "../../../constants";
 import { ProjectCard } from "./project-card";
+import { useViewport } from "hooks/use-viewport";
 
-export const Projects = ({ isDesktop, clientHeight }) => {
+export const Projects = () => {
   const sectionRef = useRef(null);
   const sectionTitleRef = useRef(null);
+
+  const { isDesktop, clientHeight } = useViewport();
 
   useEffect(() => {
     let projectsScrollTrigger;

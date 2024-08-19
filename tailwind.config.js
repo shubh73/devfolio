@@ -1,11 +1,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: [
-    "./app/**/*.{js}",
-    "./pages/**/*.{js}",
-    "./components/**/*.{js}",
-  ],
+  content: ["./app/**/*.js", "./components/**/*.js"],
   theme: {
     screens: {
       xs: "475px",
@@ -45,9 +41,19 @@ module.exports = {
     },
     extend: {
       animation: {
+        "grow-horizontal":
+          "grow-horizontal 1.3s cubic-bezier(0.9, 0, 0.5, 0.9) 0.8s forwards",
         meteor: "meteor 5s linear infinite",
       },
       keyframes: {
+        "grow-horizontal": {
+          "0%": {
+            width: 0,
+          },
+          "100%": {
+            width: "98%",
+          },
+        },
         meteor: {
           "0%": {
             transform: "rotate(215deg) translateX(0)",

@@ -1,113 +1,81 @@
 "use client";
 
-import { useState, useEffect, useRef, useLayoutEffect } from "react";
-import Typed from "typed.js";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import { Profiles } from "@/components/ui/profiles";
 import { Button } from "@/components/ui/button";
-import styles from "./Home.module.scss";
-import { MENULINKS, TYPED_STRINGS } from "../../../constants";
-
-const typedOptions = {
-  strings: TYPED_STRINGS,
-  typeSpeed: 50,
-  startDelay: 1500,
-  backSpeed: 50,
-  backDelay: 8000,
-  loop: true,
-};
+import { Profiles } from "@/components/ui/profiles";
+import { Typewriter } from "./typewriter";
+import { MENULINKS } from "../../../constants";
+import { Lottie } from "./lottie";
 
 export const Home = () => {
-  const [lottie, setLottie] = useState(null);
-
   const sectionRef = useRef(null);
-  const typedElementRef = useRef(null);
   const lottieRef = useRef(null);
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      gsap
-        .timeline({ defaults: { ease: "none" } })
-        .to(sectionRef.current, { opacity: 1, duration: 2 })
-        .from(
+      const tl = gsap.timeline({
+        defaults: { ease: "power3.out" },
+      });
+
+      tl.fromTo(sectionRef.current, { opacity: 0 }, { opacity: 1, duration: 1 })
+        .fromTo(
           sectionRef.current.querySelectorAll(".staggered-reveal"),
-          { opacity: 0, duration: 0.5, stagger: 0.5 },
-          "<",
+          {
+            opacity: 0,
+            y: 20,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.2,
+          },
+          "-=0.5",
+        )
+        .fromTo(
+          lottieRef.current,
+          {
+            opacity: 0,
+            scale: 0.9,
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+          },
+          "-=0.5",
         );
     });
 
     return () => ctx.revert();
   }, []);
 
-  useEffect(() => {
-    const typed = new Typed(typedElementRef.current, typedOptions);
-
-    return () => typed.destroy();
-  }, [typedElementRef]);
-
-  useEffect(() => {
-    import("lottie-web").then((Lottie) => setLottie(Lottie.default));
-  }, []);
-
-  useEffect(() => {
-    if (lottie && lottieRef.current) {
-      const animation = lottie.loadAnimation({
-        container: lottieRef.current,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        animationData: require("../../../public/lottie/lottie.json"),
-      });
-
-      return () => animation.destroy();
-    }
-  }, [lottie]);
-
   return (
     <section
       ref={sectionRef}
       id={MENULINKS[0].ref}
-      className="relative mx-auto mb-24 flex min-h-screen w-full px-4 py-8 2xl:container md:items-center md:px-12 xl:px-20"
-      style={{ opacity: 0 }}
+      className="relative mx-auto min-h-screen w-full select-none justify-center px-4 pt-52 opacity-0 2xl:container md:flex md:flex-col md:px-12 md:pt-0 xl:px-20"
     >
-      <style global jsx>
-        {`
-          .typed-cursor {
-            font-size: 2rem;
-          }
-        `}
-      </style>
-      <div className="flex select-none flex-col pt-40 md:pt-0">
-        <h5
-          className={`${styles.intro} staggered-reveal font-mono font-medium text-indigo-light`}
-        >
-          Hi, my name is
-        </h5>
-        <h1 className={`${styles.heroName} text-6xl font-semibold text-white`}>
-          <span className={`relative ${styles.emphasize} staggered-reveal`}>
-            Shubh
-          </span>
-          <span className="staggered-reveal"> Porwal</span>
-        </h1>
-        <p>
-          <span
-            ref={typedElementRef}
-            className="staggered-reveal font-mono text-3xl leading-relaxed text-gray-light-3"
-          />
-        </p>
-        <div className="staggered-reveal">
-          <Profiles />
-        </div>
-        <div className="staggered-reveal pt-4">
-          <Button href={`#${MENULINKS[4].ref}`} className="link">
-            Let&apos;s Talk
-          </Button>
-        </div>
+      <h5 className="staggered-reveal pb-4 font-mono font-medium text-indigo-light">
+        Hi, my name is
+      </h5>
+      <h1 className="text-6xl font-semibold text-white">
+        <span className="after:animate-grow-horizontal staggered-reveal relative after:absolute after:bottom-3 after:left-0 after:h-[5px] after:w-full after:rounded-2xl after:bg-gradient-to-r after:from-indigo-light after:to-indigo-dark after:shadow-[0_0_1rem_theme(colors.indigo.dark)] after:content-[''] md:after:h-[7px]">
+          Shubh
+        </span>
+        <span className="staggered-reveal"> Porwal</span>
+      </h1>
+      <Typewriter className="staggered-reveal" />
+      <div className="staggered-reveal">
+        <Profiles />
       </div>
-      <div
-        className="invisible absolute bottom-1.5 w-4/12 lg:visible lg:right-12 2xl:right-16"
-        ref={lottieRef}
-      />
+      <div className="staggered-reveal pt-4">
+        <Button href={`#${MENULINKS[4].ref}`} className="link">
+          Let&apos;s Talk
+        </Button>
+      </div>
+      <Lottie ref={lottieRef} />
     </section>
   );
 };

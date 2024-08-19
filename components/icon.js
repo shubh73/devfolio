@@ -7,7 +7,7 @@ import {
   TwitterIcon,
 } from "lucide-react";
 
-export const Icon = ({ name, className }) => {
+export function Icon({ name, className }) {
   switch (name) {
     case "mail":
       return <MailIcon className={className} />;
@@ -22,4 +22,4 @@ export const Icon = ({ name, className }) => {
     default:
       return <ExternalLinkIcon className={className} />;
   }
-};
+}

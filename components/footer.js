@@ -28,7 +28,7 @@ export const Footer = () => {
   }, [heartClickSound]);
 
   return (
-    <footer className="relative w-full select-none bg-gradient-to-r from-indigo-light to-indigo-dark bg-cover">
+    <footer className="relative w-full bg-gradient-to-r from-indigo-light to-indigo-dark bg-cover">
       <div className="relative overflow-x-hidden pb-[270px] pt-[120px]">
         <Meteors />
         <div className="absolute bottom-0 h-[266px] w-full bg-[url('/footer/background.png')] bg-scroll bg-center bg-no-repeat">

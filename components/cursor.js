@@ -1,84 +1,70 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import gsap from "gsap";
-import { useViewport } from "hooks/use-viewport";
+import { useResponsive } from "hooks/use-responsive";
 
 export const Cursor = () => {
-  const cursor = useRef(null);
-  const follower = useRef(null);
+  const cursorRef = useRef(null);
+  const followerRef = useRef(null);
 
-  const { isDesktop } = useViewport();
+  const { isDesktop } = useResponsive();
+
+  const moveCircle = useCallback((e) => {
+    gsap.to([cursorRef.current, followerRef.current], {
+      x: e.clientX,
+      y: e.clientY,
+      duration: (_, target) => (target === cursorRef.current ? 0.1 : 0.3),
+      ease: "none",
+    });
+  }, []);
+
+  const handleHover = useCallback((scale) => {
+    gsap.to(cursorRef.current, {
+      scale: scale === "in" ? 0.5 : 1,
+      duration: 0.3,
+    });
+    gsap.to(followerRef.current, {
+      scale: scale === "in" ? 3 : 1,
+      duration: 0.3,
+    });
+  }, []);
 
   useEffect(() => {
-    if (isDesktop && document.body.clientWidth > 767) {
-      follower.current.classList.remove("hidden");
-      cursor.current.classList.remove("hidden");
+    if (!isDesktop) return;
 
-      const moveCircle = (e) => {
-        gsap.to(cursor.current, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.1,
-          ease: "none",
-        });
-        gsap.to(follower.current, {
-          x: e.clientX,
-          y: e.clientY,
-          duration: 0.3,
-          ease: "none",
-        });
-      };
+    followerRef.current.classList.remove("hidden");
+    cursorRef.current.classList.remove("hidden");
 
-      const hover = () => {
-        gsap.to(cursor.current, {
-          scale: 0.5,
-          duration: 0.3,
-        });
-        gsap.to(follower.current, {
-          scale: 3,
-          duration: 0.3,
-        });
-      };
+    document.addEventListener("mousemove", moveCircle);
+    const links = document.querySelectorAll(".link");
 
-      const unHover = () => {
-        gsap.to(cursor.current, {
-          scale: 1,
-          duration: 0.3,
-        });
-        gsap.to(follower.current, {
-          scale: 1,
-          duration: 0.3,
-        });
-      };
+    links.forEach((el) => {
+      el.addEventListener("mouseenter", () => handleHover("in"));
+      el.addEventListener("mouseleave", () => handleHover("out"));
+    });
 
-      document.addEventListener("mousemove", moveCircle);
+    return () => {
+      document.removeEventListener("mousemove", moveCircle);
 
-      document.querySelectorAll(".link").forEach((el) => {
-        el.addEventListener("mouseenter", hover);
-        el.addEventListener("mouseleave", unHover);
+      links.forEach((el) => {
+        el.removeEventListener("mouseenter", () => handleHover("in"));
+        el.removeEventListener("mouseleave", () => handleHover("out"));
       });
+    };
+  }, [handleHover, isDesktop, moveCircle]);
 
-      return () => {
-        document.removeEventListener("mousemove", moveCircle);
-
-        document.querySelectorAll(".link").forEach((el) => {
-          el.removeEventListener("mouseenter", hover);
-          el.removeEventListener("mouseleave", unHover);
-        });
-      };
-    }
-  }, [cursor, follower, isDesktop]);
+  if (!isDesktop) return null;
 
   return (
     <>
       <div
-        ref={cursor}
-        className="pointer-events-none fixed z-[99] hidden h-4 w-4 select-none rounded-full bg-white mix-blend-difference"
+        ref={cursorRef}
+        className="pointer-events-none fixed z-[99] hidden h-4 w-4 rounded-full bg-white mix-blend-difference"
       />
       <div
-        ref={follower}
-        className="pointer-events-none fixed -left-3 -top-3 z-[99] hidden h-10 w-10 select-none rounded-full border border-white/[0.2] bg-white/[0.02]"
+        ref={followerRef}
+        className="pointer-events-none fixed -left-3 -top-3 z-[99] hidden h-10 w-10 rounded-full border border-white/[0.2] bg-white/[0.02]"
       />
     </>
   );

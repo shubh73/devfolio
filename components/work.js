@@ -3,15 +3,15 @@
 import { useEffect, useMemo, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useResponsive } from "hooks/use-responsive";
 import { StickyScroll } from "./sticky-scroll";
 import { Tabs } from "./tabs";
 import { MENU_ITEMS, WORK_CONTENTS } from "../constants";
-import { useViewport } from "hooks/use-viewport";
 
 export const Work = () => {
   const sectionRef = useRef(null);
 
-  const { isDesktop } = useViewport();
+  const { isDesktop } = useResponsive();
 
   const tabItems = useMemo(
     () => [
@@ -77,7 +77,7 @@ export const Work = () => {
     <section
       ref={sectionRef}
       id={MENU_ITEMS[2].ref}
-      className="relative mx-auto flex w-full select-none items-center px-4 2xl:container md:px-12 xl:px-20"
+      className="relative mx-auto flex w-full items-center px-4 2xl:container md:px-12 xl:px-20"
     >
       <div className="work-wrapper flex w-full flex-col">
         <div className="flex flex-col">

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { ProjectCard } from "../components/project-card";
-import { useViewport } from "hooks/use-viewport";
+import { useResponsive } from "hooks/use-responsive";
 import { cn } from "utils/cn";
 import { MENU_ITEMS, PROJECTS } from "../constants";
 
@@ -104,7 +104,7 @@ import { MENU_ITEMS, PROJECTS } from "../constants";
 //       id={MENU_ITEMS[1].ref}
 //       className={`${
 //         isDesktop ? "min-h-screen overflow-hidden" : ""
-//       } section-container relative w-full transform-gpu select-none`}
+//       } section-container relative w-full transform-gpu`}
 //     >
 //       <div className="flex h-full flex-col justify-center">
 //         <div
@@ -149,7 +149,8 @@ export const Projects = () => {
   const sectionRef = useRef(null);
   const sectionTitleRef = useRef(null);
 
-  const { isDesktop, clientHeight } = useViewport();
+  // const { clientHeight } = useViewport();
+  const { isDesktop } = useResponsive();
 
   useEffect(() => {
     let projectsScrollTrigger;
@@ -228,7 +229,7 @@ export const Projects = () => {
       id={MENU_ITEMS[1].ref}
       className={cn(
         isDesktop && "min-h-screen",
-        "relative mx-auto flex w-full transform-gpu select-none items-center px-4 2xl:container md:px-12 xl:px-20",
+        "relative mx-auto flex w-full transform-gpu  items-center px-4 2xl:container md:px-12 xl:px-20",
       )}
     >
       <div className="flex h-full flex-col justify-center">
@@ -249,9 +250,10 @@ export const Projects = () => {
         </div>
         <div
           // className="project-wrapper no-scrollbar staggered-reveal mt-8 flex w-fit"
-          className={`${
-            clientHeight > 650 ? "mt-12" : "mt-8"
-          } project-wrapper no-scrollbar staggered-reveal flex w-fit`}
+          // className={`${
+          //   clientHeight > 650 ? "mt-12" : "mt-8"
+          // } project-wrapper no-scrollbar staggered-reveal flex w-fit`}
+          className="project-wrapper no-scrollbar staggered-reveal flex w-fit"
         >
           {PROJECTS.map((project, index) => (
             <ProjectCard

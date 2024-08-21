@@ -10,7 +10,7 @@ export const metadata = constructMetadata();
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={cn(calibre.variable, jetbrains_mono.variable)}>
-      <body className="scroll-smooth bg-black text-white antialiased">
+      <body className="scroll-smooth bg-black select-none text-white antialiased">
         {children}
       </body>
       <GoogleAnalytics gaId={GTAG} />

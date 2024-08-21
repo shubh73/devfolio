@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import VanillaTilt from "vanilla-tilt";
 import { cn } from "utils/cn";
+import { useResponsive } from "hooks/use-responsive";
 
 const tiltOptions = {
   max: 10,
@@ -14,9 +15,11 @@ const tiltOptions = {
   gyroscope: false,
 };
 
-export const ProjectCard = ({ project, className, isDesktop }) => {
+export const ProjectCard = ({ project, className }) => {
   const { name, image, blurImage, description, gradient, url } = project;
   const projectCardRef = useRef(null);
+
+  const { isDesktop } = useResponsive();
 
   useEffect(() => {
     VanillaTilt.init(projectCardRef.current, tiltOptions);

@@ -15,8 +15,8 @@ export default function Page() {
   return (
     <GSAPWrapper>
       <OverflowDebugger />
-      <Header />
       <Cursor />
+      <Header />
       {/* <main className="flex flex-col gap-96">
         <div
           role="img"

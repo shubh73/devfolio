@@ -3,7 +3,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import gsap, { Power1, Circ } from "gsap";
-import { useViewport } from "hooks/use-viewport";
+import { useResponsive } from "hooks/use-responsive";
 import { Cursor } from "./cursor";
 import { Button } from "./ui/button";
 
@@ -15,7 +15,7 @@ export const MilkSpill = () => {
 
   const router = useRouter();
 
-  const { isDesktop } = useViewport();
+  const { isDesktop } = useResponsive();
 
   useLayoutEffect(() => {
     // Milk Spill

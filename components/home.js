@@ -55,7 +55,7 @@ export const Home = () => {
     <section
       ref={sectionRef}
       id={MENU_ITEMS[0].ref}
-      className="relative mx-auto min-h-screen w-full select-none justify-center px-4 pt-52 opacity-0 2xl:container md:flex md:flex-col md:px-12 md:pt-0 xl:px-20"
+      className="relative mx-auto min-h-screen w-full justify-center px-4 pt-52 opacity-0 2xl:container md:flex md:flex-col md:px-12 md:pt-0 xl:px-20"
     >
       <h5 className="staggered-reveal py-4 font-mono font-medium text-indigo-light">
         Hi, my name is

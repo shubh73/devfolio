@@ -9,7 +9,9 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@next/third-parties": "^14.2.5",
+    "@radix-ui/react-slot": "^1.1.0",
     "bad-words": "^3.0.4",
+    "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.28",
     "gsap": "^3.12.5",

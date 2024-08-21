@@ -48,7 +48,7 @@ export const About1 = () => {
     <div className="relative">
       <section
         ref={sectionRef}
-        className="mx-auto flex w-full select-none items-center px-4 2xl:container md:px-12 xl:px-20"
+        className="mx-auto flex w-full items-center px-4 2xl:container md:px-12 xl:px-20"
       >
         <h1
           ref={quoteRef}

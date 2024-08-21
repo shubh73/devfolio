@@ -61,7 +61,7 @@ export const Nav = () => {
   return (
     <nav
       ref={navRef}
-      className="fixed top-0 z-50 w-full select-none bg-gradient-to-b from-black py-8 opacity-0 shadow-black transition-all duration-300"
+      className="fixed top-0 z-50 w-full bg-gradient-to-b from-black py-8 opacity-0 shadow-black transition-all duration-300"
     >
       <div className="mx-auto flex items-center justify-between px-4 2xl:container md:px-12 xl:px-20">
         <a href="#home" className="link">
@@ -76,7 +76,7 @@ export const Nav = () => {
         </a>
         <div className="outer-menu relative z-[1] flex items-center gap-8">
           <SoundBars />
-          <input
+          {/* <input
             ref={inputRef}
             aria-labelledby="menu"
             aria-label="menu"
@@ -87,7 +87,7 @@ export const Nav = () => {
           <div className="hamburger flex h-6 w-6 items-center justify-center">
             <div className="relative flex w-full flex-none items-center justify-center bg-white duration-300" />
           </div>
-          <HamburgerMenu />
+          <HamburgerMenu /> */}
         </div>
       </div>
     </nav>

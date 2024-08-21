@@ -3,13 +3,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-import { useViewport } from "hooks/use-viewport";
 
 export const Collaboration = () => {
   const sectionRef = useRef(null);
   const quoteRef = useRef(null);
 
-  const { clientHeight } = useViewport();
+  // const { clientHeight } = useViewport();
 
   useEffect(() => {
     const smallScreen = document.body.clientWidth < 767;
@@ -62,12 +61,13 @@ export const Collaboration = () => {
   return (
     <section
       ref={sectionRef}
-      className="mx-auto flex w-full select-none items-center px-4 2xl:container md:px-12 xl:px-20"
+      className="mx-auto flex w-full items-center px-4 2xl:container md:px-12 xl:px-20"
     >
       <div
-        className={`${
-          clientHeight > 650 ? "py-36" : "py-48"
-        } section-container flex flex-col`}
+        // className={`${
+        //   clientHeight > 650 ? "py-36" : "py-48"
+        // } section-container flex flex-col`}
+        className="section-container flex flex-col"
       >
         <p className="ui-left transform-gpu whitespace-nowrap text-6xl font-semibold opacity-40 sm:text-7xl">
           {Array(5)

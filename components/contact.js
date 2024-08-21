@@ -254,7 +254,7 @@ export const Contact = () => {
     <section
       ref={sectionRef}
       id={MENU_ITEMS[3].ref}
-      className="mt-30 relative w-full select-none bg-black pb-20 pt-20 sm:pt-10 md:pt-5 lg:pt-1"
+      className="mt-30 relative w-full bg-black pb-20 pt-20 sm:pt-10 md:pt-5 lg:pt-1"
     >
       <div>
         <Toaster toastOptions={toastOptions} />

@@ -41,11 +41,24 @@ module.exports = {
     },
     extend: {
       animation: {
+        "sound-bars": "sound-bars 2s infinite alternate-reverse",
         "grow-horizontal":
           "grow-horizontal 1.3s cubic-bezier(0.9, 0, 0.5, 0.9) 0.8s forwards",
         meteor: "meteor 5s linear infinite",
+        "slide-volkswagen": "slide 22s linear infinite",
+        "slide-cyclist": "slide 30s linear infinite",
       },
       keyframes: {
+        "sound-bars": {
+          "50%": {
+            opacity: 0.2,
+            transform: "scaleY(0.2)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "scaleY(1)",
+          },
+        },
         "grow-horizontal": {
           "0%": {
             width: 0,
@@ -65,6 +78,14 @@ module.exports = {
           "100%": {
             transform: "rotate(215deg) translateX(-500px)",
             opacity: 0,
+          },
+        },
+        slide: {
+          "0%": {
+            left: "-25%",
+          },
+          "100%": {
+            left: "100%",
           },
         },
       },

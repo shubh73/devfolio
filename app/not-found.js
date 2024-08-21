@@ -1,4 +1,4 @@
-import { MilkSpill } from "@/components/ui/milk-spill";
+import { MilkSpill } from "@/components/milk-spill";
 
 export default function NotFound() {
   return <MilkSpill />;

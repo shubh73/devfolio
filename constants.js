@@ -18,14 +18,10 @@ export const METADATA = {
   twitter: "@shubh731",
 };
 
-export const MENULINKS = [
+export const MENU_ITEMS = [
   {
     name: "Home",
     ref: "home",
-  },
-  {
-    name: "Skills",
-    ref: "skills",
   },
   {
     name: "Projects",
@@ -63,33 +59,6 @@ export const SOCIAL_LINKS = [
     url: "https://twitter.com/shubh731",
   },
 ];
-
-export const SKILLS = {
-  languagesAndTools: [
-    "html",
-    "css",
-    "javascript",
-    "typescript",
-    "sass",
-    "nodejs",
-    "webpack",
-    "vite",
-    "firebase",
-    "figma",
-    "tanstack-query",
-  ],
-  librariesAndFrameworks: [
-    "react",
-    "redux",
-    "nextjs",
-    "tailwindcss",
-    "styledcomponents",
-    "antdesign",
-    "chakra-ui",
-  ],
-  databases: ["mysql", "mongodb"],
-  other: ["git", "sanity-io"],
-};
 
 export const PROJECTS = [
   {

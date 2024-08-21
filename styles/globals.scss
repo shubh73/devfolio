@@ -21,40 +21,34 @@
     --gray-dark-4: 266 13% 10%;
     --gray-dark-5: 270 22% 7%;
   }
-}
 
-*,
-*::after,
-*::before {
-  padding: 0;
-  margin: 0;
-  -webkit-tap-highlight-color: rgba(112, 0, 255, 0.05);
-  cursor: none;
-}
+  *,
+  *::after,
+  *::before {
+    padding: 0;
+    margin: 0;
+    cursor: none;
+  }
 
-html {
-  scroll-behavior: smooth;
-  -ms-overflow-style: scrollbar;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-
-  @media (min-width: 320px) {
-    font-size: 14px;
-  }
-  @media (min-width: 768px) {
-    font-size: 15px;
-  }
-  @media (min-width: 1024px) {
-    font-size: 16px;
-  }
-  @media (min-width: 1536px) {
-    font-size: 18px;
-  }
-  @media (min-width: 1800px) {
-    font-size: 20px;
-  }
-  @media (min-width: 2000px) {
-    font-size: 22px;
+  html {
+    @media (min-width: 320px) {
+      font-size: 14px;
+    }
+    @media (min-width: 768px) {
+      font-size: 15px;
+    }
+    @media (min-width: 1024px) {
+      font-size: 16px;
+    }
+    @media (min-width: 1536px) {
+      font-size: 18px;
+    }
+    @media (min-width: 1800px) {
+      font-size: 20px;
+    }
+    @media (min-width: 2000px) {
+      font-size: 22px;
+    }
   }
 }
 
@@ -86,18 +80,22 @@ html {
   scrollbar-width: none; // Firefox
 }
 
-::-moz-selection {
-  background-color: hsl(var(--purple));
-  color: #fff;
-}
+// ::-moz-selection {
+//   background-color: hsl(var(--purple));
+//   color: #fff;
+// }
 
-::selection {
-  background-color: hsl(var(--purple));
-  color: #fff;
-}
+// ::selection {
+//   background-color: hsl(var(--purple));
+//   color: #fff;
+// }
 
 .section-container {
   @apply mx-auto flex w-full items-center px-4 2xl:container md:px-12 xl:px-20;
+}
+
+.text-gradient {
+  @apply bg-gradient-to-r from-indigo-light to-indigo-dark bg-clip-text text-transparent;
 }
 
 a,
@@ -140,15 +138,18 @@ input[type="checkbox"] {
           }
         }
       }
-      &:hover {
-        + {
-          .hamburger {
-            > div {
-              transform: rotate(225deg);
-            }
-          }
-        }
+      &:hover + .hamburger > div {
+        transform: rotate(225deg);
       }
+      // &:hover {
+      //   + {
+      //     .hamburger {
+      //       > div {
+      //         transform: rotate(225deg);
+      //       }
+      //     }
+      //   }
+      // }
     }
   }
 
@@ -173,6 +174,9 @@ input[type="checkbox"] {
         background: inherit;
         transition: all 0.4s ease;
       }
+      &:before {
+        top: -0.5rem;
+      }
       &:after {
         top: 0.5rem;
       }
@@ -180,7 +184,6 @@ input[type="checkbox"] {
   }
 
   .soundBars {
-    display: absolute;
     height: 24px;
     width: 24px;
     border-radius: 100%;
@@ -264,20 +267,15 @@ input[type="checkbox"] {
       border-radius: 50%;
       transition: all 0.4s ease;
       backface-visibility: hidden;
-      background: rgba(
-        0,
-        0,
-        0,
-        0.8
-      ); //check it out later when more text is on the background to change the opacity
-      // @supports not (backdrop-filter: blur(0.625rem)) {
-      //   background: rgba(0, 0, 0, 0.8);
-      // }
+      background: rgba(0, 0, 0, 0.8);
 
       > div {
         max-width: 90vw;
         transition: opacity 0.4s ease;
+        max-height: 100vh;
+        overflow-y: auto;
       }
+
       ul {
         li {
           a {
@@ -301,17 +299,6 @@ input[type="checkbox"] {
       }
     }
   }
-}
-
-.text-gradient {
-  background: linear-gradient(
-    to right,
-    hsl(var(--indigo-light)),
-    hsl(var(--indigo-dark))
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 @keyframes sound-bars-animation {

@@ -1,6 +1,7 @@
 import { GSAPWrapper } from "../components/gsap-wrapper";
-import { Header } from "@/components/header";
 import { Cursor } from "@/components/cursor";
+import { ScrollProgress } from "@/components/scroll-progress";
+import { Header } from "@/components/header";
 import { Home } from "@/components/home";
 import { About1 } from "@/components/about1";
 import { About2 } from "@/components/about2";
@@ -16,8 +17,9 @@ export default function Page() {
     <GSAPWrapper>
       <OverflowDebugger />
       <Cursor />
+      <ScrollProgress />
       <Header />
-      {/* <main className="flex flex-col gap-96">
+      <main className="flex flex-col gap-96">
         <div
           role="img"
           className="absolute -right-12 top-1/3 -z-10 flex rotate-90 items-center text-9xl text-gray-light-1/10"
@@ -26,13 +28,13 @@ export default function Page() {
         </div>
         <Home />
         <About1 />
-        <Projects />
+        {/* <Projects /> */}
         <About2 />
         <Work />
-        <Collaboration />
+        {/* <Collaboration /> */}
         <Contact />
       </main>
-      <Footer /> */}
+      <Footer />
     </GSAPWrapper>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { Button } from "@/components/ui/button";
 import { Profiles } from "./profiles";
@@ -55,27 +56,30 @@ export const Home = () => {
     <section
       ref={sectionRef}
       id={MENU_ITEMS[0].ref}
-      className="relative mx-auto min-h-screen w-full justify-center px-4 pt-52 opacity-0 2xl:container md:flex md:flex-col md:px-12 md:pt-0 xl:px-20"
+      className="relative min-h-screen w-full opacity-0 md:flex md:flex-col md:justify-center"
     >
-      <h5 className="staggered-reveal py-4 font-mono font-medium text-indigo-light">
-        Hi, my name is
-      </h5>
-      <h1 className="text-6xl font-semibold text-white">
-        <span className="staggered-reveal relative after:absolute after:bottom-3 after:left-0 after:h-[5px] after:w-full after:animate-grow-horizontal after:rounded-2xl after:bg-gradient-to-r after:from-indigo-light after:to-indigo-dark after:shadow-[0_0_1rem_theme(colors.indigo.dark)] after:content-[''] md:after:h-[7px]">
-          Shubh
-        </span>
-        <span className="staggered-reveal"> Porwal</span>
-      </h1>
-      <Typewriter className="staggered-reveal" />
-      <div className="staggered-reveal">
-        <Profiles />
-      </div>
-      <div className="staggered-reveal pt-4">
-        <Button href={`#${MENU_ITEMS[3].ref}`} className="link">
-          Let&apos;s Talk
-        </Button>
+      <div className="container mx-auto px-4 pt-44 md:pt-0">
+        <h5 className="staggered-reveal py-4 font-mono font-medium text-indigo-light">
+          Hi, my name is
+        </h5>
+        <h1 className="text-6xl font-semibold text-white">
+          <span className="staggered-reveal relative after:absolute after:bottom-3 after:left-0 after:h-[5px] after:w-full after:animate-grow-horizontal after:rounded-2xl after:bg-gradient-to-r after:from-indigo-light after:to-indigo-dark after:shadow-[0_0_1rem_theme(colors.indigo.dark)] after:content-[''] md:after:h-[7px]">
+            Shubh
+          </span>
+          <span className="staggered-reveal"> Porwal</span>
+        </h1>
+        <Typewriter className="staggered-reveal" />
+        <div className="staggered-reveal">
+          <Profiles />
+        </div>
+        <div className="staggered-reveal pt-3">
+          <Button asChild className="link" >
+            <Link href={`#${MENU_ITEMS[3].ref}`}>Let&apos;s Talk</Link>
+          </Button>
+        </div>
       </div>
       <Lottie ref={lottieRef} />
     </section>
   );
 };
+

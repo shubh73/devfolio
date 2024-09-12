@@ -54,8 +54,14 @@ export const StickyScroll = ({ contentItems }) => {
         )}
       />
 
-      <div className="absolute left-0 right-0 top-0 z-10 h-14 rounded-2xl bg-gradient-to-b from-black to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 z-10 h-14 rounded-2xl bg-gradient-to-t from-black to-transparent" />
+      <div
+        className="absolute left-0 right-0 top-0 h-14 rounded-2xl bg-gradient-to-b from-black to-transparent"
+        style={{ zIndex: 10 }}
+      />
+      <div
+        className="absolute bottom-0 left-0 right-0 h-14 rounded-2xl bg-gradient-to-t from-black to-transparent"
+        style={{ zIndex: 10 }}
+      />
 
       <motion.div
         ref={containerRef}

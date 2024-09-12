@@ -38,7 +38,10 @@ export const Footer = () => {
       </div>
       <Fade bottom distance="4rem">
         <div className="h-full w-full pt-32">
-          <div className="section-container z-10 flex h-full flex-col items-center justify-end py-12">
+          <div
+            className="section-container flex h-full flex-col items-center justify-end py-12"
+            style={{ zIndex: 10 }}
+          >
             <h1 className="text-center text-3xl font-medium md:text-4xl">
               Feel free to connect on social media.
             </h1>

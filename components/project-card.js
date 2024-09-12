@@ -56,11 +56,12 @@ export const ProjectCard = ({ project, className }) => {
           fill
           placeholder="blur"
           blurDataURL={blurImage}
-          className="absolute !right-8 top-0 z-0 !h-auto !w-[17rem] rounded-xl !object-contain shadow-xl"
+          className="absolute !right-8 top-0 !h-auto !w-[17rem] rounded-xl !object-contain shadow-xl"
           style={{
             transform: "rotate(-22.5deg)",
             left: "unset",
             bottom: "unset",
+            zIndex: 0,
           }}
         />
         <div
@@ -76,8 +77,8 @@ export const ProjectCard = ({ project, className }) => {
           }}
         />
         <h1
-          className="z-10 transform-gpu pl-2 text-3xl font-medium sm:text-4xl"
-          style={{ transform: "translateZ(3rem)" }}
+          className="transform-gpu pl-2 text-3xl font-medium sm:text-4xl"
+          style={{ transform: "translateZ(3rem)", zIndex: 10 }}
         >
           {name}
         </h1>
@@ -102,8 +103,8 @@ export const ProjectCard = ({ project, className }) => {
           </div>
         </div>
         <h2
-          className="z-10 transform-gpu text-lg font-medium tracking-wide text-white"
-          style={{ transform: "translateZ(0.8rem)" }}
+          className="transform-gpu text-lg font-medium tracking-wide text-white"
+          style={{ transform: "translateZ(0.8rem)", zIndex: 10 }}
         >
           {description}
         </h2>

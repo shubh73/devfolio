@@ -20,7 +20,12 @@ export const Lottie = forwardRef((props, ref) => {
     }
   }, [ref]);
 
-  return <div ref={ref} className="absolute bottom-0 right-0 w-2/3 md:w-2/6" />;
+  return (
+    <div
+      ref={ref}
+      className="absolute bottom-0 right-0 w-2/3 md:right-16 md:w-1/3"
+    />
+  );
 });
 
 Lottie.displayName = "Lottie";

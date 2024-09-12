@@ -29,7 +29,10 @@ export const Meteors = ({ number = 10 }) => {
           style={style}
         >
           {/* Meteor Tail */}
-          <div className="pointer-events-none absolute top-1/2 -z-10 h-[1px] w-[50px] -translate-y-1/2 bg-gradient-to-r from-white to-transparent" />
+          <div
+            className="pointer-events-none absolute top-1/2 h-[1px] w-[50px] -translate-y-1/2 bg-gradient-to-r from-white to-transparent"
+            style={{ zIndex: -10 }}
+          />
         </span>
       ))}
     </>

@@ -60,11 +60,13 @@ export const Cursor = () => {
     <>
       <div
         ref={cursorRef}
-        className="pointer-events-none fixed z-[99] hidden h-4 w-4 rounded-full bg-white mix-blend-difference"
+        className="pointer-events-none fixed hidden h-4 w-4 rounded-full bg-white mix-blend-difference"
+        style={{ zIndex: 99 }}
       />
       <div
         ref={followerRef}
-        className="pointer-events-none fixed -left-3 -top-3 z-[99] hidden h-10 w-10 rounded-full border border-white/[0.2] bg-white/[0.02]"
+        className="pointer-events-none fixed -left-3 -top-3 hidden h-10 w-10 rounded-full border border-white/[0.2] bg-white/[0.02]"
+        style={{ zIndex: 99 }}
       />
     </>
   );

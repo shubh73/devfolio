@@ -68,7 +68,7 @@ export const SOCIAL_LINKS = [
   },
   {
     name: "twitter",
-    url: "https://x.com/shubh731",
+    url: "https://x.com/shubhporwal24",
   },
 ];
 

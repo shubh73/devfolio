@@ -4,7 +4,7 @@ export const METADATA = {
   description:
     "Shubh Porwal is a passionate Frontend Engineer, dedicated to crafting aesthetic and modern apps that captivate and engage users.",
   siteUrl: "https://www.shubhporwal.me/",
-  twitterHandle: "@shubh731",
+  twitterHandle: "@shubhporwal24",
   keywords: [
     "Shubh Porwal",
     "Frontend Engineer",
@@ -68,7 +68,7 @@ export const SOCIAL_LINKS = [
   },
   {
     name: "twitter",
-    url: "https://twitter.com/shubh731",
+    url: "https://x.com/shubh731",
   },
 ];
 

@@ -8,14 +8,14 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
-    "@next/third-parties": "^14.2.3",
+    "@next/third-parties": "^14.2.13",
     "bad-words": "^3.0.4",
     "clsx": "^2.1.1",
     "framer-motion": "^11.1.9",
     "gsap": "^3.12.5",
     "howler": "^2.2.4",
     "lottie-web": "^5.12.2",
-    "next": "^14.2.3",
+    "next": "^14.2.13",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.15",
     "eslint": "8.1.0",
-    "eslint-config-next": "^14.0.1",
+    "eslint-config-next": "^14.2.13",
     "postcss": "^8.4.28",
     "tailwindcss": "^3.3.3"
   }

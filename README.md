@@ -36,3 +36,11 @@ You can always draw inspiration from the design, and no, you don't have to give 
 When people ask me whether they may use the code for their own website, I typically say yes as long as they provide proper attribution.
 
 Every time I learn that someone has duplicated my website without giving me credit, it saddens me. This version of my website took a significant amount of work to construct, and I'm pleased of it! All I ask is that you empathize with my situation and leave the footer unaltered.
+
+## Star History
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=shubh73/devfolio&type=Date&theme=dark" />
+  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=shubh73/devfolio&type=Date" />
+  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=shubh73/devfolio&type=Date" />
+</picture>

@@ -39,8 +39,4 @@ Every time I learn that someone has duplicated my website without giving me cred
 
 ## Star History
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=shubh73/devfolio&type=Date&theme=dark" />
-  <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=shubh73/devfolio&type=Date" />
-  <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=shubh73/devfolio&type=Date" />
-</picture>
+![star-history-202533](https://github.com/user-attachments/assets/4ad6b2f4-2462-4c92-b579-e09f1ad64214)

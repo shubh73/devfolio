@@ -39,4 +39,4 @@ Every time I learn that someone has duplicated my website without giving me cred
 
 ## Star History
 
-![star-history-202533](https://github.com/user-attachments/assets/4ad6b2f4-2462-4c92-b579-e09f1ad64214)
+[![Star History Chart](https://api.star-history.com/svg?repos=shubh73/devfolio&type=Date)](https://www.star-history.com/#shubh73/devfolio&Date)

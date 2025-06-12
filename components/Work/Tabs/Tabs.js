@@ -50,7 +50,7 @@ const TabsContent = ({ tabs, isHovering }) => {
             animate={{
               y: tab.value === tabs[0].value ? [0, 40, 0] : 0,
             }}
-            className="w-full h-full absolute top-0 left-0 mt-36 md:mt-32"
+            className="w-full h-full absolute top-0 left-0 mt-24 md:mt-20"
           >
             {tab.content}
           </motion.div>

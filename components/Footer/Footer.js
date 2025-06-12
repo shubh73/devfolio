@@ -61,7 +61,7 @@ const Footer = () => {
       <img
         src="/footer-curve.svg"
         className="w-full rotate-180"
-        alt=""
+        alt="footer curve"
         loading="eager"
         height={180}
       />

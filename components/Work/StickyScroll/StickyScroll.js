@@ -3,6 +3,14 @@ import { useMotionValueEvent, useScroll, motion } from "framer-motion";
 import DotPattern from "../DotPattern/DotPattern";
 import { cn } from "utils/cn";
 
+const backgroundColors = ["#000000"];
+
+const linearGradients = [
+  "linear-gradient(to bottom right, #ef008f, #6ec3f4)",
+  "linear-gradient(to bottom right, #6ec3f4, #7038ff)",
+  "linear-gradient(to bottom right, #7038ff, #c9c9c9)",
+];
+
 const StickyScroll = ({ contentItems }) => {
   const [activeCard, setActiveCard] = useState(0);
   const containerRef = useRef(null);
@@ -32,13 +40,6 @@ const StickyScroll = ({ contentItems }) => {
     setActiveCard(closestBreakpointIndex);
   });
 
-  const backgroundColors = ["#000000"];
-  const linearGradients = [
-    "linear-gradient(to bottom right, #ef008f, #6ec3f4)",
-    "linear-gradient(to bottom right, #6ec3f4, #7038ff)",
-    "linear-gradient(to bottom right, #7038ff, #c9c9c9)",
-  ];
-
   return (
     <div className="relative">
       <DotPattern
@@ -61,7 +62,7 @@ const StickyScroll = ({ contentItems }) => {
           backgroundColor:
             backgroundColors[activeCard % backgroundColors.length],
         }}
-        className="h-[22rem] flex justify-center space-x-10 p-4 rounded-2xl outline outline-1 outline-gray-dark-1 overflow-y-auto no-scrollbar"
+        className="h-[28rem] flex justify-center space-x-10 p-4 rounded-2xl outline outline-1 outline-gray-dark-1 overflow-y-auto no-scrollbar"
       >
         <div className="flex items-start px-4">
           <div className="max-w-2xl">
@@ -99,7 +100,7 @@ const StickyScroll = ({ contentItems }) => {
             backgroundImage:
               linearGradients[activeCard % linearGradients.length],
           }}
-          className="hidden lg:block h-60 w-80 rounded-md bg-white sticky top-10 overflow-hidden"
+          className="hidden lg:block h-60 w-80 rounded-xl bg-white sticky top-10 overflow-hidden"
         >
           {contentItems[activeCard].content ?? null}
         </motion.div>

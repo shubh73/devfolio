@@ -139,52 +139,39 @@ export const PROJECTS = [
   },
 ];
 
-// export const WORK = [
-//   {
-//     id: 1,
-//     company: "Dukaan",
-//     title: "Frontend Developer",
-//     location: "Bangalore, Karnataka",
-//     range: "December - Current",
-//     responsibilities: [
-//       "Led creation of a captivating cross-platform e-commerce solution.",
-//       "Enhanced UX with gamification and personalized push notifications ensuring an ever-improving shopping journey.",
-//       "The app boasts a DAU base of 32k and an extensive MAU count of 180k.",
-//     ],
-//     url: "https://mydukaan.io/",
-//     video: "/work/dukaan.mp4",
-//   },
-//   {
-//     id: 2,
-//     company: "Aviate",
-//     title: "Frontend Developer Intern",
-//     location: "Goa",
-//     range: "May - October 2022",
-//     responsibilities: [
-//       "Built their flagship product Q-Rate, a voice-based applicant screening platform.",
-//       "Developed pixel-perfect responsive web applications achieving daily traffic of 1000-2000 users.",
-//       "Successfully rolled out an error-logging and bug reporting system that cut user-reported bugs by 30%.",
-//     ],
-//     url: "https://www.aviate.jobs/",
-//     video: "/work/aviate.mp4",
-//   },
-//   {
-//     id: 3,
-//     company: "Spacenos",
-//     title: "Web Developer Intern",
-//     location: "Bangalore, Karnataka",
-//     range: "September - December 2021",
-//     responsibilities: [
-//       "Led the Full Stack revamp on the Admin Portal.",
-//       "Developed app integration with REST APIs, Google Maps, User Auth, Stripe and other libraries.",
-//       "Implemented CRUD features for all the services and providers.",
-//     ],
-//     url: "https://spacenos.com/",
-//     video: "/work/spacenos.mp4",
-//   },
-// ];
-
 export const WORK_CONTENTS = {
+  GRAPEVINE: [
+    {
+      title: "Grapevine",
+      description:
+        "Grapevine is your anonymous office chat, letting coworkers speak openly, share gossip and connect without filters. Building on that same belief, Round1 AI brings it to hiring using AI-driven interviews to replace guesswork with genuine and meaningful conversations.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white px-4">
+          Connect anonymously. Share freely.
+        </div>
+      ),
+    },
+    {
+      title: "Pioneering",
+      description:
+        "Hiring was broken — manual, biased, and slow. We launched Round1 AI to fix that: authentic voice interviews, built-in bias checks and real-time insights. Today, it powers thousands of interviews each week, letting teams hire smarter, faster and fairer.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white px-4">
+          Senior Frontend Engineer
+        </div>
+      ),
+    },
+    {
+      title: "Elevate",
+      description:
+        "The early web app struggled with slow performance and zero retention. I rebuilt it from the ground up with a sleek UI, faster load times and SEO-optimized. Then seeded a rich content layer to spark discovery. The payoff? 6x more impressions and 10x the organic installs all without ads, just momentum.",
+      content: (
+        <div className="h-full w-full flex items-center justify-center text-white px-4">
+          Frontend Engineer
+        </div>
+      ),
+    },
+  ],
   DUKAAN: [
     {
       title: "Dukaan",
@@ -227,50 +214,50 @@ export const WORK_CONTENTS = {
       ),
     },
   ],
-  AVIATE: [
-    {
-      title: "Aviate",
-      description:
-        "Aviate is a preparation and mentorship platform for job-seekers that are seeking non-technical roles across top companies",
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Finding the right job isn&apos;t fate, it&apos;s navigation
-        </div>
-      ),
-    },
-    {
-      title: "Innovation",
-      description:
-        "I spearheaded the development of Q-Rate, their flagship product, a voice-based applicant screening platform. Moreover, I took initiatives to enhance user engagement and drive substantial increases in daily traffic. Additionally, I implemented an error-logging and bug reporting system, significantly diminishing user-reported bugs.",
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Frontend Developer Intern
-        </div>
-      ),
-    },
-  ],
-  SPACENOS: [
-    {
-      title: "Spacenos",
-      description:
-        "A dynamic startup dedicated to creating innovative products that make the world a better place.",
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white px-4">
-          We build apps that solve problems for the next billion people
-        </div>
-      ),
-    },
-    {
-      title: "Trailblazing",
-      description:
-        "I led the comprehensive overhaul of the Admin Portal, implementing CRUD features for all services and providers. Additionally, I architected a feature enabling precise customer location tracking and delivering insightful usage statistics. Through optimized and compressed file serving, I catalyzed a remarkable Yx increase in page speed, resulting in a X% boost in customer retention.",
-      content: (
-        <div className="h-full w-full flex items-center justify-center text-white px-4">
-          Web Developer Intern
-        </div>
-      ),
-    },
-  ],
+  // AVIATE: [
+  //   {
+  //     title: "Aviate",
+  //     description:
+  //       "Aviate is a preparation and mentorship platform for job-seekers that are seeking non-technical roles across top companies",
+  //     content: (
+  //       <div className="h-full w-full flex items-center justify-center text-white px-4">
+  //         Finding the right job isn&apos;t fate, it&apos;s navigation
+  //       </div>
+  //     ),
+  //   },
+  //   {
+  //     title: "Innovation",
+  //     description:
+  //       "I spearheaded the development of Q-Rate, their flagship product, a voice-based applicant screening platform. Moreover, I took initiatives to enhance user engagement and drive substantial increases in daily traffic. Additionally, I implemented an error-logging and bug reporting system, significantly diminishing user-reported bugs.",
+  //     content: (
+  //       <div className="h-full w-full flex items-center justify-center text-white px-4">
+  //         Frontend Developer Intern
+  //       </div>
+  //     ),
+  //   },
+  // ],
+  // SPACENOS: [
+  //   {
+  //     title: "Spacenos",
+  //     description:
+  //       "A dynamic startup dedicated to creating innovative products that make the world a better place.",
+  //     content: (
+  //       <div className="h-full w-full flex items-center justify-center text-white px-4">
+  //         We build apps that solve problems for the next billion people
+  //       </div>
+  //     ),
+  //   },
+  //   {
+  //     title: "Trailblazing",
+  //     description:
+  //       "I led the comprehensive overhaul of the Admin Portal, implementing CRUD features for all services and providers. Additionally, I architected a feature enabling precise customer location tracking and delivering insightful usage statistics. Through optimized and compressed file serving, I catalyzed a remarkable Yx increase in page speed, resulting in a X% boost in customer retention.",
+  //     content: (
+  //       <div className="h-full w-full flex items-center justify-center text-white px-4">
+  //         Web Developer Intern
+  //       </div>
+  //     ),
+  //   },
+  // ],
 };
 
 export const GTAG = "G-5HCTL2TJ5W";

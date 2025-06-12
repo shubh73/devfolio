@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Tabs from "./Tabs/Tabs";
@@ -11,32 +11,22 @@ const Work = ({ isDesktop }) => {
   const tabItems = useMemo(
     () => [
       {
+        title: "Grapevine",
+        value: "grapevine",
+        content: (
+          <StickyScroll
+            isDesktop={isDesktop}
+            contentItems={WORK_CONTENTS.GRAPEVINE}
+          />
+        ),
+      },
+      {
         title: "Dukaan",
         value: "dukaan",
         content: (
           <StickyScroll
             isDesktop={isDesktop}
             contentItems={WORK_CONTENTS.DUKAAN}
-          />
-        ),
-      },
-      {
-        title: "Aviate",
-        value: "Aviate",
-        content: (
-          <StickyScroll
-            isDesktop={isDesktop}
-            contentItems={WORK_CONTENTS.AVIATE}
-          />
-        ),
-      },
-      {
-        title: "Spacenos",
-        value: "spacenos",
-        content: (
-          <StickyScroll
-            isDesktop={isDesktop}
-            contentItems={WORK_CONTENTS.SPACENOS}
           />
         ),
       },
@@ -72,13 +62,14 @@ const Work = ({ isDesktop }) => {
       id={MENULINKS[3].ref}
       className="w-full relative select-none xs:mt-40 sm:mt-72 mb-96"
     >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/left-pattern.svg"
         className="absolute hidden left-0 -top-1/4 w-1/12 max-w-xs md:block"
         loading="lazy"
         height={700}
         width={320}
-        alt=""
+        alt="left pattern"
       />
       <div className="section-container py-16 flex flex-col justify-center">
         <div className="flex flex-col work-wrapper">

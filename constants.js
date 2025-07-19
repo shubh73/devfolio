@@ -8,7 +8,7 @@ export const METADATA = {
   keywords: [
     "Shubh Porwal",
     "Frontend Engineer",
-    "React Native Developer",
+    "React Native Engineer",
     "Software Engineer",
     "Portfolio",
     "Devfolio",
@@ -44,7 +44,7 @@ export const MENULINKS = [
 ];
 
 export const TYPED_STRINGS = [
-  "A pragmatic Frontend Developer",
+  "A pragmatic Frontend Engineer",
   "I build things for the web",
   "I create aesthetic and modern apps",
 ];
@@ -100,6 +100,16 @@ export const SKILLS = {
 };
 
 export const PROJECTS = [
+  {
+    name: "React Native Directory",
+    image: "/projects/airbnb.webp",
+    blurImage: "/projects/blur/airbnb-blur.webp",
+    description:
+      "Quickly search and filter React Native libraries from Raycast 🔌",
+    gradient: ["#F14658", "#DC2537"],
+    url: "https://shubh73-airbnb.vercel.app/",
+    tech: ["typescript", "react", "raycast"],
+  },
   {
     name: "Airbnb",
     image: "/projects/airbnb.webp",

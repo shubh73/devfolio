@@ -3,24 +3,26 @@ import Image from "next/image";
 import VanillaTilt from "vanilla-tilt";
 import styles from "./ProjectTile.module.scss";
 
+const tiltOptions = {
+  max: 10,
+  speed: 400,
+  glare: true,
+  "max-glare": 0.2,
+  gyroscope: false,
+};
+
 const ProjectTile = ({ project, classes, isDesktop }) => {
-  const { name, image, blurImage, description, gradient, url, tech } = project;
   const projectCard = useRef(null);
+
+  const { name, image, blurImage, description, gradient, url, tech } = project;
+
   let additionalClasses = "";
   if (classes) {
     additionalClasses = classes;
   }
 
-  const options = {
-    max: 10,
-    speed: 400,
-    glare: true,
-    "max-glare": 0.2,
-    gyroscope: false,
-  };
-
   useEffect(() => {
-    VanillaTilt.init(projectCard.current, options);
+    VanillaTilt.init(projectCard.current, tiltOptions);
   }, [projectCard]);
 
   return (
@@ -42,6 +44,7 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
           background: `linear-gradient(90deg, ${gradient[0]} 0%, ${gradient[1]} 100%)`,
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/project-bg.svg"
           alt="project"
@@ -80,6 +83,7 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
         >
           <div className="flex flex-col pb-8">
             {project.tech.map((el, i) => (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 className={`${i % 2 === 0 && "ml-16"} mb-4`}
                 src={`/projects/tech/${el}.svg`}

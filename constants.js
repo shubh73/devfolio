@@ -100,16 +100,16 @@ export const SKILLS = {
 };
 
 export const PROJECTS = [
-  {
-    name: "React Native Directory",
-    image: "/projects/airbnb.webp",
-    blurImage: "/projects/blur/airbnb-blur.webp",
-    description:
-      "Quickly search and filter React Native libraries from Raycast 🔌",
-    gradient: ["#F14658", "#DC2537"],
-    url: "https://shubh73-airbnb.vercel.app/",
-    tech: ["typescript", "react", "raycast"],
-  },
+  // {
+  //   name: "React Native Directory",
+  //   image: "/projects/react-native-directory.webp",
+  //   blurImage: "/projects/blur/react-native-directory.webp",
+  //   description:
+  //     "Quickly search and filter React Native libraries from Raycast 🔌",
+  //   gradient: ["#F14658", "#DC2537"],
+  //   url: "https://www.raycast.com/shubh_porwal/react-native-directory",
+  //   tech: ["typescript", "react", "raycast"],
+  // },
   {
     name: "Airbnb",
     image: "/projects/airbnb.webp",

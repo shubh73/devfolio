@@ -62,7 +62,7 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
         />
         {!isDesktop && (
           <div
-            className="absolute bottom-0 left-0 w-full h-32"
+            className="absolute bottom-0 left-0 w-full h-20"
             style={{
               background: `linear-gradient(0deg, ${gradient[0]} 10%, rgba(0,0,0,0) 100%)`,
             }}

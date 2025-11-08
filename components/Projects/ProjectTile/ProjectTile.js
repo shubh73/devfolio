@@ -42,24 +42,32 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
     >
       <div
         ref={projectCard}
-        className={`${styles.projectTile} rounded-3xl relative p-6 flex flex-col justify-between max-w-full `}
+        className={`${styles.projectTile} rounded-3xl relative p-6 flex flex-col justify-between max-w-full`}
         style={{
           background: `linear-gradient(90deg, ${gradient[0]} 0%, ${gradient[1]} 100%)`,
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src="/project-bg.svg"
           alt="project"
-          className="absolute w-full h-full top-0 left-0 object-cover opacity-20"
+          className="absolute w-full h-full top-0 left-0 opacity-20 rounded-3xl"
+          fill
         />
         <Image
           src={image}
           alt={name}
           placeholder="blur"
           fill
-          className={`${styles.projectImage}`}
+          className={styles.projectImage}
         />
+        {!isDesktop && (
+          <div
+            className="absolute bottom-0 left-0 w-full h-32"
+            style={{
+              background: `linear-gradient(0deg, ${gradient[0]} 10%, rgba(0,0,0,0) 100%)`,
+            }}
+          />
+        )}
         <h1
           className="font-medium text-2xl sm:text-3xl z-10 pl-2 pt-2 transform-gpu"
           style={{ transform: "translateZ(3rem)" }}
@@ -73,8 +81,7 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
         >
           <div className="flex flex-col pb-8">
             {tech.map((el, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 className={`${i % 2 === 0 && "ml-16"} mb-4`}
                 src={`/projects/tech/${el}.svg`}
                 alt={el}

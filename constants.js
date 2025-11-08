@@ -84,9 +84,10 @@ export const SKILLS = {
     "vite",
     "firebase",
     "figma",
-    "tanstack-query",
+    "tanstack",
   ],
   librariesAndFrameworks: [
+    "expo",
     "react",
     "redux",
     "nextjs",
@@ -96,56 +97,89 @@ export const SKILLS = {
     "chakra-ui",
   ],
   databases: ["mysql", "mongodb"],
-  other: ["git", "sanity-io"],
+  other: ["git", "cursor", "sanity"],
 };
 
 export const PROJECTS = [
-  // {
-  //   name: "React Native Directory",
-  //   image: "/projects/react-native-directory.webp",
-  //   blurImage: "/projects/blur/react-native-directory.webp",
-  //   description:
-  //     "Quickly search and filter React Native libraries from Raycast 🔌",
-  //   gradient: ["#F14658", "#DC2537"],
-  //   url: "https://www.raycast.com/shubh_porwal/react-native-directory",
-  //   tech: ["typescript", "react", "raycast"],
-  // },
+  {
+    name: "NextBoss",
+    imageKey: "nextboss",
+    description: "Get hired through DMs not resumes 🤝",
+    gradient: ["#FF69B4", "#FFB6C1"], // hot pink to light pink (cherry blossom inspired)
+    // url: "https://nextboss.in",
+    tech: ["typescript", "react", "expo", "react-query"],
+  },
+  {
+    name: "ReadyAI",
+    imageKey: "ready-ai",
+    description: "AI that gets you interview ready 🎯",
+    gradient: ["#F4D03F", "#58D68D"], // warm gold to fresh green
+    url: "https://play.google.com/store/apps/details?id=com.app.readyai",
+    tech: ["typescript", "react"],
+  },
+  {
+    name: "Grapevine Round1 AI",
+    imageKey: "round1",
+    description: "Ace your round one in 9 minutes  💼",
+    gradient: ["#5D4037", "#8D6E63"], // dark brown to medium brown
+    url: "https://play.google.com/store/apps/details?id=com.app.gvine",
+    tech: ["typescript", "react", "react-query"],
+  },
+  {
+    name: "React Native Directory",
+    imageKey: "react-native-directory",
+    description: "Search & filter React Native libraries via Raycast ⌨️",
+    gradient: ["#000000", "#1A1A1A"], // pure black to dark gray
+    url: "https://www.raycast.com/shubh_porwal/react-native-directory",
+    tech: ["typescript", "react", "expo", "raycast"],
+  },
+  {
+    name: "Bot9",
+    imageKey: "bot9",
+    description: "Automate support with AI 🤖",
+    gradient: ["#3F51B5", "#7986CB"], // indigo to medium blue
+    url: "https://bot9.ai/",
+    tech: ["typescript", "react", "nextjs", "tailwindcss"],
+  },
+  {
+    name: "Dukaan",
+    imageKey: "dukaan",
+    description: "Shopify for India 🛍️",
+    gradient: ["#1976D2", "#1565C0"], // material blue to deep blue
+    url: "https://play.google.com/store/apps/details?id=com.dukaan.app",
+    tech: ["typescript", "react", "firebase", "tailwindcss", "react-query"],
+  },
   {
     name: "Airbnb",
-    image: "/projects/airbnb.webp",
-    blurImage: "/projects/blur/airbnb-blur.webp",
-    description: "Airbnb UI clone using NextJS + Tailwind CSS 🛏️",
-    gradient: ["#F14658", "#DC2537"],
+    imageKey: "airbnb",
+    description: "Built with NextJS + Tailwind CSS 🛏️",
+    gradient: ["#1F2937", "#6B7280"], // dark gray to medium gray
     url: "https://shubh73-airbnb.vercel.app/",
-    tech: ["react", "nextjs", "tailwindcss", "mapbox"],
+    tech: ["javascript", "react", "nextjs", "mapbox", "tailwindcss"],
   },
   {
     name: "Medium",
-    image: "/projects/medium.webp",
-    blurImage: "/projects/blur/medium-blur.webp",
-    description: "Medium UI clone using NextJS + Tailwind CSS ✍🏻",
-    gradient: ["#FFA62E", "#EA4D2C"],
+    imageKey: "medium",
+    description: "Built with NextJS + Tailwind CSS ✍🏻",
+    gradient: ["#FF9800", "#F57C00"], // warm orange to deep orange
     url: "https://shubh73-medium.vercel.app/",
-    tech: ["typescript", "react", "nextjs", "tailwindcss", "sanity.io"],
+    tech: ["typescript", "react", "nextjs", "tailwindcss", "sanity"],
   },
   {
     name: "Inshorts",
-    image: "/projects/inshorts.webp",
-    blurImage: "/projects/blur/airbnb-blur.webp",
-    description:
-      "Conversational Voice Controlled React News Application using Alan AI 🎙",
-    gradient: ["#000066", "#6699FF"],
+    imageKey: "inshorts",
+    description: "Voice-enabled news using Alan AI 🎙",
+    gradient: ["#6366F1", "#4F46E5"], // indigo to deep indigo
     url: "https://shubh73-inshorts.netlify.app/",
-    tech: ["react", "chakra-ui", "alan"],
+    tech: ["javascript", "react", "chakra-ui", "alan"],
   },
   {
     name: "Tesla",
-    image: "/projects/tesla.webp",
-    blurImage: "/projects/blur/tesla-blur.webp",
-    description: "A Tesla React Native App 🏎️",
-    gradient: ["#142D46", "#2E4964"],
+    imageKey: "tesla",
+    description: "Built with Expo 🏎️",
+    gradient: ["#0F172A", "#1E293B"], // midnight blue to dark slate (electric/tech feel)
     url: "https://github.com/shubh73/tesla",
-    tech: ["react"],
+    tech: ["javascript", "expo"],
   },
 ];
 

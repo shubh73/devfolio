@@ -2,9 +2,10 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import VanillaTilt from "vanilla-tilt";
 import styles from "./ProjectTile.module.scss";
+import { PROJECT_IMAGES } from "../images";
 
 const tiltOptions = {
-  max: 10,
+  max: 5,
   speed: 400,
   glare: true,
   "max-glare": 0.2,
@@ -14,7 +15,9 @@ const tiltOptions = {
 const ProjectTile = ({ project, classes, isDesktop }) => {
   const projectCard = useRef(null);
 
-  const { name, image, blurImage, description, gradient, url, tech } = project;
+  const { name, imageKey, description, gradient, url, tech } = project;
+
+  const image = PROJECT_IMAGES[imageKey];
 
   let additionalClasses = "";
   if (classes) {
@@ -28,8 +31,7 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
   return (
     <a
       href={url}
-      className={`overflow-hidden rounded-3xl ${additionalClasses}`}
-      ref={projectCard}
+      className={`overflow-hidden rounded-3xl snap-start link ${additionalClasses}`}
       target="_blank"
       rel="noreferrer"
       style={{
@@ -39,7 +41,8 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
       }}
     >
       <div
-        className={`h-[25rem] w-[38rem] bg-black ${styles.ProjectTile} rounded-3xl relative p-6 flex flex-col justify-between max-w-full`}
+        ref={projectCard}
+        className={`${styles.projectTile} rounded-3xl relative p-6 flex flex-col justify-between max-w-full `}
         style={{
           background: `linear-gradient(90deg, ${gradient[0]} 0%, ${gradient[1]} 100%)`,
         }}
@@ -48,30 +51,17 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
         <img
           src="/project-bg.svg"
           alt="project"
-          className="absolute w-full h-full top-0 left-0 object-cover opacity-30"
+          className="absolute w-full h-full top-0 left-0 object-cover opacity-20"
         />
         <Image
           src={image}
           alt={name}
-          fill
           placeholder="blur"
-          blurDataURL={blurImage}
-          className={`${styles.projectImage} z-0`}
-        />
-        <div
-          className="absolute top-0 left-0 w-full h-20"
-          style={{
-            background: `linear-gradient(180deg, ${gradient[0]} 0%, rgba(0,0,0,0) 100%)`,
-          }}
-        />
-        <div
-          className="absolute bottom-0 left-0 w-full h-32"
-          style={{
-            background: `linear-gradient(0deg, ${gradient[0]} 10%, rgba(0,0,0,0) 100%)`,
-          }}
+          fill
+          className={`${styles.projectImage}`}
         />
         <h1
-          className="font-medium text-3xl sm:text-4xl z-10 pl-2 transform-gpu"
+          className="font-medium text-2xl sm:text-3xl z-10 pl-2 pt-2 transform-gpu"
           style={{ transform: "translateZ(3rem)" }}
         >
           {name}
@@ -82,7 +72,7 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
           `}
         >
           <div className="flex flex-col pb-8">
-            {project.tech.map((el, i) => (
+            {tech.map((el, i) => (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 className={`${i % 2 === 0 && "ml-16"} mb-4`}

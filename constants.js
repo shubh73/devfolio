@@ -150,6 +150,14 @@ export const PROJECTS = [
     tech: ["typescript", "react", "firebase", "tailwindcss", "react-query"],
   },
   {
+    name: "Tesla",
+    imageKey: "tesla",
+    description: "Built with Expo 🏎️",
+    gradient: ["#0F172A", "#1E293B"], // midnight blue to dark slate (electric/tech feel)
+    url: "https://github.com/shubh73/tesla",
+    tech: ["javascript", "expo"],
+  },
+  {
     name: "Airbnb",
     imageKey: "airbnb",
     description: "Built with NextJS + Tailwind CSS 🛏️",
@@ -172,14 +180,6 @@ export const PROJECTS = [
     gradient: ["#6366F1", "#4F46E5"], // indigo to deep indigo
     url: "https://shubh73-inshorts.netlify.app/",
     tech: ["javascript", "react", "chakra-ui", "alan"],
-  },
-  {
-    name: "Tesla",
-    imageKey: "tesla",
-    description: "Built with Expo 🏎️",
-    gradient: ["#0F172A", "#1E293B"], // midnight blue to dark slate (electric/tech feel)
-    url: "https://github.com/shubh73/tesla",
-    tech: ["javascript", "expo"],
   },
 ];
 

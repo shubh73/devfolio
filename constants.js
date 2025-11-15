@@ -134,6 +134,14 @@ export const PROJECTS = [
     tech: ["typescript", "react", "expo", "raycast"],
   },
   {
+    name: "Buywow",
+    imageKey: "buywow",
+    description: "Official Wow Skin Science app 🌿",
+    gradient: ["#FFD54F", "#FFB300"], // bright golden yellow to deep orange
+    url: "https://play.google.com/store/apps/details?id=co.tapcart.app.id_99G6QNo3nu",
+    tech: ["typescript", "react", "react-query"],
+  },
+  {
     name: "Bot9",
     imageKey: "bot9",
     description: "Automate support with AI 🤖",

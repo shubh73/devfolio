@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Howl } from "howler";
 import { cn } from "utils/cn";
 
 const Tab = ({ index, tab, activeTab, handleOnClick, setIsHovering }) => {

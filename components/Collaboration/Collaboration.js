@@ -32,7 +32,7 @@ const Collaboration = ({ clientHeight }) => {
         "<"
       );
 
-    ScrollTrigger.create({
+    const st1 = ScrollTrigger.create({
       trigger: sectionRef.current,
       start: "center bottom",
       end: "center center",
@@ -40,7 +40,7 @@ const Collaboration = ({ clientHeight }) => {
       animation: timeline,
     });
 
-    ScrollTrigger.create({
+    const st2 = ScrollTrigger.create({
       trigger: sectionRef.current,
       start: "top bottom",
       end: "bottom top",
@@ -51,8 +51,10 @@ const Collaboration = ({ clientHeight }) => {
     return () => {
       timeline.kill();
       slidingTl.kill();
+      st1.kill();
+      st2.kill();
     };
-  }, [quoteRef, sectionRef]);
+  }, []);
 
   return (
     <section ref={sectionRef} className="w-full relative select-none my-40">

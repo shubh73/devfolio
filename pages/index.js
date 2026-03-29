@@ -24,28 +24,24 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isDesktop, setIsDesktop] = useState(true);
   const [clientHeight, setClientHeight] = useState(0);
-  const [clientWidth, setClientWidth] = useState(0);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2600);
 
     displayFancyLogs();
-  }, []);
 
-  useEffect(() => {
-    const { innerWidth, innerHeight, orientation, history } = window;
-
-    const result =
-      typeof orientation === "undefined" &&
-      navigator.userAgent.indexOf("IEMobile") === -1;
+    const { innerHeight, orientation, history } = window;
     history.scrollRestoration = "manual";
-
-    setIsDesktop(result);
+    setIsDesktop(
+      typeof orientation === "undefined" &&
+        navigator.userAgent.indexOf("IEMobile") === -1
+    );
     setClientHeight(innerHeight);
-    setClientWidth(innerWidth);
-  }, [isDesktop]);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>

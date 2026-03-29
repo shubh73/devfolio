@@ -52,7 +52,7 @@ export const TYPED_STRINGS = [
 export const SOCIAL_LINKS = [
   {
     name: "mail",
-    url: "mailto: shubhporwal73@gmail.com",
+    url: "mailto:shubhporwal73@gmail.com",
   },
   {
     name: "linkedin",
@@ -106,7 +106,7 @@ export const PROJECTS = [
     imageKey: "nextboss",
     description: "Get hired through DMs not resumes 🤝",
     gradient: ["#FF69B4", "#FFB6C1"], // hot pink to light pink (cherry blossom inspired)
-    // url: "https://nextboss.in",
+    url: null,
     tech: ["typescript", "react", "expo", "react-query"],
   },
   {
@@ -266,50 +266,6 @@ export const WORK_CONTENTS = {
       ),
     },
   ],
-  // AVIATE: [
-  //   {
-  //     title: "Aviate",
-  //     description:
-  //       "Aviate is a preparation and mentorship platform for job-seekers that are seeking non-technical roles across top companies",
-  //     content: (
-  //       <div className="h-full w-full flex items-center justify-center text-white px-4">
-  //         Finding the right job isn&apos;t fate, it&apos;s navigation
-  //       </div>
-  //     ),
-  //   },
-  //   {
-  //     title: "Innovation",
-  //     description:
-  //       "I spearheaded the development of Q-Rate, their flagship product, a voice-based applicant screening platform. Moreover, I took initiatives to enhance user engagement and drive substantial increases in daily traffic. Additionally, I implemented an error-logging and bug reporting system, significantly diminishing user-reported bugs.",
-  //     content: (
-  //       <div className="h-full w-full flex items-center justify-center text-white px-4">
-  //         Frontend Developer Intern
-  //       </div>
-  //     ),
-  //   },
-  // ],
-  // SPACENOS: [
-  //   {
-  //     title: "Spacenos",
-  //     description:
-  //       "A dynamic startup dedicated to creating innovative products that make the world a better place.",
-  //     content: (
-  //       <div className="h-full w-full flex items-center justify-center text-white px-4">
-  //         We build apps that solve problems for the next billion people
-  //       </div>
-  //     ),
-  //   },
-  //   {
-  //     title: "Trailblazing",
-  //     description:
-  //       "I led the comprehensive overhaul of the Admin Portal, implementing CRUD features for all services and providers. Additionally, I architected a feature enabling precise customer location tracking and delivering insightful usage statistics. Through optimized and compressed file serving, I catalyzed a remarkable Yx increase in page speed, resulting in a X% boost in customer retention.",
-  //     content: (
-  //       <div className="h-full w-full flex items-center justify-center text-white px-4">
-  //         Web Developer Intern
-  //       </div>
-  //     ),
-  //   },
-  // ],
 };
 
 export const GTAG = "G-5HCTL2TJ5W";

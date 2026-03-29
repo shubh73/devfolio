@@ -39,13 +39,11 @@ const Contact = () => {
   const initialState = { name: "", email: "", message: "" };
   const [formData, setFormData] = useState(initialState);
   const [mailerResponse, setMailerResponse] = useState("not initiated");
-  const [isSending, setIsSending] = useState(false);
   const buttonElementRef = useRef(null);
   const sectionRef = useRef(null);
 
   const handleChange = ({ target }) => {
     const { id, value } = target;
-    value.length === 0 ? setIsSending(false) : setIsSending(true);
     setFormData((prevVal) => {
       if (
         value.trim() !== prevVal[id] &&
@@ -73,10 +71,9 @@ const Contact = () => {
 
     if (name === "" || email === "" || message === "") {
       empty();
-      return setMailerResponse("empty");
+      return;
     }
 
-    setIsSending(true);
     mail({ name, email, message })
       .then((res) => {
         if (res.status === 200) {
@@ -93,13 +90,23 @@ const Contact = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    if (mailerResponse === "not initiated") return;
+
+    if (mailerResponse === "success") {
+      success();
+    } else if (mailerResponse === "error") {
+      error();
+    }
+
+    const timer = setTimeout(() => {
       setMailerResponse("not initiated");
     }, 10000);
+    return () => clearTimeout(timer);
   }, [mailerResponse]);
 
   useEffect(() => {
-    buttonElementRef.current.addEventListener("click", (e) => {
+    const buttonEl = buttonElementRef.current;
+    const handleButtonClick = (e) => {
       if (!buttonElementRef.current.classList.contains("active")) {
         buttonElementRef.current.classList.add("active");
 
@@ -179,7 +186,7 @@ const Contact = () => {
                       onComplete() {
                         buttonElementRef.current.classList.remove("active");
                       },
-                    }
+                    },
                   );
                 }, 1800);
               },
@@ -225,8 +232,11 @@ const Contact = () => {
           ],
         });
       }
-    });
-  }, [buttonElementRef]);
+    };
+
+    buttonEl.addEventListener("click", handleButtonClick);
+    return () => buttonEl.removeEventListener("click", handleButtonClick);
+  }, []);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: "none" } });
@@ -234,10 +244,10 @@ const Contact = () => {
     tl.from(
       sectionRef.current.querySelectorAll(".staggered-reveal"),
       { opacity: 0, duration: 0.5, stagger: 0.5 },
-      "<"
+      "<",
     );
 
-    ScrollTrigger.create({
+    const st = ScrollTrigger.create({
       trigger: sectionRef.current.querySelector(".contact-wrapper"),
       start: "100px bottom",
       end: "center center",
@@ -245,8 +255,11 @@ const Contact = () => {
       animation: tl,
     });
 
-    return () => tl.kill();
-  }, [sectionRef]);
+    return () => {
+      tl.kill();
+      st.kill();
+    };
+  }, []);
 
   return (
     <section
@@ -293,7 +306,7 @@ const Contact = () => {
 
             <div className="relative mt-14">
               <input
-                type="text"
+                type="email"
                 id="email"
                 className="block w-full h-12 sm:h-14 px-4 text-xl sm:text-2xl font-mono outline-none border-2 border-purple bg-transparent rounded-[0.6rem] transition-all duration-200"
                 value={formData.email}
@@ -324,13 +337,6 @@ const Contact = () => {
               </label>
             </div>
           </Fade>
-
-          {mailerResponse !== "not initiated" &&
-            (mailerResponse === "success" ? (
-              <div className="hidden">{success()}</div>
-            ) : (
-              <div className="hidden">{error()}</div>
-            ))}
         </form>
         <div className="mt-9 mx-auto link">
           <button

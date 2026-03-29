@@ -25,12 +25,14 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
   }
 
   useEffect(() => {
-    VanillaTilt.init(projectCard.current, tiltOptions);
-  }, [projectCard]);
+    const node = projectCard.current;
+    VanillaTilt.init(node, tiltOptions);
+    return () => node?.vanillaTilt?.destroy();
+  }, []);
 
   return (
     <a
-      href={url}
+      href={url || undefined}
       className={`overflow-hidden rounded-3xl snap-start link ${additionalClasses}`}
       target="_blank"
       rel="noreferrer"

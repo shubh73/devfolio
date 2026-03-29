@@ -8,12 +8,12 @@ const App = ({ Component, pageProps }) => {
   return (
     <>
       <Meta />
-      <main
+      <div
         className={`${calibre.variable} font-sans ${jetbrains_mono.variable} font-mono`}
       >
         <Component {...pageProps} />
         <GoogleAnalytics gaId={GTAG} />
-      </main>
+      </div>
     </>
   );
 };

@@ -5,12 +5,20 @@ const Menu = () => {
   useEffect(() => {
     const anchorNodes = document.querySelectorAll('a[href^="#"]');
 
+    const handleClick = () => {
+      const checkbox = document.querySelector(".checkbox-toggle");
+      if (checkbox) checkbox.checked = false;
+    };
+
     anchorNodes.forEach((el) => {
-      el.addEventListener("click", () => {
-        const checkbox = document.querySelector(".checkbox-toggle");
-        checkbox.checked = false;
-      });
+      el.addEventListener("click", handleClick);
     });
+
+    return () => {
+      anchorNodes.forEach((el) => {
+        el.removeEventListener("click", handleClick);
+      });
+    };
   }, []);
 
   return (

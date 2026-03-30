@@ -34,6 +34,7 @@ const Skills = () => {
     <section
       ref={sectionRef}
       id={MENULINKS[1].ref}
+      aria-label="Skills"
       className="w-full relative select-none mt-44"
     >
       <div className="section-container py-16 flex flex-col justify-center">
@@ -50,13 +51,13 @@ const Skills = () => {
             <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
               SKILLS
             </p>
-            <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
+            <h2 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
               My Skills
-            </h1>
-            <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
+            </h2>
+            <p className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
               I like to take responsibility to craft aesthetic user experience
               using modern frontend architecture.{" "}
-            </h2>
+            </p>
           </div>
           <div className="mt-10">
             <h3 className="uppercase tracking-widest text-gray-light-2 font-medium text-base mb-4 staggered-reveal">

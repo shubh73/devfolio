@@ -45,13 +45,13 @@ const About1 = ({ clientHeight }) => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full relative select-none">
+    <section ref={sectionRef} aria-label="About" className="w-full relative select-none">
       <div
         className={`${
           clientHeight > 650 ? "pt-28 pb-16" : "pt-80 pb-72"
         } section-container`}
       >
-        <h1
+        <h2
           ref={quoteRef}
           className="font-medium text-[2.70rem] md:text-6xl lg:text-[4rem] text-center"
         >
@@ -63,7 +63,7 @@ const About1 = ({ clientHeight }) => {
             I take responsibility to craft a good user experience using modern
             frontend architecture.{" "}
           </span>
-        </h1>
+        </h2>
       </div>
     </section>
   );

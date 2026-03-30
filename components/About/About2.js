@@ -31,13 +31,13 @@ const About2 = ({ clientHeight }) => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full relative select-none">
+    <section ref={sectionRef} aria-label="Philosophy" className="w-full relative select-none">
       <div
         className={`${
           clientHeight > 650 ? "py-80" : "py-72"
         } section-container`}
       >
-        <h1
+        <h2
           ref={quoteRef}
           className="font-medium text-[2.70rem] md:text-6xl lg:text-[4rem] text-center"
         >
@@ -55,7 +55,7 @@ const About2 = ({ clientHeight }) => {
             strong
           </span>{" "}
           obsession for attention to detail.
-        </h1>
+        </h2>
       </div>
     </section>
   );

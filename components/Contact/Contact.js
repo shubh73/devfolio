@@ -265,6 +265,7 @@ const Contact = () => {
     <section
       ref={sectionRef}
       id={MENULINKS[4].ref}
+      aria-label="Contact"
       className="mt-30 w-full relative select-none bg-black pt-20 sm:pt-10 md:pt-5 lg:pt-1 pb-20"
     >
       <div>
@@ -276,13 +277,13 @@ const Contact = () => {
             <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
               CONTACT
             </p>
-            <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
+            <h2 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
               Contact
-            </h1>
+            </h2>
           </div>
-          <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
+          <p className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
             Get In Touch.{" "}
-          </h2>
+          </p>
         </div>
 
         <form className="pt-10 sm:mx-auto sm:w-[30rem] md:w-[35rem] staggered-reveal">

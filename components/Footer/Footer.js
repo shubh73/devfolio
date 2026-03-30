@@ -38,9 +38,9 @@ const Footer = () => {
       <Fade bottom distance={"4rem"}>
         <div className="w-full h-full pt-32">
           <div className="section-container flex flex-col h-full justify-end z-10 items-center py-12">
-            <h1 className="font-medium text-3xl md:text-4xl text-center">
+            <p className="font-medium text-3xl md:text-4xl text-center">
               Feel free to connect on social media.
-            </h1>
+            </p>
             <div className="text-center">
               <Profiles />
             </div>

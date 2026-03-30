@@ -65,6 +65,7 @@ const Hero = () => {
     <section
       ref={sectionRef}
       id={MENULINKS[0].ref}
+      aria-label="Introduction"
       className="w-full flex md:items-center py-8 2xl:container mx-auto xl:px-20 md:px-12 px-4 min-h-screen relative mb-24"
       style={{ opacity: 0 }}
     >

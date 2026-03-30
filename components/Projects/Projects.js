@@ -83,6 +83,7 @@ const Projects = ({ isDesktop, clientHeight }) => {
     <section
       ref={sectionRef}
       id={MENULINKS[2].ref}
+      aria-label="Projects"
       className={`${
         isDesktop && "min-h-screen"
       } w-full relative select-none section-container transform-gpu`}
@@ -95,13 +96,13 @@ const Projects = ({ isDesktop, clientHeight }) => {
           <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
             PROJECTS
           </p>
-          <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
+          <h2 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
             My Projects
-          </h1>
-          <h2 className="text-[1.65rem] font-medium md:max-w-lg max-w-sm mt-2 staggered-reveal">
+          </h2>
+          <p className="text-[1.65rem] font-medium md:max-w-lg max-w-sm mt-2 staggered-reveal">
             Some things I&apos;ve built with love, expertise and a pinch of
             magical ingredients.{" "}
-          </h2>
+          </p>
         </div>
         <div
           className={`${

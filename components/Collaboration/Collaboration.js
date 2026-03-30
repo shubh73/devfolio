@@ -57,7 +57,7 @@ const Collaboration = ({ clientHeight }) => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full relative select-none my-40">
+    <section ref={sectionRef} aria-label="Collaboration" className="w-full relative select-none my-40">
       <div
         className={`${
           clientHeight > 650 ? "py-36" : "py-48"
@@ -71,7 +71,7 @@ const Collaboration = ({ clientHeight }) => {
             .reduce((str, el) => str.concat(el), "")}{" "}
         </p>
 
-        <h1
+        <h2
           ref={quoteRef}
           className="mt-6 md:mt-8 font-medium text-4xl md:text-5xl text-center"
         >
@@ -89,7 +89,7 @@ const Collaboration = ({ clientHeight }) => {
             Collaboration
           </span>
           ?
-        </h1>
+        </h2>
 
         <p className="mt-6 md:mt-8 opacity-40 text-6xl sm:text-7xl font-semibold whitespace-nowrap ui-right transform-gpu">
           {Array(5)

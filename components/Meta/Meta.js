@@ -12,6 +12,7 @@ const Meta = () => (
     <meta name="author" content={METADATA.author} />
     <meta name="theme-color" content={METADATA.themeColor} />
     <meta httpEquiv="content-language" content="en" />
+    <link rel="canonical" href={METADATA.siteUrl} />
 
     {/* Open Graph / Facebook */}
     <meta property="og:locale" content="en_US" />
@@ -23,13 +24,13 @@ const Meta = () => (
     <meta property="og:site_name" content={METADATA.title} />
 
     {/* Twitter */}
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={METADATA.title} />
-    <meta property="twitter:description" content={METADATA.description} />
-    <meta property="twitter:site" content={METADATA.twitterHandle} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={METADATA.title} />
+    <meta name="twitter:description" content={METADATA.description} />
+    <meta name="twitter:site" content={METADATA.twitterHandle} />
     <meta name="twitter:creator" content={METADATA.twitterHandle} />
-    <meta property="twitter:url" content={METADATA.siteUrl} />
-    <meta property="twitter:image" content={METADATA.image} />
+    <meta name="twitter:url" content={METADATA.siteUrl} />
+    <meta name="twitter:image" content={METADATA.image} />
 
     <link
       rel="apple-touch-icon"
@@ -50,6 +51,24 @@ const Meta = () => (
     />
     <meta name="msapplication-TileColor" content="#7000FF" />
     <link rel="manifest" href="/manifest.json" />
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: METADATA.author,
+          url: METADATA.siteUrl,
+          jobTitle: "Product Engineer",
+          sameAs: [
+            "https://github.com/shubh73",
+            "https://x.com/shubhporwal24",
+            "https://www.linkedin.com/in/shubhporwal/",
+          ],
+        }),
+      }}
+    />
   </Head>
 );
 

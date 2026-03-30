@@ -51,7 +51,7 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
       >
         <Image
           src="/project-bg.svg"
-          alt="project"
+          alt=""
           className="absolute w-full h-full top-0 left-0 opacity-20 rounded-3xl"
           fill
         />
@@ -70,12 +70,12 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
             }}
           />
         )}
-        <h1
+        <h3
           className="font-medium text-2xl sm:text-3xl z-10 pl-2 pt-2 transform-gpu"
           style={{ transform: "translateZ(3rem)" }}
         >
           {name}
-        </h1>
+        </h3>
         <div
           className={`
             ${styles.techIcons} w-1/2 h-full absolute left-24 top-0 sm:flex items-center hidden
@@ -94,12 +94,12 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
             ))}
           </div>
         </div>
-        <h2
+        <p
           className="text-lg z-10 tracking-wide font-medium text-white transform-gpu"
           style={{ transform: "translateZ(0.8rem)" }}
         >
           {description}
-        </h2>
+        </p>
       </div>
     </a>
   );

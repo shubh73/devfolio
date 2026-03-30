@@ -2,11 +2,12 @@ export const METADATA = {
   author: "Shubh Porwal",
   title: "Portfolio | Shubh Porwal",
   description:
-    "Shubh Porwal is a passionate Frontend Engineer, dedicated to crafting aesthetic and modern apps that captivate and engage users.",
+    "Shubh Porwal is a passionate Product Engineer, dedicated to crafting aesthetic and modern apps that captivate and engage users.",
   siteUrl: "https://www.shubhporwal.me/",
   twitterHandle: "@shubhporwal24",
   keywords: [
     "Shubh Porwal",
+    "Product Engineer",
     "Frontend Engineer",
     "React Native Engineer",
     "Software Engineer",
@@ -44,7 +45,7 @@ export const MENULINKS = [
 ];
 
 export const TYPED_STRINGS = [
-  "A pragmatic Frontend Engineer",
+  "A pragmatic Product Engineer",
   "I build things for the web",
   "I create aesthetic and modern apps",
 ];

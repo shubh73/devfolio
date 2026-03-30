@@ -60,6 +60,7 @@ const Work = ({ isDesktop }) => {
     <section
       ref={sectionRef}
       id={MENULINKS[3].ref}
+      aria-label="Work Experience"
       className="w-full relative select-none xs:mt-40 sm:mt-72 mb-96"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -77,12 +78,12 @@ const Work = ({ isDesktop }) => {
             <p className="uppercase tracking-widest text-gray-light-1 staggered-reveal">
               WORK
             </p>
-            <h1 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
+            <h2 className="text-6xl mt-2 font-medium text-gradient w-fit staggered-reveal">
               Experience
-            </h1>
-            <h2 className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
-              A quick recap of where I&apos;ve worked.{" "}
             </h2>
+            <p className="text-[1.65rem] font-medium md:max-w-lg w-full mt-2 staggered-reveal">
+              A quick recap of where I&apos;ve worked.{" "}
+            </p>
           </div>
           <Tabs tabItems={tabItems} />
         </div>

@@ -81,4 +81,5 @@ export const calibre = localFont({
 export const jetbrains_mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
+  display: "swap",
 });

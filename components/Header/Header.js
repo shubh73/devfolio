@@ -1,18 +1,18 @@
 import { useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Howl } from "howler";
+import { useSfx } from "utils/use-sfx";
 import SoundBar from "./SoundBar/SoundBar";
-
-const multiPop = new Howl({
-  src: ["/sounds/multi-pop.mp3"],
-});
 
 const Header = ({ children }) => {
   const inputRef = useRef(null);
+  const sfx = useSfx();
 
-  const handleClick = useCallback((e) => {
-    if (e.target.checked) multiPop.play();
-  }, []);
+  const handleClick = useCallback(
+    (e) => {
+      sfx.play(e.target.checked ? "pop" : "pop-down");
+    },
+    [sfx],
+  );
 
   const handleKeyDown = useCallback((e) => {
     if (e.key === "Escape" && inputRef.current?.checked) {

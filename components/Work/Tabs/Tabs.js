@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Howl } from "howler";
+import { useSfx } from "utils/use-sfx";
 import { cn } from "utils/cn";
 
 const Tab = ({ index, tab, activeTab, handleOnClick, setIsHovering }) => {
@@ -61,14 +61,11 @@ const TabsContent = ({ tabs, isHovering }) => {
   );
 };
 
-const mouseClickSound = new Howl({
-  src: ["/sounds/mouse-click.mp3"],
-});
-
 const Tabs = ({ tabItems }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [tabs, setTabs] = useState(tabItems);
   const [activeTab, setActiveTab] = useState(tabItems[0]);
+  const sfx = useSfx();
 
   const handleOnClick = (index) => {
     const updatedTabs = [...tabItems];
@@ -76,7 +73,7 @@ const Tabs = ({ tabItems }) => {
     updatedTabs.unshift(selectedTab[0]);
     setTabs(updatedTabs);
     setActiveTab(updatedTabs[0]);
-    mouseClickSound.play();
+    sfx.play("tab-switch");
   };
 
   return (

@@ -4,6 +4,7 @@ import toast, { Toaster } from "react-hot-toast";
 import Fade from "react-reveal/Fade";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useSfx } from "utils/use-sfx";
 import mail from "./mailer";
 import styles from "./Contact.module.scss";
 import { MENULINKS } from "../../constants";
@@ -41,6 +42,7 @@ const Contact = () => {
   const [mailerResponse, setMailerResponse] = useState("not initiated");
   const buttonElementRef = useRef(null);
   const sectionRef = useRef(null);
+  const sfx = useSfx();
 
   const handleChange = ({ target }) => {
     const { id, value } = target;
@@ -73,6 +75,8 @@ const Contact = () => {
       empty();
       return;
     }
+
+    sfx.play("charge-up", { rate: 2 });
 
     mail({ name, email, message })
       .then((res) => {

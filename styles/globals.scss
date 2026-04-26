@@ -14,6 +14,8 @@
 html {
   scroll-behavior: smooth;
   -ms-overflow-style: scrollbar;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(112, 0, 255, 0.75) transparent;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 
@@ -42,6 +44,10 @@ body {
   @apply bg-black text-white overflow-x-hidden;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 ::-webkit-scrollbar {
   width: 0.4rem;
 }
@@ -52,18 +58,12 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: rgba(112, 0, 255, 0.75);
-  opacity: 0.5;
   border-radius: 1rem;
   transition: all 0.2s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: theme("colors.indigo.dark");
-  opacity: 1;
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
 }
 
 .no-scrollbar {

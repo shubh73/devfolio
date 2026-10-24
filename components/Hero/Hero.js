@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useLayoutEffect } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
 import Typed from "typed.js";
 import gsap from "gsap";
 import Button from "../Button/Button";
@@ -16,8 +16,6 @@ const options = {
 };
 
 const Hero = () => {
-  const [lottie, setLottie] = useState(null);
-
   const sectionRef = useRef(null);
   const typedElementRef = useRef(null);
   const lottieRef = useRef(null);
@@ -44,22 +42,36 @@ const Hero = () => {
   }, [typedElementRef]);
 
   useEffect(() => {
-    import("lottie-web").then((Lottie) => setLottie(Lottie.default));
-  }, []);
+    let animation;
+    let cancelled = false;
+    const mql = window.matchMedia("(min-width: 1024px)");
 
-  useEffect(() => {
-    if (lottie && lottieRef.current) {
-      const animation = lottie.loadAnimation({
-        container: lottieRef.current,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        animationData: require("../../public/lottie/lottie.json"),
+    const load = () => {
+      mql.removeEventListener("change", load);
+      Promise.all([
+        import("lottie-web/build/player/lottie_light"),
+        import("../../public/lottie/lottie.json"),
+      ]).then(([{ default: lottie }, { default: animationData }]) => {
+        if (cancelled || !lottieRef.current) return;
+        animation = lottie.loadAnimation({
+          container: lottieRef.current,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData,
+        });
       });
+    };
 
-      return () => animation.destroy();
-    }
-  }, [lottie]);
+    if (mql.matches) load();
+    else mql.addEventListener("change", load);
+
+    return () => {
+      cancelled = true;
+      mql.removeEventListener("change", load);
+      animation?.destroy();
+    };
+  }, []);
 
   return (
     <section

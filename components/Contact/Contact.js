@@ -7,7 +7,6 @@ import Reveal from "../Reveal/Reveal";
 import styles from "./Contact.module.scss";
 import { MENULINKS } from "../../constants";
 
-// Profanity filter and mailer are loaded lazily to keep them out of the initial bundle.
 let filter = null;
 const loadFilter = () =>
   import("bad-words").then(({ default: Filter }) => {
@@ -16,6 +15,8 @@ const loadFilter = () =>
       filter.removeWords("hell", "god", "shit");
     }
   });
+
+const clean = (text) => (filter && /\w/.test(text) ? filter.clean(text) : text);
 
 const toastOptions = {
   style: {
@@ -56,8 +57,7 @@ const Contact = () => {
         value.trim() !== prevVal[id] &&
         value.trim().length > prevVal[id].trim().length
       ) {
-        const trimmed = value.trim();
-        return { ...prevVal, [id]: filter ? filter.clean(trimmed) : trimmed };
+        return { ...prevVal, [id]: clean(value.trim()) };
       } else {
         return { ...prevVal, [id]: value };
       }
@@ -84,8 +84,14 @@ const Contact = () => {
 
     sfx.play("charge-up", { rate: 2 });
 
-    import("./mailer")
-      .then(({ default: mail }) => mail({ name, email, message }))
+    Promise.all([loadFilter(), import("./mailer")])
+      .then(([, { default: mail }]) =>
+        mail({
+          name: clean(name),
+          email: clean(email),
+          message: clean(message),
+        }),
+      )
       .then((res) => {
         if (res.status === 200) {
           setMailerResponse("success");

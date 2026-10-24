@@ -49,29 +49,26 @@ const Page = ({ isLive, isDesktop, clientHeight }) => (
 );
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isDesktop, setIsDesktop] = useState(true);
-  const [clientHeight, setClientHeight] = useState(0);
+  const [viewport, setViewport] = useState(null);
+  const isLoading = viewport === null;
 
   useEffect(() => {
     const root = document.documentElement;
-    const { innerHeight, orientation, history } = window;
-    history.scrollRestoration = "manual";
+    window.history.scrollRestoration = "manual";
     root.style.overflow = "hidden";
 
     const timer = setTimeout(() => {
       root.style.overflow = "";
       window.scrollTo({ top: 0, behavior: "instant" });
-      setIsLoading(false);
+      setViewport({
+        isDesktop:
+          typeof window.orientation === "undefined" &&
+          navigator.userAgent.indexOf("IEMobile") === -1,
+        clientHeight: window.innerHeight,
+      });
     }, 2600);
 
     displayFancyLogs();
-
-    setIsDesktop(
-      typeof orientation === "undefined" &&
-        navigator.userAgent.indexOf("IEMobile") === -1
-    );
-    setClientHeight(innerHeight);
 
     return () => {
       clearTimeout(timer);
@@ -85,8 +82,8 @@ export default function Home() {
       <Page
         key={isLoading ? "static" : "live"}
         isLive={!isLoading}
-        isDesktop={isLoading ? true : isDesktop}
-        clientHeight={isLoading ? 0 : clientHeight}
+        isDesktop={viewport?.isDesktop ?? true}
+        clientHeight={viewport?.clientHeight ?? 0}
       />
     </>
   );

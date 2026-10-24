@@ -1,5 +1,4 @@
 import styles from "./Button.module.scss";
-import PropTypes from "prop-types";
 
 const Button = ({ href, onClick, children, classes, type, ...otherProps }) => {
   let additionalClasses = "";
@@ -28,14 +27,6 @@ const Button = ({ href, onClick, children, classes, type, ...otherProps }) => {
       {children}
     </a>
   );
-};
-
-Button.propTypes = {
-  href: PropTypes.string,
-  onClick: PropTypes.func,
-  children: PropTypes.string.isRequired,
-  classes: PropTypes.string,
-  type: PropTypes.string,
 };
 
 export default Button;

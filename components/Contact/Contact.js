@@ -1,16 +1,22 @@
 import { useState, useEffect, useRef } from "react";
-import Filter from "bad-words";
 import toast, { Toaster } from "react-hot-toast";
-import Fade from "react-reveal/Fade";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useSfx } from "utils/use-sfx";
-import mail from "./mailer";
+import Reveal from "../Reveal/Reveal";
 import styles from "./Contact.module.scss";
 import { MENULINKS } from "../../constants";
 
-const filter = new Filter();
-filter.removeWords("hell", "god", "shit");
+let filter = null;
+const loadFilter = () =>
+  import("bad-words").then(({ default: Filter }) => {
+    if (!filter) {
+      filter = new Filter();
+      filter.removeWords("hell", "god", "shit");
+    }
+  });
+
+const clean = (text) => (filter && /\w/.test(text) ? filter.clean(text) : text);
 
 const toastOptions = {
   style: {
@@ -51,7 +57,7 @@ const Contact = () => {
         value.trim() !== prevVal[id] &&
         value.trim().length > prevVal[id].trim().length
       ) {
-        return { ...prevVal, [id]: filter.clean(value.trim()) };
+        return { ...prevVal, [id]: clean(value.trim()) };
       } else {
         return { ...prevVal, [id]: value };
       }
@@ -78,7 +84,14 @@ const Contact = () => {
 
     sfx.play("charge-up", { rate: 2 });
 
-    mail({ name, email, message })
+    Promise.all([loadFilter(), import("./mailer")])
+      .then(([, { default: mail }]) =>
+        mail({
+          name: clean(name),
+          email: clean(email),
+          message: clean(message),
+        }),
+      )
       .then((res) => {
         if (res.status === 200) {
           setMailerResponse("success");
@@ -92,6 +105,10 @@ const Contact = () => {
         console.error(err);
       });
   };
+
+  useEffect(() => {
+    loadFilter();
+  }, []);
 
   useEffect(() => {
     if (mailerResponse === "not initiated") return;
@@ -291,7 +308,7 @@ const Contact = () => {
         </div>
 
         <form className="pt-10 sm:mx-auto sm:w-[30rem] md:w-[35rem] staggered-reveal">
-          <Fade bottom distance={"4rem"}>
+          <Reveal>
             <div className="relative">
               <input
                 type="text"
@@ -308,7 +325,9 @@ const Contact = () => {
                 Name
               </label>
             </div>
+          </Reveal>
 
+          <Reveal>
             <div className="relative mt-14">
               <input
                 type="email"
@@ -325,7 +344,9 @@ const Contact = () => {
                 Email
               </label>
             </div>
+          </Reveal>
 
+          <Reveal>
             <div className="relative mt-14">
               <textarea
                 id="message"
@@ -341,7 +362,7 @@ const Contact = () => {
                 Message
               </label>
             </div>
-          </Fade>
+          </Reveal>
         </form>
         <div className="mt-9 mx-auto link">
           <button

@@ -61,6 +61,7 @@ const ProjectTile = ({ project, classes, isDesktop }) => {
           placeholder="blur"
           fill
           className={styles.projectImage}
+          style={{ aspectRatio: `${image.width} / ${image.height}` }}
         />
         {!isDesktop && (
           <div

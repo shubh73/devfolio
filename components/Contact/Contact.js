@@ -319,7 +319,9 @@ const Contact = () => {
                 Name
               </label>
             </div>
+          </Reveal>
 
+          <Reveal>
             <div className="relative mt-14">
               <input
                 type="email"
@@ -336,7 +338,9 @@ const Contact = () => {
                 Email
               </label>
             </div>
+          </Reveal>
 
+          <Reveal>
             <div className="relative mt-14">
               <textarea
                 id="message"

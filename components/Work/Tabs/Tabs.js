@@ -9,7 +9,7 @@ const Tab = ({ index, tab, activeTab, handleOnClick, setIsHovering }) => {
       onMouseDown={() => handleOnClick(index)}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className="relative px-4 py-1 rounded-full cursor-none"
+      className="relative px-4 py-1 rounded-full cursor-none link"
       style={{
         transformStyle: "preserve-3d",
       }}
@@ -24,7 +24,7 @@ const Tab = ({ index, tab, activeTab, handleOnClick, setIsHovering }) => {
 
       <span
         className={cn(
-          "relative text-white top-[3px] link",
+          "relative text-white top-[3px]",
           tab.value !== activeTab.value && "hover:text-gray-light-3"
         )}
       >

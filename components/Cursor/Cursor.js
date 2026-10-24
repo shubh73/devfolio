@@ -9,6 +9,7 @@ const Cursor = ({ isDesktop }) => {
     if (isDesktop && document.body.clientWidth > 767) {
       follower.current.classList.remove("hidden");
       cursor.current.classList.remove("hidden");
+      gsap.set([cursor.current, follower.current], { xPercent: -50, yPercent: -50 });
 
       const moveCircle = (e) => {
         gsap.to(cursor.current, {
@@ -69,11 +70,11 @@ const Cursor = ({ isDesktop }) => {
     <>
       <div
         ref={cursor}
-        className="bg-white rounded-full mix-blend-difference fixed w-4 h-4 select-none pointer-events-none z-50 hidden"
+        className="bg-white rounded-full mix-blend-difference fixed top-0 left-0 w-4 h-4 select-none pointer-events-none z-50 hidden"
       />
       <div
         ref={follower}
-        className="bg-white/[0.02] border border-white/[0.2] rounded-full fixed -top-3 -left-3 w-10 h-10 select-none pointer-events-none z-50 hidden"
+        className="bg-white/[0.02] border border-white/[0.2] rounded-full fixed top-0 left-0 w-10 h-10 select-none pointer-events-none z-50 hidden"
       />
     </>
   );

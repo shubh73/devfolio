@@ -48,8 +48,6 @@ const Page = ({ isLive, isDesktop, clientHeight }) => (
   </>
 );
 
-const scrollToTop = () => window.scrollTo({ top: 0, behavior: "instant" });
-
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isDesktop, setIsDesktop] = useState(true);
@@ -60,11 +58,10 @@ export default function Home() {
     const { innerHeight, orientation, history } = window;
     history.scrollRestoration = "manual";
     root.style.overflow = "hidden";
-    scrollToTop();
 
     const timer = setTimeout(() => {
       root.style.overflow = "";
-      scrollToTop();
+      window.scrollTo({ top: 0, behavior: "instant" });
       setIsLoading(false);
     }, 2600);
 

@@ -1,9 +1,79 @@
+:global(html):has(.screen) {
+  &,
+  body {
+    overflow: hidden;
+  }
+}
+
+:global(html[data-intro-waiting]) .screen {
+  &,
+  *,
+  *::before,
+  *::after {
+    animation-play-state: paused;
+  }
+}
+
+:global(html[data-intro-seen]) {
+  .progress {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .loader,
+    .screen.exit .loader {
+      animation:
+        speeder 0.4s linear infinite,
+        flyBy 0.9s cubic-bezier(0.45, 0, 0.2, 1) both;
+    }
+
+    .screen.replay {
+      animation-delay: 0.35s;
+
+      .loader {
+        animation:
+          speeder 0.4s linear infinite,
+          flyByAgain 0.9s cubic-bezier(0.45, 0, 0.2, 1) both;
+      }
+    }
+  }
+}
+
 .screen {
   background: black;
   height: 100%;
   width: 100%;
   position: fixed;
   z-index: 9999;
+
+  &.exit {
+    pointer-events: none;
+    animation: wipe 0.65s cubic-bezier(0.65, 0, 0.35, 1) 0.2s forwards;
+
+    .loader {
+      animation: takeoff 0.6s forwards;
+    }
+
+    .progress {
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress {
+    display: none;
+  }
+
+  .loader,
+  .loader * {
+    animation: none !important;
+  }
+
+  .screen.exit {
+    animation: fadeOut 0.2s forwards;
+  }
 }
 
 .loader {
@@ -11,7 +81,9 @@
   top: 50%;
   margin-left: -60px;
   left: 50%;
-  animation: speeder 0.4s linear infinite;
+  animation:
+    speeder 0.4s linear infinite,
+    arrive 1s cubic-bezier(0.25, 1, 0.5, 1) both;
   z-index: 9999;
 
   > span {
@@ -122,8 +194,7 @@
   margin-left: -4rem;
   background-color: #1e1b20;
   overflow: hidden;
-  animation-name: fadeAppear;
-  animation-duration: 1s;
+  animation: fadeIn 0.4s 0.5s both;
 
   &:after {
     content: "";
@@ -135,24 +206,7 @@
     width: 100%;
     left: -100%;
     background-image: linear-gradient(to right, #8b31ff, #7000ff);
-    animation-name: load;
-    animation-duration: 1.7s; //1.7s
-    animation-delay: 1s;
-    animation-iteration-count: infinite;
-  }
-}
-
-@keyframes fadeAppear {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
+    animation: load 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
   }
 }
 
@@ -162,7 +216,71 @@
   }
 
   100% {
-    left: 100%;
+    left: 0;
+  }
+}
+
+@keyframes arrive {
+  from {
+    translate: -80vw 0;
+  }
+}
+
+@keyframes flyBy {
+  from {
+    translate: -80vw 0;
+  }
+
+  to {
+    translate: 80vw 0;
+  }
+}
+
+@keyframes flyByAgain {
+  from {
+    translate: -80vw 0;
+  }
+
+  to {
+    translate: 80vw 0;
+  }
+}
+
+@keyframes takeoff {
+  0% {
+    transform: translateX(0);
+    animation-timing-function: ease-out;
+  }
+
+  30% {
+    transform: translateX(-24px);
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+
+  100% {
+    transform: translateX(75vw);
+  }
+}
+
+@keyframes wipe {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 100%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
   }
 }
 

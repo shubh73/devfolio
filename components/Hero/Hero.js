@@ -9,7 +9,7 @@ import { MENULINKS, TYPED_STRINGS } from "../../constants";
 const options = {
   strings: TYPED_STRINGS,
   typeSpeed: 50,
-  startDelay: 1500,
+  startDelay: 600,
   backSpeed: 50,
   backDelay: 8000,
   loop: true,
@@ -24,10 +24,10 @@ const Hero = ({ fadeIn }) => {
     const ctx = gsap.context(() => {
       gsap
         .timeline({ defaults: { ease: "none" } })
-        .to(sectionRef.current, { opacity: 1, duration: 2 })
+        .to(sectionRef.current, { opacity: 1, duration: 1 })
         .from(
           sectionRef.current.querySelectorAll(".staggered-reveal"),
-          { opacity: 0, duration: 0.5, stagger: 0.5 },
+          { opacity: 0, duration: 0.5, stagger: 0.2 },
           "<"
         );
     });

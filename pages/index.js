@@ -16,6 +16,7 @@ import Collaboration from "@/components/Collaboration/Collaboration";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import { displayFancyLogs } from "utils/log";
+import { INTRO_SEEN_KEY, whenShown } from "utils/intro";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.config({ nullTargetWarn: false });
@@ -48,37 +49,72 @@ const Page = ({ isLive, isDesktop, clientHeight }) => (
   </>
 );
 
+const LOADER_MS = 1800;
+const FLY_BY_MS = 150;
+const FLY_BY_LATE_MS = 450;
+const EXIT_FALLBACK_MS = 2000;
+
+const markIntroSeen = () => {
+  try {
+    sessionStorage.setItem(INTRO_SEEN_KEY, "1");
+  } catch {}
+};
+
 export default function Home() {
   const [viewport, setViewport] = useState(null);
+  const [showLoader, setShowLoader] = useState(true);
+  const [replayFlyBy, setReplayFlyBy] = useState(false);
   const isLoading = viewport === null;
 
   useEffect(() => {
-    const root = document.documentElement;
-    window.history.scrollRestoration = "manual";
-    root.style.overflow = "hidden";
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const seen = "introSeen" in document.documentElement.dataset;
+    const introMs = reducedMotion ? 0 : seen ? FLY_BY_MS : LOADER_MS;
+    let timer;
+    let exitTimer;
 
-    const timer = setTimeout(() => {
-      root.style.overflow = "";
-      window.scrollTo({ top: 0, behavior: "instant" });
-      setViewport({
-        isDesktop:
-          typeof window.orientation === "undefined" &&
-          navigator.userAgent.indexOf("IEMobile") === -1,
-        clientHeight: window.innerHeight,
-      });
-    }, 2600);
+    const stopWaiting = whenShown((shownAt) => {
+      timer = setTimeout(
+        () => {
+          window.scrollTo({ top: 0, behavior: "instant" });
+          markIntroSeen();
+          setReplayFlyBy(
+            seen &&
+              !reducedMotion &&
+              performance.now() - shownAt > FLY_BY_LATE_MS,
+          );
+          setViewport({
+            isDesktop:
+              typeof window.orientation === "undefined" &&
+              navigator.userAgent.indexOf("IEMobile") === -1,
+            clientHeight: window.innerHeight,
+          });
+          exitTimer = setTimeout(() => setShowLoader(false), EXIT_FALLBACK_MS);
+        },
+        Math.max(0, shownAt + introMs - performance.now()),
+      );
+    });
 
     displayFancyLogs();
 
     return () => {
+      stopWaiting();
       clearTimeout(timer);
-      root.style.overflow = "";
+      clearTimeout(exitTimer);
     };
   }, []);
 
   return (
     <>
-      {isLoading && <Loader />}
+      {showLoader && (
+        <Loader
+          exiting={!isLoading}
+          replayFlyBy={replayFlyBy}
+          onExited={() => setShowLoader(false)}
+        />
+      )}
       <Page
         key={isLoading ? "static" : "live"}
         isLive={!isLoading}

@@ -7,7 +7,9 @@ const isWaiting = () => "introWaiting" in document.documentElement.dataset;
 export const whenShown = (callback) => {
   if (!isWaiting()) {
     const navigation = performance.getEntriesByType("navigation")[0];
-    const firstPaint = performance.getEntriesByType("paint")[0];
+    const loadedHere =
+      !navigation || new URL(navigation.name).pathname === location.pathname;
+    const firstPaint = loadedHere && performance.getEntriesByType("paint")[0];
     callback(
       Math.max(
         navigation?.activationStart ?? 0,

@@ -67,8 +67,6 @@ export default function Home() {
   const isLoading = viewport === null;
 
   useEffect(() => {
-    window.history.scrollRestoration = "manual";
-
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;

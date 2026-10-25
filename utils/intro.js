@@ -1,6 +1,6 @@
 export const INTRO_SEEN_KEY = "devfolio:intro-seen";
 
-export const introScript = `(function(){var d=document,h=d.documentElement;var n=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0];try{(sessionStorage.getItem("${INTRO_SEEN_KEY}")||n&&(n.type==="reload"||n.type==="back_forward"))&&(h.dataset.introSeen="")}catch(e){}if(!d.prerendering&&d.visibilityState==="visible")return;h.dataset.introWaiting="";var f=function(){if(d.prerendering||d.visibilityState!=="visible")return;delete h.dataset.introWaiting;d.removeEventListener("visibilitychange",f);d.removeEventListener("prerenderingchange",f)};d.addEventListener("visibilitychange",f);d.addEventListener("prerenderingchange",f)})()`;
+export const introScript = `(function(){var d=document,h=d.documentElement;try{history.scrollRestoration="manual"}catch(e){}var n=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0];try{(sessionStorage.getItem("${INTRO_SEEN_KEY}")||n&&(n.type==="reload"||n.type==="back_forward"))&&(h.dataset.introSeen="")}catch(e){}if(!d.prerendering&&d.visibilityState==="visible")return;h.dataset.introWaiting="";var f=function(){if(d.prerendering||d.visibilityState!=="visible")return;delete h.dataset.introWaiting;d.removeEventListener("visibilitychange",f);d.removeEventListener("prerenderingchange",f)};d.addEventListener("visibilitychange",f);d.addEventListener("prerenderingchange",f)})()`;
 
 const isWaiting = () => "introWaiting" in document.documentElement.dataset;
 

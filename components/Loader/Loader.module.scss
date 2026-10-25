@@ -1,5 +1,8 @@
 :global(html):has(.screen) {
-  overflow: hidden;
+  &,
+  body {
+    overflow: hidden;
+  }
 }
 
 :global(html[data-intro-waiting]) .screen {

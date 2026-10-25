@@ -18,7 +18,6 @@ const Custom404 = () => {
     const result =
       typeof orientation === "undefined" &&
       navigator.userAgent.indexOf("IEMobile") === -1;
-    history.scrollRestoration = "manual";
 
     setIsDesktop(result);
 

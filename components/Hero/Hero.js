@@ -25,9 +25,10 @@ const Hero = ({ fadeIn }) => {
       gsap
         .timeline({ defaults: { ease: "none" } })
         .to(sectionRef.current, { opacity: 1, duration: 1 })
-        .from(
+        .fromTo(
           sectionRef.current.querySelectorAll(".staggered-reveal"),
-          { opacity: 0, duration: 0.5, stagger: 0.2 },
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5, stagger: 0.2 },
           "<"
         );
     });

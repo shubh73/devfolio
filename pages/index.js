@@ -16,6 +16,7 @@ import Collaboration from "@/components/Collaboration/Collaboration";
 import Contact from "@/components/Contact/Contact";
 import Footer from "@/components/Footer/Footer";
 import { displayFancyLogs } from "utils/log";
+import { INTRO_SEEN_KEY, whenShown } from "utils/intro";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.config({ nullTargetWarn: false });
@@ -48,37 +49,64 @@ const Page = ({ isLive, isDesktop, clientHeight }) => (
   </>
 );
 
+const LOADER_MS = 1800;
+const LOADER_EXIT_MS = 1000;
+const REDUCED_MOTION_EXIT_MS = 200;
+
+const markIntroSeen = () => {
+  try {
+    sessionStorage.setItem(INTRO_SEEN_KEY, "1");
+  } catch {}
+};
+
 export default function Home() {
   const [viewport, setViewport] = useState(null);
+  const [showLoader, setShowLoader] = useState(true);
   const isLoading = viewport === null;
 
   useEffect(() => {
-    const root = document.documentElement;
     window.history.scrollRestoration = "manual";
-    root.style.overflow = "hidden";
 
-    const timer = setTimeout(() => {
-      root.style.overflow = "";
-      window.scrollTo({ top: 0, behavior: "instant" });
-      setViewport({
-        isDesktop:
-          typeof window.orientation === "undefined" &&
-          navigator.userAgent.indexOf("IEMobile") === -1,
-        clientHeight: window.innerHeight,
-      });
-    }, 2600);
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const skipIntro =
+      reducedMotion || "introSeen" in document.documentElement.dataset;
+    let timer;
+    let exitTimer;
+
+    const stopWaiting = whenShown((shownAt) => {
+      timer = setTimeout(
+        () => {
+          window.scrollTo({ top: 0, behavior: "instant" });
+          markIntroSeen();
+          setViewport({
+            isDesktop:
+              typeof window.orientation === "undefined" &&
+              navigator.userAgent.indexOf("IEMobile") === -1,
+            clientHeight: window.innerHeight,
+          });
+          exitTimer = setTimeout(
+            () => setShowLoader(false),
+            reducedMotion ? REDUCED_MOTION_EXIT_MS : LOADER_EXIT_MS,
+          );
+        },
+        skipIntro ? 0 : Math.max(0, shownAt + LOADER_MS - performance.now()),
+      );
+    });
 
     displayFancyLogs();
 
     return () => {
+      stopWaiting();
       clearTimeout(timer);
-      root.style.overflow = "";
+      clearTimeout(exitTimer);
     };
   }, []);
 
   return (
     <>
-      {isLoading && <Loader />}
+      {showLoader && <Loader exiting={!isLoading} />}
       <Page
         key={isLoading ? "static" : "live"}
         isLive={!isLoading}

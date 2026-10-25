@@ -1,8 +1,8 @@
 import styles from "./Loader.module.scss";
 
-const Loader = () => {
+const Loader = ({ exiting }) => {
   return (
-    <div className={styles.screen}>
+    <div className={`${styles.screen} ${exiting ? styles.exit : ""}`}>
       <div className={styles.container}>
         <div className={styles.loader}>
           <span>

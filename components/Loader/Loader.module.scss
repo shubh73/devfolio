@@ -1,7 +1,14 @@
 :global(html):has(.screen) {
+  scrollbar-color: transparent transparent;
+
   &,
   body {
     overflow: hidden;
+  }
+
+  &::-webkit-scrollbar-thumb,
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
   }
 }
 

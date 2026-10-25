@@ -50,8 +50,9 @@ const Page = ({ isLive, isDesktop, clientHeight }) => (
 );
 
 const LOADER_MS = 1800;
-const LOADER_EXIT_MS = 1000;
-const REDUCED_MOTION_EXIT_MS = 200;
+const FLY_BY_MS = 150;
+const FLY_BY_LATE_MS = 450;
+const EXIT_FALLBACK_MS = 2000;
 
 const markIntroSeen = () => {
   try {
@@ -62,6 +63,7 @@ const markIntroSeen = () => {
 export default function Home() {
   const [viewport, setViewport] = useState(null);
   const [showLoader, setShowLoader] = useState(true);
+  const [replayFlyBy, setReplayFlyBy] = useState(false);
   const isLoading = viewport === null;
 
   useEffect(() => {
@@ -70,8 +72,8 @@ export default function Home() {
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    const skipIntro =
-      reducedMotion || "introSeen" in document.documentElement.dataset;
+    const seen = "introSeen" in document.documentElement.dataset;
+    const introMs = reducedMotion ? 0 : seen ? FLY_BY_MS : LOADER_MS;
     let timer;
     let exitTimer;
 
@@ -80,18 +82,20 @@ export default function Home() {
         () => {
           window.scrollTo({ top: 0, behavior: "instant" });
           markIntroSeen();
+          setReplayFlyBy(
+            seen &&
+              !reducedMotion &&
+              performance.now() - shownAt > FLY_BY_LATE_MS,
+          );
           setViewport({
             isDesktop:
               typeof window.orientation === "undefined" &&
               navigator.userAgent.indexOf("IEMobile") === -1,
             clientHeight: window.innerHeight,
           });
-          exitTimer = setTimeout(
-            () => setShowLoader(false),
-            reducedMotion ? REDUCED_MOTION_EXIT_MS : LOADER_EXIT_MS,
-          );
+          exitTimer = setTimeout(() => setShowLoader(false), EXIT_FALLBACK_MS);
         },
-        skipIntro ? 0 : Math.max(0, shownAt + LOADER_MS - performance.now()),
+        Math.max(0, shownAt + introMs - performance.now()),
       );
     });
 
@@ -106,7 +110,13 @@ export default function Home() {
 
   return (
     <>
-      {showLoader && <Loader exiting={!isLoading} />}
+      {showLoader && (
+        <Loader
+          exiting={!isLoading}
+          replayFlyBy={replayFlyBy}
+          onExited={() => setShowLoader(false)}
+        />
+      )}
       <Page
         key={isLoading ? "static" : "live"}
         isLive={!isLoading}

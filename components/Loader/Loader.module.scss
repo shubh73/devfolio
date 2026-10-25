@@ -17,15 +17,21 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .screen.exit {
-      animation-delay: 0.3s;
-    }
-
     .loader,
     .screen.exit .loader {
       animation:
         speeder 0.4s linear infinite,
         flyBy 0.9s cubic-bezier(0.45, 0, 0.2, 1) both;
+    }
+
+    .screen.replay {
+      animation-delay: 0.35s;
+
+      .loader {
+        animation:
+          speeder 0.4s linear infinite,
+          flyByAgain 0.9s cubic-bezier(0.45, 0, 0.2, 1) both;
+      }
     }
   }
 }
@@ -57,16 +63,13 @@
     display: none;
   }
 
-  .screen .loader {
-    animation: speeder 0.4s linear infinite;
+  .loader,
+  .loader * {
+    animation: none !important;
   }
 
   .screen.exit {
     animation: fadeOut 0.2s forwards;
-
-    .loader {
-      animation: none;
-    }
   }
 }
 
@@ -221,6 +224,16 @@
 }
 
 @keyframes flyBy {
+  from {
+    translate: -80vw 0;
+  }
+
+  to {
+    translate: 80vw 0;
+  }
+}
+
+@keyframes flyByAgain {
   from {
     translate: -80vw 0;
   }

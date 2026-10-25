@@ -1,8 +1,13 @@
 import styles from "./Loader.module.scss";
 
-const Loader = ({ exiting }) => {
+const Loader = ({ exiting, replayFlyBy, onExited }) => {
   return (
-    <div className={`${styles.screen} ${exiting ? styles.exit : ""}`}>
+    <div
+      className={`${styles.screen} ${exiting ? styles.exit : ""} ${replayFlyBy ? styles.replay : ""}`}
+      onAnimationEnd={(e) => {
+        if (exiting && e.target === e.currentTarget) onExited();
+      }}
+    >
       <div className={styles.container}>
         <div className={styles.loader}>
           <span>
@@ -17,12 +22,6 @@ const Loader = ({ exiting }) => {
           </div>
         </div>
         <div className={styles.progress} />
-      </div>
-      <div>
-        <span />
-        <span />
-        <span />
-        <span />
       </div>
     </div>
   );

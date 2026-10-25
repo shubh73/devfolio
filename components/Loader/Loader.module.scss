@@ -1,4 +1,6 @@
 :global(html):has(.screen) {
+  scrollbar-color: transparent transparent;
+
   &,
   body {
     overflow: hidden;

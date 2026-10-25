@@ -84,7 +84,7 @@ const Contact = () => {
 
     sfx.play("charge-up", { rate: 2 });
 
-    Promise.all([loadFilter(), import("./mailer")])
+    Promise.all([loadFilter().catch(() => {}), import("./mailer")])
       .then(([, { default: mail }]) =>
         mail({
           name: clean(name),

@@ -106,6 +106,10 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!showLoader) ScrollTrigger.refresh();
+  }, [showLoader]);
+
   return (
     <>
       {showLoader && (
